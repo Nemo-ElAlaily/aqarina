@@ -18,7 +18,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ 'lo
         return view('front.index');
     })->name('front.index'); // end of welcome
 
-    Route::get('/agencies', 'Front\AgencyController@index');
+    Route::get('/agencies', 'Front\AgencyController@index')->name('front.agencies.index');
+    Route::get('/agency/{id}', 'Front\AgencyController@show')->name('front.agencies.show');
 
 });
 

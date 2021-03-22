@@ -1,5 +1,18 @@
 @extends('layouts.front.app')
 
+@section('style')
+    <!-- ARCHIVES CSS -->
+    <link rel="stylesheet" href="{{ asset('front') }}/css/timedropper.css">
+    <link rel="stylesheet" href="{{ asset('front') }}/css/datedropper.css">
+    <link rel="stylesheet" href="{{ asset('front') }}/css/animate.css">
+    <link rel="stylesheet" href="{{ asset('front') }}/css/lightcase.css">
+    <link rel="stylesheet" href="{{ asset('front') }}/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="{{ asset('front') }}/css/bootstrap.css">
+    <link rel="stylesheet" href="{{ asset('front') }}/css/menu.css">
+    <link rel="stylesheet" href="{{ asset('front') }}/css/slick.css">
+    <link rel="stylesheet" href="{{ asset('front') }}/css/styles.css">
+@stop
+
 @section('content')
 
     <section class="headings">
@@ -47,20 +60,20 @@
                                         </div>
                                     </a>
                                     <div class="news-item-text">
-                                        <a href="$"><h3>{{ $agency -> name }}</h3></a>
+                                        <a href="{{ route('front.agencies.show' , $agency -> id) }}"><h3>{{ $agency -> name }}</h3></a>
                                         <div class="the-agents">
                                             <ul class="the-agents-details">
-                                                <li><a href="#">Office: (234) 0200 17813</a></li>
-                                                <li><a href="#">Mobile: (657) 9854 12095</a></li>
-                                                <li><a href="#">Fax: 809 123 0951</a></li>
-                                                <li><a href="#">Email: info@agent.com</a></li>
+                                                <li><a href="#">Office: {{ $agency -> office_number }}</a></li>
+                                                <li><a href="#">Mobile: {{ $agency -> mobile }}</a></li>
+                                                <li><a href="#">Fax: {{ $agency -> fax }}</a></li>
+                                                <li><a href="#">Email: {{ $agency -> email }}</a></li>
                                             </ul>
                                         </div>
                                         <div class="news-item-bottom">
                                             <a href="properties-full-grid-2.html" class="news-link">View My Listings</a>
                                             <div class="admin">
                                                 <p>Arling Tracy</p>
-                                                <img src="{{ asset('front') }}/images/testimonials/ts-1.jpg" alt="">
+                                                <img src="{{ asset('front/') }}/images/testimonials/ts-1.jpg" alt="">
                                             </div>
                                         </div>
                                     </div>
@@ -149,7 +162,7 @@
                                         <div class="recent-post">
                                             <div class="recent-main">
                                                 <div class="recent-img">
-                                                    <a href="blog-details.html"><img src="{{ asset('front') }}/images/feature-properties/fp-1.jpg" alt=""></a>
+                                                    <a href="blog-details.html"><img src="{{ asset('front/') }}/images/feature-properties/fp-1.jpg" alt=""></a>
                                                 </div>
                                                 <div class="info-img">
                                                     <a href="blog-details.html"><h6>Family Home</h6></a>
@@ -158,7 +171,7 @@
                                             </div>
                                             <div class="recent-main my-4">
                                                 <div class="recent-img">
-                                                    <a href="blog-details.html"><img src="{{ asset('front') }}/images/feature-properties/fp-2.jpg" alt=""></a>
+                                                    <a href="blog-details.html"><img src="{{ asset('front/') }}/images/feature-properties/fp-2.jpg" alt=""></a>
                                                 </div>
                                                 <div class="info-img">
                                                     <a href="blog-details.html"><h6>Family Home</h6></a>
@@ -167,7 +180,7 @@
                                             </div>
                                             <div class="recent-main">
                                                 <div class="recent-img">
-                                                    <a href="blog-details.html"><img src="{{ asset('front') }}/images/feature-properties/fp-3.jpg" alt=""></a>
+                                                    <a href="blog-details.html"><img src="{{ asset('front/') }}/images/feature-properties/fp-3.jpg" alt=""></a>
                                                 </div>
                                                 <div class="info-img">
                                                     <a href="blog-details.html"><h6>Family Home</h6></a>
@@ -199,7 +212,7 @@
                                                                 <li>Baths <span>3</span></li>
                                                             </ul>
                                                         </div>
-                                                        <img src="{{ asset('front') }}/images/feature-properties/fp-1.jpg" alt="">
+                                                        <img src="{{ asset('front/') }}/images/feature-properties/fp-1.jpg" alt="">
                                                     </a>
                                                 </div>
                                             </div>
@@ -219,7 +232,7 @@
                                                                 <li>Baths <span>3</span></li>
                                                             </ul>
                                                         </div>
-                                                        <img src="{{ asset('front') }}/images/feature-properties/fp-2.jpg" alt="">
+                                                        <img src="{{ asset('front/') }}/images/feature-properties/fp-2.jpg" alt="">
                                                     </a>
                                                 </div>
                                             </div>
@@ -239,7 +252,7 @@
                                                                 <li>Baths <span>3</span></li>
                                                             </ul>
                                                         </div>
-                                                        <img src="{{ asset('front') }}/images/feature-properties/fp-3.jpg" alt="">
+                                                        <img src="{{ asset('front/') }}/images/feature-properties/fp-3.jpg" alt="">
                                                     </a>
                                                 </div>
                                             </div>
@@ -259,7 +272,7 @@
                                                                 <li>Baths <span>3</span></li>
                                                             </ul>
                                                         </div>
-                                                        <img src="{{ asset('front') }}/images/feature-properties/fp-4.jpg" alt="">
+                                                        <img src="{{ asset('front/') }}/images/feature-properties/fp-4.jpg" alt="">
                                                     </a>
                                                 </div>
                                             </div>
@@ -279,7 +292,7 @@
                                                                 <li>Baths <span>3</span></li>
                                                             </ul>
                                                         </div>
-                                                        <img src="{{ asset('front') }}/images/feature-properties/fp-5.jpg" alt="">
+                                                        <img src="{{ asset('front/') }}/images/feature-properties/fp-5.jpg" alt="">
                                                     </a>
                                                 </div>
                                             </div>
@@ -299,7 +312,7 @@
                                                                 <li>Baths <span>3</span></li>
                                                             </ul>
                                                         </div>
-                                                        <img src="{{ asset('front') }}/images/feature-properties/fp-6.jpg" alt="">
+                                                        <img src="{{ asset('front/') }}/images/feature-properties/fp-6.jpg" alt="">
                                                     </a>
                                                 </div>
                                             </div>
@@ -333,3 +346,38 @@
     <!-- END SECTION BLOG -->
 
 @endsection
+
+@section('script')
+    <!-- ARCHIVES JS -->
+    <script src="{{ asset('front') }}/js/jquery.min.js"></script>
+    <script src="{{ asset('front') }}/js/tether.min.js"></script>
+    <script src="{{ asset('front') }}/js/bootstrap.min.js"></script>
+    <script src="{{ asset('front') }}/js/mmenu.min.js"></script>
+    <script src="{{ asset('front') }}/js/mmenu.js"></script>
+    <script src="{{ asset('front') }}/js/slick.min.js"></script>
+    <script src="{{ asset('front') }}/js/slick4.js"></script>
+    <script src="{{ asset('front') }}/js/smooth-scroll.min.js"></script>
+    <script src="{{ asset('front') }}/js/ajaxchimp.min.js"></script>
+    <script src="{{ asset('front') }}/js/newsletter.js"></script>
+    <script src="{{ asset('front') }}/js/color-switcher.js"></script>
+    <script src="{{ asset('front') }}/js/timedropper.js"></script>
+    <script src="{{ asset('front') }}/js/datedropper.js"></script>
+    <script src="{{ asset('front') }}/js/inner.js"></script>
+
+    <!-- Date Dropper Script-->
+    <script>
+        $('#reservation-date').dateDropper();
+
+    </script>
+    <!-- Time Dropper Script-->
+    <script>
+        this.$('#reservation-time').timeDropper({
+            setCurrentTime: false,
+            meridians: true,
+            primaryColor: "#e8212a",
+            borderColor: "#e8212a",
+            minutesInterval: '15'
+        });
+
+    </script>
+@stop

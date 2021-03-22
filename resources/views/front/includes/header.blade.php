@@ -32,12 +32,19 @@
                 <div class="dropdown">
                     <button class="btn-dropdown dropdown-toggle" type="button" id="dropdownlang"
                             data-toggle="dropdown" aria-haspopup="true">
-                        <img src="{{ asset('front/') }}/images/en.png" alt="lang" /> English
+                        <img src="{{ asset('front/images/' . LaravelLocalization::getCurrentLocale() . '.png' ) }}" alt="lang" /> {{ LaravelLocalization::getCurrentLocaleNative() }}
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownlang">
-                        <li><img src="{{ asset('front/') }}/images/fr.png" alt="lang" />France</li>
-                        <li><img src="{{ asset('front/') }}/images/de.png" alt="lang" /> German</li>
-                        <li><img src="{{ asset('front/') }}/images/it.png" alt="lang" />Italy</li>
+                        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                            <li>
+                                <a class="" rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                    <img src="{{ asset('front/images/' . $localeCode . '.png' ) }}" alt="{{ $properties['native'] }}" />
+                                    {{ $properties['native'] }}
+                                </a>
+                            </li>
+
+                        @endforeach
+
                     </ul>
                 </div>
             </div>
@@ -64,9 +71,9 @@
                 <!-- Main Navigation -->
                 <nav id="navigation" class="style-1">
                     <ul id="responsive">
-                        <li><a class="current" href="index.html">Home</a></li>
+                        <li><a class="current" href="{{ route('front.index') }}">Home</a></li>
                         <li><a href="properties.html">Properties</a></li>
-                        <li><a href="agencies.html">Agencies</a></li>
+                        <li><a href="{{ route('front.agencies.index') }}">Agencies</a></li>
                         <li><a href="blogs.html">Blog</a></li>
                         <li><a href="contact-us.html">Contact</a>
                         </li>

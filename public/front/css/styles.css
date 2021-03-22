@@ -13603,7 +13603,7 @@ section.single-proper.details {
   color: 000;
 }
 
-.agents.det .text-heading.text-left span {
+.agents.det .text-heading.text-left span a {
   font-size: 16px;
   color: #274abb;
 }

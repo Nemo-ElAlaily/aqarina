@@ -15,4 +15,11 @@ class AgencyController extends Controller
 
     } // end of index
 
+    public function show($id)
+    {
+        $agency = Agency::find($id);
+        return view('front.agencies.show', compact('agency'));
+
+    } // end of show
+
 } // end of controller
