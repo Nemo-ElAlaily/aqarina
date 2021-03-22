@@ -26,7 +26,7 @@ class Agency extends Model implements TranslatableContract
 
     public function getImagePathAttribute()
     {
-        return asset('uploads/agencies/' . $this->image);
+        return asset('public/uploads/agencies/' . $this->image);
     } // end of image path
 
 }

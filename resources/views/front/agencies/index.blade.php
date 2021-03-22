@@ -2,15 +2,15 @@
 
 @section('style')
     <!-- ARCHIVES CSS -->
-    <link rel="stylesheet" href="{{ asset('front') }}/css/timedropper.css">
-    <link rel="stylesheet" href="{{ asset('front') }}/css/datedropper.css">
-    <link rel="stylesheet" href="{{ asset('front') }}/css/animate.css">
-    <link rel="stylesheet" href="{{ asset('front') }}/css/lightcase.css">
-    <link rel="stylesheet" href="{{ asset('front') }}/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="{{ asset('front') }}/css/bootstrap.css">
-    <link rel="stylesheet" href="{{ asset('front') }}/css/menu.css">
-    <link rel="stylesheet" href="{{ asset('front') }}/css/slick.css">
-    <link rel="stylesheet" href="{{ asset('front') }}/css/styles.css">
+    <link rel="stylesheet" href="{{ asset('public/front') }}/css/timedropper.css">
+    <link rel="stylesheet" href="{{ asset('public/front') }}/css/datedropper.css">
+    <link rel="stylesheet" href="{{ asset('public/front') }}/css/animate.css">
+    <link rel="stylesheet" href="{{ asset('public/front') }}/css/lightcase.css">
+    <link rel="stylesheet" href="{{ asset('public/front') }}/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="{{ asset('public/front') }}/css/bootstrap.css">
+    <link rel="stylesheet" href="{{ asset('public/front') }}/css/menu.css">
+    <link rel="stylesheet" href="{{ asset('public/front') }}/css/slick.css">
+    <link rel="stylesheet" href="{{ asset('public/front') }}/css/styles.css">
 @stop
 
 @section('content')
@@ -349,20 +349,20 @@
 
 @section('script')
     <!-- ARCHIVES JS -->
-    <script src="{{ asset('front') }}/js/jquery.min.js"></script>
-    <script src="{{ asset('front') }}/js/tether.min.js"></script>
-    <script src="{{ asset('front') }}/js/bootstrap.min.js"></script>
-    <script src="{{ asset('front') }}/js/mmenu.min.js"></script>
-    <script src="{{ asset('front') }}/js/mmenu.js"></script>
-    <script src="{{ asset('front') }}/js/slick.min.js"></script>
-    <script src="{{ asset('front') }}/js/slick4.js"></script>
-    <script src="{{ asset('front') }}/js/smooth-scroll.min.js"></script>
-    <script src="{{ asset('front') }}/js/ajaxchimp.min.js"></script>
-    <script src="{{ asset('front') }}/js/newsletter.js"></script>
-    <script src="{{ asset('front') }}/js/color-switcher.js"></script>
-    <script src="{{ asset('front') }}/js/timedropper.js"></script>
-    <script src="{{ asset('front') }}/js/datedropper.js"></script>
-    <script src="{{ asset('front') }}/js/inner.js"></script>
+    <script src="{{ asset('public/front') }}/js/jquery.min.js"></script>
+    <script src="{{ asset('public/front') }}/js/tether.min.js"></script>
+    <script src="{{ asset('public/front') }}/js/bootstrap.min.js"></script>
+    <script src="{{ asset('public/front') }}/js/mmenu.min.js"></script>
+    <script src="{{ asset('public/front') }}/js/mmenu.js"></script>
+    <script src="{{ asset('public/front') }}/js/slick.min.js"></script>
+    <script src="{{ asset('public/front') }}/js/slick4.js"></script>
+    <script src="{{ asset('public/front') }}/js/smooth-scroll.min.js"></script>
+    <script src="{{ asset('public/front') }}/js/ajaxchimp.min.js"></script>
+    <script src="{{ asset('public/front') }}/js/newsletter.js"></script>
+    <script src="{{ asset('public/front') }}/js/color-switcher.js"></script>
+    <script src="{{ asset('public/front') }}/js/timedropper.js"></script>
+    <script src="{{ asset('public/front') }}/js/datedropper.js"></script>
+    <script src="{{ asset('public/front') }}/js/inner.js"></script>
 
     <!-- Date Dropper Script-->
     <script>

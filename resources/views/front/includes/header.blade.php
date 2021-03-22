@@ -32,7 +32,7 @@
                 <div class="dropdown">
                     <button class="btn-dropdown dropdown-toggle" type="button" id="dropdownlang"
                             data-toggle="dropdown" aria-haspopup="true">
-                        <img src="{{ asset('front/images/' . LaravelLocalization::getCurrentLocale() . '.png' ) }}" alt="lang" /> {{ LaravelLocalization::getCurrentLocaleNative() }}
+                        <img src="{{ asset('public/front/images/' . LaravelLocalization::getCurrentLocale() . '.png' ) }}" alt="lang" /> {{ LaravelLocalization::getCurrentLocaleNative() }}
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownlang">
                         @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
@@ -58,7 +58,7 @@
             <div class="left-side">
                 <!-- Logo -->
                 <div id="logo">
-                    <a href="index.html"><img src="{{ asset('front/') }}/images/logo.svg" alt=""></a>
+                    <a href="index.html"><img src="{{ asset('public/front') }}/images/logo.svg" alt=""></a>
                 </div>
                 <!-- Mobile Navigation -->
                 <div class="mmenu-trigger">

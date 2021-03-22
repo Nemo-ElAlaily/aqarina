@@ -2,24 +2,24 @@
 
 @section('style')
     <!-- LEAFLET MAP -->
-    <link rel="stylesheet" href="{{ asset('front/') }}/css/leaflet.css">
-    <link rel="stylesheet" href="{{ asset('front/') }}/css/leaflet-gesture-handling.min.css">
-    <link rel="stylesheet" href="{{ asset('front/') }}/css/leaflet.markercluster.css">
-    <link rel="stylesheet" href="{{ asset('front/') }}/css/leaflet.markercluster.default.css">
+    <link rel="stylesheet" href="{{ asset('public/front') }}/css/leaflet.css">
+    <link rel="stylesheet" href="{{ asset('public/front') }}/css/leaflet-gesture-handling.min.css">
+    <link rel="stylesheet" href="{{ asset('public/front') }}/css/leaflet.markercluster.css">
+    <link rel="stylesheet" href="{{ asset('public/front') }}/css/leaflet.markercluster.default.css">
     <!-- Slider Revolution CSS Files -->
-    <link rel="stylesheet" href="{{ asset('front/') }}/revolution//css/settings.css">
-    <link rel="stylesheet" href="{{ asset('front/') }}/revolution//css/layers.css">
-    <link rel="stylesheet" href="{{ asset('front/') }}/revolution//css/navigation.css">
+    <link rel="stylesheet" href="{{ asset('public/front') }}/revolution//css/settings.css">
+    <link rel="stylesheet" href="{{ asset('public/front') }}/revolution//css/layers.css">
+    <link rel="stylesheet" href="{{ asset('public/front') }}/revolution//css/navigation.css">
     <!-- ARCHIVES CSS -->
-    <link rel="stylesheet" href="{{ asset('front/') }}/css/animate.css">
-    <link rel="stylesheet" href="{{ asset('front/') }}/css/magnific-popup.css">
-    <link rel="stylesheet" href="{{ asset('front/') }}/css/lightcase.css">
-    <link rel="stylesheet" href="{{ asset('front/') }}/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="{{ asset('front/') }}/css/bootstrap.css">
-    <link rel="stylesheet" href="{{ asset('front/') }}/css/menu.css">
-    <link rel="stylesheet" href="{{ asset('front/') }}/css/slick.css">
-    <link rel="stylesheet" href="{{ asset('front/') }}/css/styles.css">
-    <link rel="stylesheet" id="color" href="{{ asset('front/') }}/css/default.css">
+    <link rel="stylesheet" href="{{ asset('public/front') }}/css/animate.css">
+    <link rel="stylesheet" href="{{ asset('public/front') }}/css/magnific-popup.css">
+    <link rel="stylesheet" href="{{ asset('public/front') }}/css/lightcase.css">
+    <link rel="stylesheet" href="{{ asset('public/front') }}/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="{{ asset('public/front') }}/css/bootstrap.css">
+    <link rel="stylesheet" href="{{ asset('public/front') }}/css/menu.css">
+    <link rel="stylesheet" href="{{ asset('public/front') }}/css/slick.css">
+    <link rel="stylesheet" href="{{ asset('public/front') }}/css/styles.css">
+    <link rel="stylesheet" id="color" href="{{ asset('public/front') }}/css/default.css">
 @stop
 
 @section('content')
@@ -168,7 +168,7 @@
                                             <div class="homes-tag button alt featured">Featured</div>
                                             <div class="homes-tag button alt sale">For Sale</div>
                                             <div class="homes-price">Family Home</div>
-                                            <img src="{{ asset('front/') }}/images/feature-properties/fp-1.jpg" alt="home-1"
+                                            <img src="{{ asset('public/front') }}/images/feature-properties/fp-1.jpg" alt="home-1"
                                                  class="img-responsive">
                                         </a>
                                     </div>
@@ -251,7 +251,7 @@
                                             <div class="homes-tag button alt featured">Featured</div>
                                             <div class="homes-tag button alt sale">For Sale</div>
                                             <div class="homes-price">Family Home</div>
-                                            <img src="{{ asset('front/') }}/images/feature-properties/fp-2.jpg" alt="home-1"
+                                            <img src="{{ asset('public/front') }}/images/feature-properties/fp-2.jpg" alt="home-1"
                                                  class="img-responsive">
                                         </a>
                                     </div>
@@ -334,7 +334,7 @@
                                             <div class="homes-tag button alt featured">Featured</div>
                                             <div class="homes-tag button alt sale">For Sale</div>
                                             <div class="homes-price">Family Home</div>
-                                            <img src="{{ asset('front/') }}/images/feature-properties/fp-3.jpg" alt="home-1"
+                                            <img src="{{ asset('public/front') }}/images/feature-properties/fp-3.jpg" alt="home-1"
                                                  class="img-responsive">
                                         </a>
                                     </div>
@@ -417,7 +417,7 @@
                                             <div class="homes-tag button alt featured">Featured</div>
                                             <div class="homes-tag button alt sale">For Sale</div>
                                             <div class="homes-price">Family Home</div>
-                                            <img src="{{ asset('front/') }}/images/feature-properties/fp-4.jpg" alt="home-1"
+                                            <img src="{{ asset('public/front') }}/images/feature-properties/fp-4.jpg" alt="home-1"
                                                  class="img-responsive">
                                         </a>
                                     </div>
@@ -500,7 +500,7 @@
                                             <div class="homes-tag button alt featured">Featured</div>
                                             <div class="homes-tag button alt sale">For Sale</div>
                                             <div class="homes-price">Family Home</div>
-                                            <img src="{{ asset('front/') }}/images/feature-properties/fp-5.jpg" alt="home-1"
+                                            <img src="{{ asset('public/front') }}/images/feature-properties/fp-5.jpg" alt="home-1"
                                                  class="img-responsive">
                                         </a>
                                     </div>
@@ -583,7 +583,7 @@
                                             <div class="homes-tag button alt featured">Featured</div>
                                             <div class="homes-tag button alt sale">For Sale</div>
                                             <div class="homes-price">Family Home</div>
-                                            <img src="{{ asset('front/') }}/images/feature-properties/fp-6.jpg" alt="home-1"
+                                            <img src="{{ asset('public/front') }}/images/feature-properties/fp-6.jpg" alt="home-1"
                                                  class="img-responsive">
                                         </a>
                                     </div>
@@ -684,7 +684,7 @@
                                             <div class="homes-tag button alt featured">Featured</div>
                                             <div class="homes-tag button sale rent">For Rent</div>
                                             <div class="homes-price">Family Home</div>
-                                            <img src="{{ asset('front/') }}/images/feature-properties/fp-1.jpg" alt="home-1"
+                                            <img src="{{ asset('public/front') }}/images/feature-properties/fp-1.jpg" alt="home-1"
                                                  class="img-responsive">
                                         </a>
                                     </div>
@@ -767,7 +767,7 @@
                                             <div class="homes-tag button alt featured">Featured</div>
                                             <div class="homes-tag button sale rent">For Rent</div>
                                             <div class="homes-price">Family Home</div>
-                                            <img src="{{ asset('front/') }}/images/feature-properties/fp-2.jpg" alt="home-1"
+                                            <img src="{{ asset('public/front') }}/images/feature-properties/fp-2.jpg" alt="home-1"
                                                  class="img-responsive">
                                         </a>
                                     </div>
@@ -850,7 +850,7 @@
                                             <div class="homes-tag button alt featured">Featured</div>
                                             <div class="homes-tag button sale rent">For Rent</div>
                                             <div class="homes-price">Family Home</div>
-                                            <img src="{{ asset('front/') }}/images/feature-properties/fp-3.jpg" alt="home-1"
+                                            <img src="{{ asset('public/front') }}/images/feature-properties/fp-3.jpg" alt="home-1"
                                                  class="img-responsive">
                                         </a>
                                     </div>
@@ -933,7 +933,7 @@
                                             <div class="homes-tag button alt featured">Featured</div>
                                             <div class="homes-tag button sale rent">For Rent</div>
                                             <div class="homes-price">Family Home</div>
-                                            <img src="{{ asset('front/') }}/images/feature-properties/fp-4.jpg" alt="home-1"
+                                            <img src="{{ asset('public/front') }}/images/feature-properties/fp-4.jpg" alt="home-1"
                                                  class="img-responsive">
                                         </a>
                                     </div>
@@ -1016,7 +1016,7 @@
                                             <div class="homes-tag button alt featured">Featured</div>
                                             <div class="homes-tag button sale rent">For Rent</div>
                                             <div class="homes-price">Family Home</div>
-                                            <img src="{{ asset('front/') }}/images/feature-properties/fp-5.jpg" alt="home-1"
+                                            <img src="{{ asset('public/front') }}/images/feature-properties/fp-5.jpg" alt="home-1"
                                                  class="img-responsive">
                                         </a>
                                     </div>
@@ -1099,7 +1099,7 @@
                                             <div class="homes-tag button alt featured">Featured</div>
                                             <div class="homes-tag button sale rent">For Rent</div>
                                             <div class="homes-price">Family Home</div>
-                                            <img src="{{ asset('front/') }}/images/feature-properties/fp-6.jpg" alt="home-1"
+                                            <img src="{{ asset('public/front') }}/images/feature-properties/fp-6.jpg" alt="home-1"
                                                  class="img-responsive">
                                         </a>
                                     </div>
@@ -1188,7 +1188,7 @@
                 <article class="col-lg-4 col-md-6 col-xs-12 serv">
                     <div class="serv-flex">
                         <div class="art-1 img-13">
-                            <img src="{{ asset('front/') }}/images/icons/icon-1.svg" alt="">
+                            <img src="{{ asset('public/front') }}/images/icons/icon-1.svg" alt="">
                             <h3>Wide Renge Of Properties</h3>
                         </div>
                         <div class="service-text-p">
@@ -1200,7 +1200,7 @@
                 <article class="col-lg-4 col-md-6 col-xs-12 serv">
                     <div class="serv-flex">
                         <div class="art-1 img-14">
-                            <img src="{{ asset('front/') }}/images/icons/icon-2.svg" alt="">
+                            <img src="{{ asset('public/front') }}/images/icons/icon-2.svg" alt="">
                             <h3>Trusted by thousands</h3>
                         </div>
                         <div class="service-text-p">
@@ -1212,7 +1212,7 @@
                 <article class="col-lg-4 col-md-6 col-xs-12 serv mb-0 pt">
                     <div class="serv-flex arrow">
                         <div class="art-1 img-15">
-                            <img src="{{ asset('front/') }}/images/icons/icon-3.svg" alt="">
+                            <img src="{{ asset('public/front') }}/images/icons/icon-3.svg" alt="">
                             <h3>24/7 support</h3>
                         </div>
                         <div class="service-text-p">
@@ -1239,7 +1239,7 @@
                 <div class="col-lg-6 col-md-6 pr-1">
                     <!-- Image Box -->
                     <a href="listing-details.html" class="img-box hover-effect">
-                        <img src="{{ asset('front/') }}/images/popular-places/7.jpg" class="img-responsive" alt="">
+                        <img src="{{ asset('public/front') }}/images/popular-places/7.jpg" class="img-responsive" alt="">
                         <!-- Badge -->
                         <div class="img-box-content visible">
                             <h4 class="mb-2">New York</h4>
@@ -1262,7 +1262,7 @@
                 <div class="col-lg-3 col-md-6 pr-1">
                     <!-- Image Box -->
                     <a href="listing-details.html" class="img-box hover-effect">
-                        <img src="{{ asset('front/') }}/images/popular-places/8.jpg" class="img-responsive" alt="">
+                        <img src="{{ asset('public/front') }}/images/popular-places/8.jpg" class="img-responsive" alt="">
                         <div class="img-box-content visible">
                             <h4 class="mb-2">Los Angeles</h4>
                             <span>307 Properties</span>
@@ -1284,7 +1284,7 @@
                 <div class="col-lg-3 col-md-6 pr">
                     <!-- Image Box -->
                     <a href="listing-details.html" class="img-box hover-effect">
-                        <img src="{{ asset('front/') }}/images/popular-places/9.jpg" class="img-responsive" alt="">
+                        <img src="{{ asset('public/front') }}/images/popular-places/9.jpg" class="img-responsive" alt="">
                         <div class="img-box-content visible">
                             <h4 class="mb-2">Miami </h4>
                             <span>409 Properties</span>
@@ -1306,7 +1306,7 @@
                 <div class="col-lg-3 col-md-6 pr-1">
                     <!-- Image Box -->
                     <a href="listing-details.html" class="img-box no-mb mi x3 hover-effect">
-                        <img src="{{ asset('front/') }}/images/popular-places/10.jpg" class="img-responsive" alt="">
+                        <img src="{{ asset('public/front') }}/images/popular-places/10.jpg" class="img-responsive" alt="">
                         <div class="img-box-content visible">
                             <h4 class="mb-2">Chicago</h4>
                             <span>507 Properties</span>
@@ -1328,7 +1328,7 @@
                 <div class="col-lg-3 col-md-6 pr-1">
                     <!-- Image Box -->
                     <a href="listing-details.html" class="img-box no-mb mi x3 hover-effect">
-                        <img src="{{ asset('front/') }}/images/popular-places/11.jpg" class="img-responsive" alt="">
+                        <img src="{{ asset('public/front') }}/images/popular-places/11.jpg" class="img-responsive" alt="">
                         <div class="img-box-content visible">
                             <h4 class="mb-2">San Francisco</h4>
                             <span>99 Properties</span>
@@ -1350,7 +1350,7 @@
                 <div class="col-lg-6 col-md-6 pr">
                     <!-- Image Box -->
                     <a href="listing-details.html" class="img-box san no-mb x3 hover-effect">
-                        <img src="{{ asset('front/') }}/images/popular-places/5.jpg" class="img-responsive" alt="">
+                        <img src="{{ asset('public/front') }}/images/popular-places/5.jpg" class="img-responsive" alt="">
                         <div class="img-box-content visible">
                             <h4 class="mb-2">Detroit </h4>
                             <span>308 Properties</span>
@@ -1390,7 +1390,7 @@
                     </div>
                     <div class="clinet-inner">
                         <div class="client-thumb">
-                            <img src="{{ asset('front/') }}/images/testimonials/ts-1.jpg" alt="" />
+                            <img src="{{ asset('public/front') }}/images/testimonials/ts-1.jpg" alt="" />
                         </div>
                         <div class="client-info">
                             <h2>Lisa Smith</h2>
@@ -1412,7 +1412,7 @@
                     </div>
                     <div class="clinet-inner">
                         <div class="client-thumb">
-                            <img src="{{ asset('front/') }}/images/testimonials/ts-2.jpg" alt="" />
+                            <img src="{{ asset('public/front') }}/images/testimonials/ts-2.jpg" alt="" />
                         </div>
                         <div class="client-info">
                             <h2>Jhon Morris</h2>
@@ -1434,7 +1434,7 @@
                     </div>
                     <div class="clinet-inner">
                         <div class="client-thumb">
-                            <img src="{{ asset('front/') }}/images/testimonials/ts-3.jpg" alt="" />
+                            <img src="{{ asset('public/front') }}/images/testimonials/ts-3.jpg" alt="" />
                         </div>
                         <div class="client-info">
                             <h2>Mary Deshaw</h2>
@@ -1456,7 +1456,7 @@
                     </div>
                     <div class="clinet-inner">
                         <div class="client-thumb">
-                            <img src="{{ asset('front/') }}/images/testimonials/ts-4.jpg" alt="" />
+                            <img src="{{ asset('public/front') }}/images/testimonials/ts-4.jpg" alt="" />
                         </div>
                         <div class="client-info">
                             <h2>Gary Steven</h2>
@@ -1478,7 +1478,7 @@
                     </div>
                     <div class="clinet-inner">
                         <div class="client-thumb">
-                            <img src="{{ asset('front/') }}/images/testimonials/ts-5.jpg" alt="" />
+                            <img src="{{ asset('public/front') }}/images/testimonials/ts-5.jpg" alt="" />
                         </div>
                         <div class="client-info">
                             <h2>Cristy Mayer</h2>
@@ -1500,7 +1500,7 @@
                     </div>
                     <div class="clinet-inner">
                         <div class="client-thumb">
-                            <img src="{{ asset('front/') }}/images/testimonials/ts-6.jpg" alt="" />
+                            <img src="{{ asset('public/front') }}/images/testimonials/ts-6.jpg" alt="" />
                         </div>
                         <div class="client-info">
                             <h2>Ichiro Tasaka</h2>
@@ -1533,7 +1533,7 @@
                         <div class="news-item">
                             <a href="blog-details.html" class="news-img-link">
                                 <div class="news-item-img">
-                                    <img class="img-responsive" src="{{ asset('front/') }}/images/blog/b-1.jpg" alt="blog image">
+                                    <img class="img-responsive" src="{{ asset('public/front') }}/images/blog/b-1.jpg" alt="blog image">
                                 </div>
                             </a>
                             <div class="news-item-text">
@@ -1559,7 +1559,7 @@
                                     <a href="blog-details.html" class="news-link">Read more...</a>
                                     <div class="admin">
                                         <p>By, Karl Smith</p>
-                                        <img src="{{ asset('front/') }}/images/testimonials/ts-6.jpg" alt="">
+                                        <img src="{{ asset('public/front') }}/images/testimonials/ts-6.jpg" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -1569,7 +1569,7 @@
                         <div class="news-item">
                             <a href="blog-details.html" class="news-img-link">
                                 <div class="news-item-img">
-                                    <img class="img-responsive" src="{{ asset('front/') }}/images/blog/b-2.jpg" alt="blog image">
+                                    <img class="img-responsive" src="{{ asset('public/front') }}/images/blog/b-2.jpg" alt="blog image">
                                 </div>
                             </a>
                             <div class="news-item-text">
@@ -1595,7 +1595,7 @@
                                     <a href="blog-details.html" class="news-link">Read more...</a>
                                     <div class="admin">
                                         <p>By, Lis Jhonson</p>
-                                        <img src="{{ asset('front/') }}/images/testimonials/ts-5.jpg" alt="">
+                                        <img src="{{ asset('public/front') }}/images/testimonials/ts-5.jpg" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -1605,7 +1605,7 @@
                         <div class="news-item no-mb">
                             <a href="blog-details.html" class="news-img-link">
                                 <div class="news-item-img">
-                                    <img class="img-responsive" src="{{ asset('front/') }}/images/blog/b-3.jpg" alt="blog image">
+                                    <img class="img-responsive" src="{{ asset('public/front') }}/images/blog/b-3.jpg" alt="blog image">
                                 </div>
                             </a>
                             <div class="news-item-text">
@@ -1631,7 +1631,7 @@
                                     <a href="blog-details.html" class="news-link">Read more...</a>
                                     <div class="admin">
                                         <p>By, Ted Willians</p>
-                                        <img src="{{ asset('front/') }}/images/testimonials/ts-4.jpg" alt="">
+                                        <img src="{{ asset('public/front') }}/images/testimonials/ts-4.jpg" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -1647,16 +1647,16 @@
     <div class="partners bg-white-1">
         <div class="container">
             <div class="owl-carousel style2">
-                <div class="owl-item"><img src="{{ asset('front/') }}/images/partners/11.jpg" alt=""></div>
-                <div class="owl-item"><img src="{{ asset('front/') }}/images/partners/12.jpg" alt=""></div>
-                <div class="owl-item"><img src="{{ asset('front/') }}/images/partners/13.jpg" alt=""></div>
-                <div class="owl-item"><img src="{{ asset('front/') }}/images/partners/14.jpg" alt=""></div>
-                <div class="owl-item"><img src="{{ asset('front/') }}/images/partners/15.jpg" alt=""></div>
-                <div class="owl-item"><img src="{{ asset('front/') }}/images/partners/16.jpg" alt=""></div>
-                <div class="owl-item"><img src="{{ asset('front/') }}/images/partners/17.jpg" alt=""></div>
-                <div class="owl-item"><img src="{{ asset('front/') }}/images/partners/11.jpg" alt=""></div>
-                <div class="owl-item"><img src="{{ asset('front/') }}/images/partners/12.jpg" alt=""></div>
-                <div class="owl-item"><img src="{{ asset('front/') }}/images/partners/13.jpg" alt=""></div>
+                <div class="owl-item"><img src="{{ asset('public/front') }}/images/partners/11.jpg" alt=""></div>
+                <div class="owl-item"><img src="{{ asset('public/front') }}/images/partners/12.jpg" alt=""></div>
+                <div class="owl-item"><img src="{{ asset('public/front') }}/images/partners/13.jpg" alt=""></div>
+                <div class="owl-item"><img src="{{ asset('public/front') }}/images/partners/14.jpg" alt=""></div>
+                <div class="owl-item"><img src="{{ asset('public/front') }}/images/partners/15.jpg" alt=""></div>
+                <div class="owl-item"><img src="{{ asset('public/front') }}/images/partners/16.jpg" alt=""></div>
+                <div class="owl-item"><img src="{{ asset('public/front') }}/images/partners/17.jpg" alt=""></div>
+                <div class="owl-item"><img src="{{ asset('public/front') }}/images/partners/11.jpg" alt=""></div>
+                <div class="owl-item"><img src="{{ asset('public/front') }}/images/partners/12.jpg" alt=""></div>
+                <div class="owl-item"><img src="{{ asset('public/front') }}/images/partners/13.jpg" alt=""></div>
             </div>
         </div>
     </div>
@@ -1675,50 +1675,50 @@
 
 @section('script')
     <!-- ARCHIVES JS -->
-    <script src="{{ asset('front/') }}/js/jquery.min.js"></script>
-    <script src="{{ asset('front/') }}/js/jquery-ui.js"></script>
-    <script src="{{ asset('front/') }}/js/tether.min.js"></script>
-    <script src="{{ asset('front/') }}/js/moment.js"></script>
-    <script src="{{ asset('front/') }}/js/transition.min.js"></script>
-    <script src="{{ asset('front/') }}/js/bootstrap.min.js"></script>
-    <script src="{{ asset('front/') }}/js/mmenu.min.js"></script>
-    <script src="{{ asset('front/') }}/js/mmenu.js"></script>
-    <script src="{{ asset('front/') }}/js/slick.min.js"></script>
-    <script src="{{ asset('front/') }}/js/slick3.js"></script>
-    <script src="{{ asset('front/') }}/js/fitvids.js"></script>
-    <script src="{{ asset('front/') }}/js/jquery.waypoints.min.js"></script>
-    <script src="{{ asset('front/') }}/js/jquery.counterup.min.js"></script>
-    <script src="{{ asset('front/') }}/js/imagesloaded.pkgd.min.js"></script>
-    <script src="{{ asset('front/') }}/js/isotope.pkgd.min.js"></script>
-    <script src="{{ asset('front/') }}/js/smooth-scroll.min.js"></script>
-    <script src="{{ asset('front/') }}/js/lightcase.js"></script>
-    <script src="{{ asset('front/') }}/js/owl.carousel.js"></script>
-    <script src="{{ asset('front/') }}/js/jquery.magnific-popup.min.js"></script>
-    <script src="{{ asset('front/') }}/js/ajaxchimp.min.js"></script>
-    <script src="{{ asset('front/') }}/js/newsletter.js"></script>
-    <script src="{{ asset('front/') }}/js/jquery.form.js"></script>
-    <script src="{{ asset('front/') }}/js/jquery.validate.min.js"></script>
-    <script src="{{ asset('front/') }}/js/forms-2.js"></script>
-    <script src="{{ asset('front/') }}/js/leaflet.js"></script>
-    <script src="{{ asset('front/') }}/js/leaflet-gesture-handling.min.js"></script>
-    <script src="{{ asset('front/') }}/js/leaflet-providers.js"></script>
-    <script src="{{ asset('front/') }}/js/leaflet.markercluster.js"></script>
-    <script src="{{ asset('front/') }}/js/map4.js"></script>
-    <script src="{{ asset('front/') }}/js/color-switcher.js"></script>
+    <script src="{{ asset('public/front') }}/js/jquery.min.js"></script>
+    <script src="{{ asset('public/front') }}/js/jquery-ui.js"></script>
+    <script src="{{ asset('public/front') }}/js/tether.min.js"></script>
+    <script src="{{ asset('public/front') }}/js/moment.js"></script>
+    <script src="{{ asset('public/front') }}/js/transition.min.js"></script>
+    <script src="{{ asset('public/front') }}/js/bootstrap.min.js"></script>
+    <script src="{{ asset('public/front') }}/js/mmenu.min.js"></script>
+    <script src="{{ asset('public/front') }}/js/mmenu.js"></script>
+    <script src="{{ asset('public/front') }}/js/slick.min.js"></script>
+    <script src="{{ asset('public/front') }}/js/slick3.js"></script>
+    <script src="{{ asset('public/front') }}/js/fitvids.js"></script>
+    <script src="{{ asset('public/front') }}/js/jquery.waypoints.min.js"></script>
+    <script src="{{ asset('public/front') }}/js/jquery.counterup.min.js"></script>
+    <script src="{{ asset('public/front') }}/js/imagesloaded.pkgd.min.js"></script>
+    <script src="{{ asset('public/front') }}/js/isotope.pkgd.min.js"></script>
+    <script src="{{ asset('public/front') }}/js/smooth-scroll.min.js"></script>
+    <script src="{{ asset('public/front') }}/js/lightcase.js"></script>
+    <script src="{{ asset('public/front') }}/js/owl.carousel.js"></script>
+    <script src="{{ asset('public/front') }}/js/jquery.magnific-popup.min.js"></script>
+    <script src="{{ asset('public/front') }}/js/ajaxchimp.min.js"></script>
+    <script src="{{ asset('public/front') }}/js/newsletter.js"></script>
+    <script src="{{ asset('public/front') }}/js/jquery.form.js"></script>
+    <script src="{{ asset('public/front') }}/js/jquery.validate.min.js"></script>
+    <script src="{{ asset('public/front') }}/js/forms-2.js"></script>
+    <script src="{{ asset('public/front') }}/js/leaflet.js"></script>
+    <script src="{{ asset('public/front') }}/js/leaflet-gesture-handling.min.js"></script>
+    <script src="{{ asset('public/front') }}/js/leaflet-providers.js"></script>
+    <script src="{{ asset('public/front') }}/js/leaflet.markercluster.js"></script>
+    <script src="{{ asset('public/front') }}/js/map4.js"></script>
+    <script src="{{ asset('public/front') }}/js/color-switcher.js"></script>
 
     <!-- Slider Revolution scripts -->
-    <script src="{{ asset('front/') }}/revolution/js/jquery.themepunch.tools.min.js"></script>
-    <script src="{{ asset('front/') }}/revolution/js/jquery.themepunch.revolution.min.js"></script>
-    <script src="{{ asset('front/') }}/revolution/js/extensions/revolution.extension.actions.min.js"></script>
-    <script src="{{ asset('front/') }}/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
-    <script src="{{ asset('front/') }}/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
-    <script src="{{ asset('front/') }}/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
-    <script src="{{ asset('front/') }}/revolution/js/extensions/revolution.extension.migration.min.js"></script>
-    <script src="{{ asset('front/') }}/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
-    <script src="{{ asset('front/') }}/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
-    <script src="{{ asset('front/') }}/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
-    <script src="{{ asset('front/') }}/revolution/js/extensions/revolution.extension.video.min.js"></script>
+    <script src="{{ asset('public/front') }}/revolution/js/jquery.themepunch.tools.min.js"></script>
+    <script src="{{ asset('public/front') }}/revolution/js/jquery.themepunch.revolution.min.js"></script>
+    <script src="{{ asset('public/front') }}/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+    <script src="{{ asset('public/front') }}/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+    <script src="{{ asset('public/front') }}/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+    <script src="{{ asset('public/front') }}/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+    <script src="{{ asset('public/front') }}/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+    <script src="{{ asset('public/front') }}/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+    <script src="{{ asset('public/front') }}/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+    <script src="{{ asset('public/front') }}/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+    <script src="{{ asset('public/front') }}/revolution/js/extensions/revolution.extension.video.min.js"></script>
 
     <!-- MAIN JS -->
-    <script src="{{ asset('front/') }}/js/script.js"></script>
+    <script src="{{ asset('public/front') }}/js/script.js"></script>
 @stop

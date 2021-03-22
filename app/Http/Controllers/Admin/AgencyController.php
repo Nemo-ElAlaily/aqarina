@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Agency;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use Intervention\Image\Facades\Image as Image;
 
@@ -58,7 +59,7 @@ class AgencyController extends Controller
         $request_data = $request -> all();
 
         if ($request -> image) {
-            Image::make($request->image)->resize(100, null, function ($constraint) {
+            Image::make($request->image)->resize(500, null, function ($constraint) {
                 $constraint->aspectRatio();
             })->save(public_path('/uploads/agencies/'. $request ->image->hashName()));
 
@@ -80,12 +81,56 @@ class AgencyController extends Controller
 
     public function update(Request $request, Agency $agency)
     {
-        //
-    }
+        $rules = [
+            'email' => ['required', Rule::unique('agencies', 'email') -> ignore($agency -> id),],
+            'image' => 'image',
+            'office_number' => 'required|numeric',
+            'mobile' => 'required|numeric',
+        ];
+
+        foreach (config('translatable.locales') as $locale) {
+            $rules += [
+                $locale . '.name' => ['required', Rule::unique('agency_translations', 'name')->ignore($agency->id, 'agency_id')],
+            ];
+        } // end of for each
+
+        $request -> validate($rules,
+            [
+                'required' => 'This Field is Required',
+            ]);// end of validation
+
+        if($request->image){
+            if ($agency->image != 'default.png') {
+
+                Storage::disk('public_uploads')->delete('/agencies/'.$agency ->image);
+
+            } // end of inner if
+
+            Image::make($request->image)->resize(500, null, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save(public_path('/uploads/agencies/'. $request ->image->hashName()));
+
+            $request_data['image'] = $request->image->hashName();
+        } // end of outer if
+
+        $request_data = $request -> all();
+
+        $agency->update($request_data);
+
+        session()->flash('success', 'Agency Updated Successfully');
+        return redirect()->route('admin.agencies.index');
+
+    } // end of update
 
     public function destroy(Agency $agency)
     {
-        //
+        if($agency -> image != 'default.png'){
+            Storage::disk('public_uploads')->delete('/agencies/' . $agency ->image);
+        }
+        $agency -> delete();
+
+        session()->flash('success', 'Agency Deleted Successfully');
+        return redirect()->route('admin.agencies.index');
     }
 
 } // end of controller

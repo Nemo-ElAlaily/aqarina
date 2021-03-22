@@ -47,6 +47,6 @@ class User extends Authenticatable
 
     public function getImagePathAttribute()
     {
-        return asset('uploads/users/' . $this->image);
+        return asset('public/uploads/users/' . $this->image);
     } // end of image path
 }

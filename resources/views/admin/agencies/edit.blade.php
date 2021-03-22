@@ -22,10 +22,10 @@
             <div class="row">
 
                 {{--                        @include('partials._errors')--}}
-                <form class="col-12" action="{{ route('admin.agencies.store') }}" method="post" enctype="multipart/form-data">
+                <form class="col-12" action="{{ route('admin.agencies.update', $agency -> id) }}" method="post" enctype="multipart/form-data">
 
                     {{ csrf_field() }}
-                    {{ method_field('post') }}
+                    {{ method_field('put') }}
 
                     <div class="row">
                         @foreach (config('translatable.locales') as $locale)
@@ -100,7 +100,7 @@
 
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i>
-                            Add agency</button>
+                            Update Agency</button>
                     </div>
 
                 </form><!-- end of form -->

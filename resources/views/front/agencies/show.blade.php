@@ -2,15 +2,15 @@
 
 @section('style')
     <!-- ARCHIVES CSS -->
-    <link rel="stylesheet" href="{{ asset('front') }}/css/timedropper.css">
-    <link rel="stylesheet" href="{{ asset('front') }}/css/datedropper.css">
-    <link rel="stylesheet" href="{{ asset('front') }}/css/animate.css">
-    <link rel="stylesheet" href="{{ asset('front') }}/css/lightcase.css">
-    <link rel="stylesheet" href="{{ asset('front') }}/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="{{ asset('front') }}/css/bootstrap.css">
-    <link rel="stylesheet" href="{{ asset('front') }}/css/menu.css">
-    <link rel="stylesheet" href="{{ asset('front') }}/css/slick.css">
-    <link rel="stylesheet" href="{{ asset('front') }}/css/styles.css">
+    <link rel="stylesheet" href="{{ asset('public/front') }}/css/timedropper.css">
+    <link rel="stylesheet" href="{{ asset('public/front') }}/css/datedropper.css">
+    <link rel="stylesheet" href="{{ asset('public/front') }}/css/animate.css">
+    <link rel="stylesheet" href="{{ asset('public/front') }}/css/lightcase.css">
+    <link rel="stylesheet" href="{{ asset('public/front') }}/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="{{ asset('public/front') }}/css/bootstrap.css">
+    <link rel="stylesheet" href="{{ asset('public/front') }}/css/menu.css">
+    <link rel="stylesheet" href="{{ asset('public/front') }}/css/slick.css">
+    <link rel="stylesheet" href="{{ asset('public/front') }}/css/styles.css">
 @stop
 
 @section('content')
@@ -55,7 +55,7 @@
                                         <a href="#" class="news-link">View My Listings</a>
                                         <div class="admin">
                                             <p>Arling Tracy</p>
-                                            <img src="{{ asset('front') }}/images/testimonials/ts-1.jpg" alt="">
+                                            <img src="{{ asset('public/front') }}/images/testimonials/ts-1.jpg" alt="">
                                         </div>
                                     </div>
                                 </div>
@@ -81,7 +81,7 @@
                                                         <div class="homes-tag button alt featured">Featured</div>
                                                         <div class="homes-tag button alt sale">For Sale</div>
                                                         <div class="homes-price">$9,000/mo</div>
-                                                        <img src="{{ asset('front') }}/images/blog/b-11.jpg" alt="home-1" class="img-responsive">
+                                                        <img src="{{ asset('public/front') }}/images/blog/b-11.jpg" alt="home-1" class="img-responsive">
                                                     </a>
 
                                                 </div>
@@ -126,7 +126,7 @@
                                                     <a href="single-property.html" class="homes-img">
                                                         <div class="homes-tag button sale rent">For Rent</div>
                                                         <div class="homes-price">$3,000/mo</div>
-                                                        <img src="{{ asset('front') }}/images/blog/b-12.jpg" alt="home-1" class="img-responsive">
+                                                        <img src="{{ asset('public/front') }}/images/blog/b-12.jpg" alt="home-1" class="img-responsive">
                                                     </a>
                                                 </div>
                                                 <div class="button-effect">
@@ -172,7 +172,7 @@
                                                     <a href="single-property.html" class="homes-img">
                                                         <div class="homes-tag button alt sale">For Sale</div>
                                                         <div class="homes-price">$9,000/mo</div>
-                                                        <img src="{{ asset('front') }}/images/feature-properties/fp-11.jpg" alt="home-1" class="img-responsive">
+                                                        <img src="{{ asset('public/front') }}/images/feature-properties/fp-11.jpg" alt="home-1" class="img-responsive">
                                                     </a>
                                                 </div>
                                                 <div class="button-effect">
@@ -217,7 +217,7 @@
                                                         <div class="homes-tag button alt featured">Featured</div>
                                                         <div class="homes-tag button sale rent">For Rent</div>
                                                         <div class="homes-price">$3,000/mo</div>
-                                                        <img src="{{ asset('front') }}/images/feature-properties/fp-12.jpg" alt="home-1" class="img-responsive">
+                                                        <img src="{{ asset('public/front') }}/images/feature-properties/fp-12.jpg" alt="home-1" class="img-responsive">
                                                     </a>
                                                 </div>
                                                 <div class="button-effect">
@@ -269,7 +269,7 @@
                                                     <a href="agent-details.html" class="news-img-link">
                                                         <div class="news-item-img homes">
                                                             <div class="homes-tag button alt featured">3 Listings</div>
-                                                            <img class="resp-img" src="{{ asset('front') }}/images/team/a-1.png" alt="blog image">
+                                                            <img class="resp-img" src="{{ asset('public/front') }}/images/team/a-1.png" alt="blog image">
                                                         </div>
                                                     </a>
                                                     <div class="news-item-text">
@@ -286,7 +286,7 @@
                                                             <a href="properties-full-grid-2.html" class="news-link">View My Listings</a>
                                                             <div class="admin">
                                                                 <p>Company Name</p>
-                                                                <img src="{{ asset('front') }}/images/partners/1.png" alt="">
+                                                                <img src="{{ asset('public/front') }}/images/partners/1.png" alt="">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -297,7 +297,7 @@
                                                     <a href="agent-details.html" class="news-img-link">
                                                         <div class="news-item-img homes">
                                                             <div class="homes-tag button alt featured">3 Listings</div>
-                                                            <img class="resp-img" src="{{ asset('front') }}/images/team/a-2.png" alt="blog image">
+                                                            <img class="resp-img" src="{{ asset('public/front') }}/images/team/a-2.png" alt="blog image">
                                                         </div>
                                                     </a>
                                                     <div class="news-item-text">
@@ -314,7 +314,7 @@
                                                             <a href="properties-full-grid-2.html" class="news-link">View My Listings</a>
                                                             <div class="admin">
                                                                 <p>Company Name</p>
-                                                                <img src="{{ asset('front') }}/images/partners/2.png" alt="">
+                                                                <img src="{{ asset('public/front') }}/images/partners/2.png" alt="">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -325,7 +325,7 @@
                                                     <a href="agent-details.html" class="news-img-link">
                                                         <div class="news-item-img homes">
                                                             <div class="homes-tag button alt featured">3 Listings</div>
-                                                            <img class="resp-img" src="{{ asset('front') }}/images/team/a-3.png" alt="blog image">
+                                                            <img class="resp-img" src="{{ asset('public/front') }}/images/team/a-3.png" alt="blog image">
                                                         </div>
                                                     </a>
                                                     <div class="news-item-text">
@@ -342,7 +342,7 @@
                                                             <a href="properties-full-grid-2.html" class="news-link">View My Listings</a>
                                                             <div class="admin">
                                                                 <p>Company Name</p>
-                                                                <img src="{{ asset('front') }}/images/partners/3.png" alt="">
+                                                                <img src="{{ asset('public/front') }}/images/partners/3.png" alt="">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -361,7 +361,7 @@
                                 <ul class="col-12 commented pl-0">
                                     <li class="comm-inf">
                                         <div class="col-md-2">
-                                            <img src="{{ asset('front') }}/images/testimonials/ts-5.jpg" class="img-fluid" alt="">
+                                            <img src="{{ asset('public/front') }}/images/testimonials/ts-5.jpg" class="img-fluid" alt="">
                                         </div>
                                         <div class="col-md-10 comments-info">
                                             <div class="conra">
@@ -378,7 +378,7 @@
                                             </div>
                                             <p class="mb-4">May 30 2020</p>
                                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquam, quam congue dictum luctus, lacus magna congue ante, in finibus dui sapien eu dolor. Integer tincidunt suscipit erat, nec laoreet ipsum vestibulum sed.</p>
-                                            <div class="rest"><img src="{{ asset('front') }}/images/single-property/s-1.jpg" class="img-fluid" alt=""></div>
+                                            <div class="rest"><img src="{{ asset('public/front') }}/images/single-property/s-1.jpg" class="img-fluid" alt=""></div>
                                         </div>
                                     </li>
 
@@ -388,7 +388,7 @@
                                 <ul class="col-12 commented pl-0">
                                     <li class="comm-inf">
                                         <div class="col-md-2">
-                                            <img src="{{ asset('front') }}/images/testimonials/ts-2.jpg" class="img-fluid" alt="">
+                                            <img src="{{ asset('public/front') }}/images/testimonials/ts-2.jpg" class="img-fluid" alt="">
                                         </div>
                                         <div class="col-md-10 comments-info">
                                             <div class="conra">
@@ -414,7 +414,7 @@
                                 <ul class="col-12 commented mb-0 pl-0">
                                     <li class="comm-inf">
                                         <div class="col-md-2">
-                                            <img src="{{ asset('front') }}/images/testimonials/ts-3.jpg" class="img-fluid" alt="">
+                                            <img src="{{ asset('public/front') }}/images/testimonials/ts-3.jpg" class="img-fluid" alt="">
                                         </div>
                                         <div class="col-md-10 comments-info">
                                             <div class="conra">
@@ -432,8 +432,8 @@
                                             <p class="mb-4">jul 12 2020</p>
                                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquam, quam congue dictum luctus, lacus magna congue ante, in finibus dui sapien eu dolor. Integer tincidunt suscipit erat, nec laoreet ipsum vestibulum sed.</p>
                                             <div class="resti">
-                                                <div class="rest"><img src="{{ asset('front') }}/images/single-property/s-2.jpg" class="img-fluid" alt=""></div>
-                                                <div class="rest"><img src="{{ asset('front') }}/images/single-property/s-3.jpg" class="img-fluid" alt=""></div>
+                                                <div class="rest"><img src="{{ asset('public/front') }}/images/single-property/s-2.jpg" class="img-fluid" alt=""></div>
+                                                <div class="rest"><img src="{{ asset('public/front') }}/images/single-property/s-3.jpg" class="img-fluid" alt=""></div>
                                             </div>
                                         </div>
                                     </li>
@@ -585,7 +585,7 @@
                                         <div class="recent-post">
                                             <div class="recent-main">
                                                 <div class="recent-img">
-                                                    <a href="blog-details.html"><img src="{{ asset('front') }}/images/feature-properties/fp-1.jpg" alt=""></a>
+                                                    <a href="blog-details.html"><img src="{{ asset('public/front') }}/images/feature-properties/fp-1.jpg" alt=""></a>
                                                 </div>
                                                 <div class="info-img">
                                                     <a href="blog-details.html"><h6>Family Home</h6></a>
@@ -594,7 +594,7 @@
                                             </div>
                                             <div class="recent-main my-4">
                                                 <div class="recent-img">
-                                                    <a href="blog-details.html"><img src="{{ asset('front') }}/images/feature-properties/fp-2.jpg" alt=""></a>
+                                                    <a href="blog-details.html"><img src="{{ asset('public/front') }}/images/feature-properties/fp-2.jpg" alt=""></a>
                                                 </div>
                                                 <div class="info-img">
                                                     <a href="blog-details.html"><h6>Family Home</h6></a>
@@ -603,7 +603,7 @@
                                             </div>
                                             <div class="recent-main">
                                                 <div class="recent-img">
-                                                    <a href="blog-details.html"><img src="{{ asset('front') }}/images/feature-properties/fp-3.jpg" alt=""></a>
+                                                    <a href="blog-details.html"><img src="{{ asset('public/front') }}/images/feature-properties/fp-3.jpg" alt=""></a>
                                                 </div>
                                                 <div class="info-img">
                                                     <a href="blog-details.html"><h6>Family Home</h6></a>
@@ -635,7 +635,7 @@
                                                                 <li>Baths <span>3</span></li>
                                                             </ul>
                                                         </div>
-                                                        <img src="{{ asset('front') }}/images/feature-properties/fp-1.jpg" alt="">
+                                                        <img src="{{ asset('public/front') }}/images/feature-properties/fp-1.jpg" alt="">
                                                     </a>
                                                 </div>
                                             </div>
@@ -655,7 +655,7 @@
                                                                 <li>Baths <span>3</span></li>
                                                             </ul>
                                                         </div>
-                                                        <img src="{{ asset('front') }}/images/feature-properties/fp-2.jpg" alt="">
+                                                        <img src="{{ asset('public/front') }}/images/feature-properties/fp-2.jpg" alt="">
                                                     </a>
                                                 </div>
                                             </div>
@@ -675,7 +675,7 @@
                                                                 <li>Baths <span>3</span></li>
                                                             </ul>
                                                         </div>
-                                                        <img src="{{ asset('front') }}/images/feature-properties/fp-3.jpg" alt="">
+                                                        <img src="{{ asset('public/front') }}/images/feature-properties/fp-3.jpg" alt="">
                                                     </a>
                                                 </div>
                                             </div>
@@ -695,7 +695,7 @@
                                                                 <li>Baths <span>3</span></li>
                                                             </ul>
                                                         </div>
-                                                        <img src="{{ asset('front') }}/images/feature-properties/fp-4.jpg" alt="">
+                                                        <img src="{{ asset('public/front') }}/images/feature-properties/fp-4.jpg" alt="">
                                                     </a>
                                                 </div>
                                             </div>
@@ -715,7 +715,7 @@
                                                                 <li>Baths <span>3</span></li>
                                                             </ul>
                                                         </div>
-                                                        <img src="{{ asset('front') }}/images/feature-properties/fp-5.jpg" alt="">
+                                                        <img src="{{ asset('public/front') }}/images/feature-properties/fp-5.jpg" alt="">
                                                     </a>
                                                 </div>
                                             </div>
@@ -735,7 +735,7 @@
                                                                 <li>Baths <span>3</span></li>
                                                             </ul>
                                                         </div>
-                                                        <img src="{{ asset('front') }}/images/feature-properties/fp-6.jpg" alt="">
+                                                        <img src="{{ asset('public/front') }}/images/feature-properties/fp-6.jpg" alt="">
                                                     </a>
                                                 </div>
                                             </div>
@@ -748,7 +748,7 @@
                                         <h4>Specials of the day</h4>
                                     </div>
                                     <div class="widget-boxed-body">
-                                        <div class="banner"><img src="{{ asset('front') }}/images/single-property/banner.jpg" alt=""></div>
+                                        <div class="banner"><img src="{{ asset('public/front') }}/images/single-property/banner.jpg" alt=""></div>
                                     </div>
                                 </div>
                                 <!-- End: Specials offer -->
@@ -765,20 +765,20 @@
 
 @section('script')
     <!-- ARCHIVES JS -->
-    <script src="{{ asset('front') }}/js/jquery.min.js"></script>
-    <script src="{{ asset('front') }}/js/tether.min.js"></script>
-    <script src="{{ asset('front') }}/js/bootstrap.min.js"></script>
-    <script src="{{ asset('front') }}/js/mmenu.min.js"></script>
-    <script src="{{ asset('front') }}/js/mmenu.js"></script>
-    <script src="{{ asset('front') }}/js/slick.min.js"></script>
-    <script src="{{ asset('front') }}/js/slick4.js"></script>
-    <script src="{{ asset('front') }}/js/smooth-scroll.min.js"></script>
-    <script src="{{ asset('front') }}/js/ajaxchimp.min.js"></script>
-    <script src="{{ asset('front') }}/js/newsletter.js"></script>
-    <script src="{{ asset('front') }}/js/color-switcher.js"></script>
-    <script src="{{ asset('front') }}/js/timedropper.js"></script>
-    <script src="{{ asset('front') }}/js/datedropper.js"></script>
-    <script src="{{ asset('front') }}/js/inner.js"></script>
+    <script src="{{ asset('public/front') }}/js/jquery.min.js"></script>
+    <script src="{{ asset('public/front') }}/js/tether.min.js"></script>
+    <script src="{{ asset('public/front') }}/js/bootstrap.min.js"></script>
+    <script src="{{ asset('public/front') }}/js/mmenu.min.js"></script>
+    <script src="{{ asset('public/front') }}/js/mmenu.js"></script>
+    <script src="{{ asset('public/front') }}/js/slick.min.js"></script>
+    <script src="{{ asset('public/front') }}/js/slick4.js"></script>
+    <script src="{{ asset('public/front') }}/js/smooth-scroll.min.js"></script>
+    <script src="{{ asset('public/front') }}/js/ajaxchimp.min.js"></script>
+    <script src="{{ asset('public/front') }}/js/newsletter.js"></script>
+    <script src="{{ asset('public/front') }}/js/color-switcher.js"></script>
+    <script src="{{ asset('public/front') }}/js/timedropper.js"></script>
+    <script src="{{ asset('public/front') }}/js/datedropper.js"></script>
+    <script src="{{ asset('public/front') }}/js/inner.js"></script>
 
     <!-- Date Dropper Script-->
     <script>

@@ -10,7 +10,8 @@
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="{{ asset('admin/css/app_' .LaravelLocalization::getCurrentLocaleDirection(). '.css')}}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ asset('public/admin/css/app_' .LaravelLocalization::getCurrentLocaleDirection(). '.css')}}">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -47,8 +48,8 @@
 <!-- ./wrapper -->
 
 <!-- admin LTE -->
-<script src="{{ asset('admin/js/app.js') }}"></script>
-<script src="{{ asset('admin/plugins/ckeditor/ckeditor.js') }}"></script>
+<script src="{{ asset('public/admin/js/app.js') }}"></script>
+<script src="{{ asset('public/admin/plugins/ckeditor/ckeditor.js') }}"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <script>

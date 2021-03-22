@@ -10,12 +10,12 @@
     <title>Find Houses - HTML5 Template</title>
 
     <!-- FAVICON -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('front/favicon.ico') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('public/front/favicon.ico') }}">
     <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i%7CMontserrat:600,800" rel="stylesheet">
     <!-- FONT AWESOME -->
-    <link rel="stylesheet" href="{{ asset('front/') }}/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="{{ asset('front/') }}/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ asset('public/front/') }}/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="{{ asset('public/front/') }}/css/font-awesome.min.css">
 
     @yield('style')
 

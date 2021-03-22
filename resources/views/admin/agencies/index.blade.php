@@ -64,7 +64,7 @@
                     <tr>
                         <td>{{ $index + 1 }}</td>
                         <td>{{ $agency -> name }}</td>
-                        <td><img src="{{ $agency -> image_path }}" alt="{{ $agency -> name }}" /></td>
+                        <td><img src="{{ $agency -> image_path }}" alt="{{ $agency -> name }}" width="100"/></td>
                         <td>{{ $agency -> email }}</td>
                         <td>
                             @if (auth()->user()->hasPermission('update_agencies'))
