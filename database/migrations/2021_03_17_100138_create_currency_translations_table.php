@@ -22,7 +22,11 @@ class CreateCurrencyTranslationsTable extends Migration
             $table->timestamps();
 
             $table->unique(['currency_id', 'locale']);
-            $table->foreign('currency_id')->references('id')->on('currencies')->onDelete('cascade');
+            $table->foreign('currency_id')
+                    ->references('id')
+                    ->on('currencies')
+                    ->onDelete('cascade')
+                    ->onUpdate('cascade');
 
         });
     }

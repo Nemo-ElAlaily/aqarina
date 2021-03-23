@@ -22,7 +22,11 @@ class CreatePropertyTypeTranslationsTable extends Migration
             $table->timestamps();
 
             $table->unique(['property_type_id', 'locale']);
-            $table->foreign('property_type_id')->references('id')->on('property_types')->onDelete('cascade');
+            $table->foreign('property_type_id')
+                    ->references('id')
+                    ->on('property_types')
+                    ->onDelete('cascade')
+                    ->onUpdate('cascade');
         });
     }
 

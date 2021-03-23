@@ -23,7 +23,11 @@ class CreateAgencyTranslationsTable extends Migration
             $table->timestamps();
 
             $table->unique(['agency_id', 'locale']);
-            $table->foreign('agency_id')->references('id')->on('agencies')->onDelete('cascade');
+            $table->foreign('agency_id')
+                    ->references('id')
+                    ->on('agencies')
+                    ->onDelete('cascade')
+                    ->onUpdate('cascade');
 
         });
     }
