@@ -11,6 +11,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('public/front/favicon.ico') }}">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css" rel="stylesheet">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ asset('public/admin/css/app_' .LaravelLocalization::getCurrentLocaleDirection(). '.css')}}">
@@ -51,34 +52,21 @@
 
 <!-- admin LTE -->
 <script src="{{ asset('/public/admin/plugins/ckeditor/ckeditor.js') }}"></script>
-<script src="{{ asset('/public/admin/js/app.js') }}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="{{ asset('/public/admin/js/app.js') }}"></script>
 
 <script>
     $(document).ready(function () {
 
-        $('.show_confirm').click(function(e) {
+        $('.show_confirm').on('click',function(e) {
             if(!confirm('Are you sure you want to delete this?')) {
                 e.preventDefault();
+            } else {
+                this.closest('form').submit();
             }
         });
-
-        // $('.show_confirm').click(function (e) {
-        //     $("#dialog-confirm").dialog({
-        //         resizable: false,
-        //         height: 140,
-        //         modal: true,
-        //         buttons: {
-        //             "Delete all items": function () {
-        //                 $(this).dialog("close");
-        //             },
-        //             Cancel: function () {
-        //                 $(this).dialog("close");
-        //             }
-        //         }
-        //     });
-        });
-
+        
         CKEDITOR.config.language = "{{ app() -> getLocale() }}" // end ck editor
 
         // image preview

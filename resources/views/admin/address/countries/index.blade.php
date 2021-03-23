@@ -98,15 +98,6 @@
 
     </div><!-- end of box -->
 
-@endsection
+    <div id="dialog-confirm"></div>
 
-@section('script')
-
-    <script type="text/javascript">
-        $('.show_confirm').click(function(e) {
-            if(!confirm('Are you sure you want to delete this?')) {
-                e.preventDefault();
-            }
-        });
-    </script>
 @endsection
