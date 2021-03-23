@@ -29,4 +29,10 @@ class Country extends Model implements TranslatableContract
         return asset('public/uploads/countries/' . $this->image);
     } // end of image path
 
+    public function cities()
+    {
+        return $this->hasMany(City::class);
+
+    } // end of cities
+
 } // end of model

@@ -41,6 +41,22 @@
 
                             </div>
                         @endforeach
+
+                            <div class="col-sm-12 col-lg-12">
+                                <div class="form-group">
+                                    <label for="country_id">Country</label>
+                                    @error('country_id')
+                                    <span class="text-danger mx-5">{{ $message }}</span>
+                                    @enderror
+                                    <select name="country_id" class="form-control">
+                                        <option value="">All Countries</option>
+                                        @foreach ($countries as $country)
+                                            <option value="{{ $country -> id }}" {{ $city->country_id == $country->id ? 'selected' : '' }}>{{ $country -> name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
                     </div>
 
                     <div class="form-group">

@@ -32,13 +32,16 @@ class CityController extends Controller
 
     public function create()
     {
-        return view('admin.address.cities.create');
+        $countries = Country::all();
+        return view('admin.address.cities.create', compact('countries'));
 
     }// end of create
 
     public function store(Request $request)
     {
-        $rules = [];
+        $rules = [
+            'country_id' => 'required'
+        ];
 
         foreach (config('translatable.locales') as $locale) {
             $rules += [
@@ -62,13 +65,16 @@ class CityController extends Controller
 
     public function edit(City $city)
     {
-        return view('admin.address.cities.edit', compact('city'));
+        $countries = Country::all();
+        return view('admin.address.cities.edit', compact( 'countries','city'));
 
     } // end of edit
 
     public function update(Request $request, City $city)
     {
-        $rules = [];
+        $rules = [
+            'country_id' => 'required'
+        ];
 
         foreach (config('translatable.locales') as $locale) {
             $rules += [

@@ -21,4 +21,9 @@ class City extends Model implements TranslatableContract
         return ucfirst($value);
     } // end of get name attribute
 
+    public function country()
+    {
+        return $this -> belongsTo(Country::class);
+    } // end of country
+
 } // end of model
