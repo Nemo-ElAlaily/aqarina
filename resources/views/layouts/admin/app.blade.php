@@ -66,7 +66,7 @@
                 this.closest('form').submit();
             }
         });
-        
+
         CKEDITOR.config.language = "{{ app() -> getLocale() }}" // end ck editor
 
         // image preview

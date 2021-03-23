@@ -55,7 +55,7 @@
                                 </a>
                             </li>
                             <li class="nav-item ml-2">
-                                <a href="#" class="nav-link">
+                                <a href="{{ route('admin.cities.index') }}" class="nav-link">
                                     <i class="fa fa-location-arrow nav-icon"></i>
                                     <p>Cities</p>
                                 </a>
