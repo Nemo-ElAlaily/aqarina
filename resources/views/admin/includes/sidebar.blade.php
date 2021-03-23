@@ -41,6 +41,29 @@
                 </li><!-- /user-sidebar -->
                 @endif
 
+                @if (auth()->user()->hasPermission('read_countries'))
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fa fa-map-marker"></i>
+                            <p>Address Features</p>
+                        </a>
+                        <ul class="nav nav-treeview ml-3">
+                            <li class="nav-item ml-2">
+                                <a href="{{ route('admin.countries.index') }}" class="nav-link">
+                                    <i class="fa fa-globe nav-icon"></i>
+                                    <p>Countries</p>
+                                </a>
+                            </li>
+                            <li class="nav-item ml-2">
+                                <a href="#" class="nav-link">
+                                    <i class="fa fa-location-arrow nav-icon"></i>
+                                    <p>Cities</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li><!-- /user-sidebar -->
+                @endif
+
                 @if (auth()->user()->hasPermission('read_features'))
                 <li class="nav-item">
                     <a href="{{ route('admin.features.index') }}" class="nav-link">

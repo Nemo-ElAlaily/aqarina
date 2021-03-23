@@ -7,6 +7,8 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- FAVICON -->
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('public/front/favicon.ico') }}">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- overlayScrollbars -->
@@ -48,8 +50,8 @@
 <!-- ./wrapper -->
 
 <!-- admin LTE -->
-<script src="{{ asset('public/admin/js/app.js') }}"></script>
-<script src="{{ asset('public/admin/plugins/ckeditor/ckeditor.js') }}"></script>
+<script src="{{ asset('/public/admin/js/app.js') }}"></script>
+<script src="{{ asset('/public/admin/plugins/ckeditor/ckeditor.js') }}"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <script>

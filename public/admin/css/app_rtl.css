@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);/*!
+/*@import url(https://fonts.googleapis.com/css?family=Nunito);/*!
  *   AdminLTE v3.0.5
  *   Author: Colorlib
  *   Website: AdminLTE.io <http://adminlte.io>
@@ -7928,7 +7928,8 @@ button.bg-dark:focus {
 }
 
 .float-left {
-  float:: right !important;
+  float:
+      right !important;
 }
 
 .float-right {
@@ -7941,7 +7942,7 @@ button.bg-dark:focus {
 
 @media (min-width: 576px) {
   .float-sm-left {
-    float:: right !important;
+    float: right !important;
   }
   .float-sm-right {
     float: left !important;
@@ -7953,7 +7954,7 @@ button.bg-dark:focus {
 
 @media (min-width: 768px) {
   .float-md-left {
-    float:: right !important;
+    float: right !important;
   }
   .float-md-right {
     float: left !important;
@@ -7965,7 +7966,7 @@ button.bg-dark:focus {
 
 @media (min-width: 992px) {
   .float-lg-left {
-    float:: right !important;
+    float: right !important;
   }
   .float-lg-right {
     float: left !important;
@@ -7977,7 +7978,7 @@ button.bg-dark:focus {
 
 @media (min-width: 1200px) {
   .float-xl-left {
-    float:: right !important;
+    float: right !important;
   }
   .float-xl-right {
     float: left !important;
@@ -9989,7 +9990,7 @@ button.bg-dark:focus {
 }
 
 .text-left {
-  text-align:: right !important;
+  text-align: right !important;
 }
 
 .text-right {
@@ -10002,7 +10003,7 @@ button.bg-dark:focus {
 
 @media (min-width: 576px) {
   .text-sm-left {
-    text-align:: right !important;
+    text-align: right !important;
   }
   .text-sm-right {
     text-align: left !important;
@@ -10014,7 +10015,7 @@ button.bg-dark:focus {
 
 @media (min-width: 768px) {
   .text-md-left {
-    text-align:: right !important;
+    text-align: right !important;
   }
   .text-md-right {
     text-align: left !important;
@@ -10026,7 +10027,7 @@ button.bg-dark:focus {
 
 @media (min-width: 992px) {
   .text-lg-left {
-    text-align:: right !important;
+    text-align: right !important;
   }
   .text-lg-right {
     text-align: left !important;
@@ -10038,7 +10039,7 @@ button.bg-dark:focus {
 
 @media (min-width: 1200px) {
   .text-xl-left {
-    text-align:: right !important;
+    text-align: right !important;
   }
   .text-xl-right {
     text-align: left !important;
@@ -41718,7 +41719,7 @@ button.bg-dark:focus {
 }
 
 .float-left {
-  float:: right !important;
+  float: right !important;
 }
 
 .float-right {
@@ -41731,7 +41732,7 @@ button.bg-dark:focus {
 
 @media (min-width: 576px) {
   .float-sm-left {
-    float:: right !important;
+    float: right !important;
   }
 
   .float-sm-right {
@@ -41745,7 +41746,7 @@ button.bg-dark:focus {
 
 @media (min-width: 768px) {
   .float-md-left {
-    float:: right !important;
+    float: right !important;
   }
 
   .float-md-right {
@@ -41759,7 +41760,7 @@ button.bg-dark:focus {
 
 @media (min-width: 992px) {
   .float-lg-left {
-    float:: right !important;
+    float: right !important;
   }
 
   .float-lg-right {
@@ -41773,7 +41774,7 @@ button.bg-dark:focus {
 
 @media (min-width: 1200px) {
   .float-xl-left {
-    float:: right !important;
+    float: right !important;
   }
 
   .float-xl-right {
@@ -44163,7 +44164,7 @@ button.bg-dark:focus {
 }
 
 .text-left {
-  text-align:: right !important;
+  text-align: right !important;
 }
 
 .text-right {
@@ -44176,7 +44177,7 @@ button.bg-dark:focus {
 
 @media (min-width: 576px) {
   .text-sm-left {
-    text-align:: right !important;
+    text-align: right !important;
   }
 
   .text-sm-right {
@@ -44190,7 +44191,7 @@ button.bg-dark:focus {
 
 @media (min-width: 768px) {
   .text-md-left {
-    text-align:: right !important;
+    text-align: right !important;
   }
 
   .text-md-right {
@@ -44204,7 +44205,7 @@ button.bg-dark:focus {
 
 @media (min-width: 992px) {
   .text-lg-left {
-    text-align:: right !important;
+    text-align: right !important;
   }
 
   .text-lg-right {
@@ -44218,7 +44219,7 @@ button.bg-dark:focus {
 
 @media (min-width: 1200px) {
   .text-xl-left {
-    text-align:: right !important;
+    text-align: right !important;
   }
 
   .text-xl-right {

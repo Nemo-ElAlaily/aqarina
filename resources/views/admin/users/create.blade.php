@@ -75,7 +75,7 @@
                                 @enderror
                                 <input type="file" name="image" class="form-control input-sm image">
 
-                                <img src="{{ asset('uploads/users/default.png') }}" width="100px"
+                                <img src="{{ asset('public/uploads/users/default.png') }}" width="100px"
                                      class="img-thumbnail image-preview mt-1" alt="">
                             </div> {{-- end of form group image --}}
 

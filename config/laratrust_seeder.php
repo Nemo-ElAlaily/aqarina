@@ -4,6 +4,7 @@ return [
     'role_structure' => [
         'super_admin' => [
             'users' => 'c,r,u,d',
+            'countries' => 'c,r,u,d',
             'features' => 'c,r,u,d',
             'property_types' => 'c,r,u,d',
             'property_statuses' => 'c,r,u,d',

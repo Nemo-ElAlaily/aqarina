@@ -17,5 +17,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ 'lo
         Route::resource('/currencies', 'CurrencyController')->except('show');
         /* agencies routes */
         Route::resource('/agencies', 'AgencyController')->except('show');
+        /* countries routes */
+        Route::resource('/countries', 'CountryController')->except('show');
     });
 });
