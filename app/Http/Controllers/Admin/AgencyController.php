@@ -99,16 +99,18 @@ class AgencyController extends Controller
                 'required' => 'This Field is Required',
             ]);// end of validation
 
+        $request_data = $request -> except([ 'image']);
+
         if($request->image){
             if ($agency->image != 'default.png') {
 
-                Storage::disk('public_uploads')->delete('/agencies/'.$agency ->image);
+                Storage::disk('public_uploads')->delete('/agencies/' . $agency ->image);
 
             } // end of inner if
 
-            Image::make($request->image)->resize(500, null, function ($constraint) {
+            Image::make($request->image)->resize(100, null, function ($constraint) {
                 $constraint->aspectRatio();
-            })->save(public_path('/uploads/agencies/'. $request ->image->hashName()));
+            })->save(public_path('public/uploads/agencies/'. $request ->image->hashName()));
 
             $request_data['image'] = $request->image->hashName();
         } // end of outer if
@@ -131,6 +133,6 @@ class AgencyController extends Controller
 
         session()->flash('success', 'Agency Deleted Successfully');
         return redirect()->route('admin.agencies.index');
-    }
+    } // end of destroy
 
 } // end of controller

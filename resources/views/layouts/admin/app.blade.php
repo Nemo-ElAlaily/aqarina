@@ -50,8 +50,8 @@
 <!-- ./wrapper -->
 
 <!-- admin LTE -->
-<script src="{{ asset('/public/admin/js/app.js') }}"></script>
 <script src="{{ asset('/public/admin/plugins/ckeditor/ckeditor.js') }}"></script>
+<script src="{{ asset('/public/admin/js/app.js') }}"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <script>
@@ -61,6 +61,22 @@
             if(!confirm('Are you sure you want to delete this?')) {
                 e.preventDefault();
             }
+        });
+
+        // $('.show_confirm').click(function (e) {
+        //     $("#dialog-confirm").dialog({
+        //         resizable: false,
+        //         height: 140,
+        //         modal: true,
+        //         buttons: {
+        //             "Delete all items": function () {
+        //                 $(this).dialog("close");
+        //             },
+        //             Cancel: function () {
+        //                 $(this).dialog("close");
+        //             }
+        //         }
+        //     });
         });
 
         CKEDITOR.config.language = "{{ app() -> getLocale() }}" // end ck editor

@@ -5,7 +5,7 @@ namespace App\Models\Admin;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class CountryTranslations extends Model
+class CountryTranslation extends Model
 {
     use SoftDeletes;
 

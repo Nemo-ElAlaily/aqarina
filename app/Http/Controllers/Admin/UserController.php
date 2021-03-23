@@ -87,13 +87,13 @@ class UserController extends Controller
         if($request->image){
             if ($user->image != 'default.png') {
 
-                Storage::disk('public_uploads')->delete('/users/'.$user ->image);
+                Storage::disk('public_uploads')->delete('/users/' . $user ->image);
 
             } // end of inner if
 
             Image::make($request->image)->resize(100, null, function ($constraint) {
                 $constraint->aspectRatio();
-            })->save(public_path('/uploads/users/'. $request ->image->hashName()));
+            })->save(public_path('uploads/users/'. $request ->image->hashName()));
 
             $request_data['image'] = $request->image->hashName();
         } // end of outer if
@@ -108,7 +108,7 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         if($user -> image != 'default.png'){
-            Storage::disk('public_uploads')->delete('/users/'.$user ->image);
+            Storage::disk('public_uploads')->delete('/users/' . $user ->image);
         }
         $user -> delete();
         session()->flash('success', 'User Deleted Successfully');

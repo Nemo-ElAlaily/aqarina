@@ -31,7 +31,7 @@
                         @foreach (config('translatable.locales') as $locale)
                         <div class="col-sm-12 col-lg-12">
                                 <div class="form-group">
-                                    <label for="{{ $locale }}[name]">country Name in @lang('site.' . $locale . '.name')</label>
+                                    <label for="{{ $locale }}[name]">Country Name in @lang('site.' . $locale . '.name')</label>
                                     @error($locale . '.name')
                                     <span class="text-danger mx-5">{{ $message }}</span>
                                     @enderror
@@ -45,7 +45,7 @@
                     <div class="row">
 
                             <div class="form-group col-sm-12 col-lg-12">
-                                <label for="image">Image</label>
+                                <label for="image">Flag</label>
                                 @error('image')
                                 <span class="text-danger mx-1">{{ $message }}</span>
                                 @enderror

@@ -51,8 +51,7 @@
                 <tr>
                     <th>#</th>
                     <th>Name</th>
-                    <th>Logo</th>
-                    <th>E-Mail</th>
+                    <th>Flag</th>
                     @if (auth()->user()->hasPermission('update_countries','delete_countries'))
                         <th>Action</th>
                     @endif
@@ -64,7 +63,7 @@
                     <tr>
                         <td>{{ $index + 1 }}</td>
                         <td>{{ $country -> name }}</td>
-                        <td><img src="{{ $country -> image_path }}" alt="{{ $country -> name }}" width="100"/></td>
+                        <td><img src="{{ $country -> image_path }}" alt="{{ $country -> name }}" width="50"/></td>
                         <td>
                             @if (auth()->user()->hasPermission('update_countries'))
                                 <a href="{{ route('admin.countries.edit', $country->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> Edit</a>
