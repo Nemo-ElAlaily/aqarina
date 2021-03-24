@@ -28,7 +28,7 @@
                     @foreach (config('translatable.locales') as $locale)
                         <div class="row">
                             <div class="form-group col-sm-12 col-lg-6">
-                                <label>Property Type Name in @lang('site.' . $locale . '.name')</label>
+                                <label>Property Status Name in @lang('site.' . $locale . '.name')</label>
                                 @error($locale . '.name')
                                 <span class="text-danger mx-5">{{ $message }}</span>
                                 @enderror

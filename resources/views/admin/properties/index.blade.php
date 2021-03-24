@@ -51,8 +51,7 @@
                 <tr>
                     <th>#</th>
                     <th>Name</th>
-                    <th>Logo</th>
-                    <th>E-Mail</th>
+                    <th>Agency</th>
                     @if (auth()->user()->hasPermission('update_properties','delete_properties'))
                         <th>Action</th>
                     @endif
@@ -64,7 +63,7 @@
                     <tr>
                         <td>{{ $index + 1 }}</td>
                         <td>{{ $property -> name }}</td>
-                        <td><img src="{{ $property -> image_path }}" alt="{{ $property -> name }}" width="100"/></td>
+                        <td>{{ $property -> agency -> name }}</td>
                         <td>
                             @if (auth()->user()->hasPermission('update_properties'))
                                 <a href="{{ route('admin.properties.edit', $property->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> Edit</a>

@@ -16,22 +16,23 @@ class CreatePropertiesTable extends Migration
         Schema::create('properties', function (Blueprint $table) {
             $table->increments('id');
             // boolean values
-            $table->tinyInteger('active')->default(1)->comment('0 => inactive , 1 => active'); // edit in mysql to be 1 and enum
+            $table->tinyInteger('is_active')->default(1)->comment('0 => inactive , 1 => active'); // edit in mysql to be 1 and enum
             $table->tinyInteger('rent_sale')->default(1)->comment('0 => sale , 1 => rent'); // edit in mysql to be 1 and enum
-            $table->tinyInteger('featured')->default(1)->comment('0 => inactive , 1 => active'); // edit in mysql to be 1 and enum
-            $table->tinyInteger('add_to_home')->default(1)->comment('0 => inactive , 1 => active'); // edit in mysql to be 1 and enum
+            $table->tinyInteger('is_featured')->default(1)->comment('0 => false , 1 => true'); // edit in mysql to be 1 and enum
+            $table->tinyInteger('add_to_home')->default(1)->comment('0 => false , 1 => true'); // edit in mysql to be 1 and enum
             // address
-            $table->decimal('latitude');
-            $table->decimal('longitude');
+            $table->decimal('latitude')->nullable();
+            $table->decimal('longitude')->nullable();
             $table->integer('city_id')->unsigned();
+            $table->integer('country_id')->unsigned();
             // features
-            $table->integer('rooms');
-            $table->integer('bedrooms');
-            $table->integer('bathrooms');
+            $table->integer('rooms')->default(0);
+            $table->integer('bedrooms')->default(0);
+            $table->integer('bathrooms')->default(0);
             $table->integer('garages')->default(0);
-            $table->integer('plot_area');
-            $table->integer('construction_area');
-            $table->integer('price');
+            $table->integer('plot_area')->default(0);
+            $table->integer('construction_area')->default(0);
+            $table->integer('price')->default(0);
             // foreign keys
             $table->integer('currency_id')->unsigned();
             $table->integer('property_type_id')->unsigned();
@@ -48,6 +49,12 @@ class CreatePropertiesTable extends Migration
             $table->foreign('city_id')
                     ->references('id')
                     ->on('cities')
+                    ->onDelete('cascade')
+                    ->onUpdate('cascade');
+
+            $table->foreign('country_id')
+                    ->references('id')
+                    ->on('countries')
                     ->onDelete('cascade')
                     ->onUpdate('cascade');
 

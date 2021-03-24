@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin\Agency;
 use App\Models\Admin\City;
 use App\Models\Admin\Country;
+use App\Models\Admin\Currency;
 use App\Models\Admin\Property;
 use App\Models\Admin\PropertyStatus;
 use App\Models\Admin\PropertyType;
@@ -38,14 +39,26 @@ class PropertyController extends Controller
         $property_types = PropertyType::all();
         $property_statuses = PropertyStatus::all();
         $agencies = Agency::all();
-        $currencies = Agency::all();
-        return view('admin.properties.create', compact('countries', 'cities', 'property_types', 'property_statuses',
-        'agencies' , 'currencies'));
+        $currencies = Currency::all();
+        return view('admin.properties.create',
+                compact('countries', 'cities', 'property_types', 'property_statuses', 'agencies', 'currencies'));
 
     } // end of create
 
     public function store(Request $request)
     {
+        // set active
+        $request -> has('is_active') ? $request -> request -> add(['is_active' => 1]) : $request -> request -> add(['is_active' => 0]);
+        $request -> has('is_featured') ? $request -> request -> add(['is_featured' => 1]) : $request -> request -> add(['is_featured' => 0]);
+        $request -> has('add_to_home') ? $request -> request -> add(['add_to_home' => 1]) : $request -> request -> add(['add_to_home' => 0]);
+        // for rent for sale feature
+        if(!$request -> has('rent_sale') || $request -> rent_sale == 'sale')
+        {
+            $request -> request -> add(['rent_sale' => 0]);
+        } else {
+            $request -> request -> add(['rent_sale' => 1]);
+        }
+
         return $request -> all();
     } // end of store
 

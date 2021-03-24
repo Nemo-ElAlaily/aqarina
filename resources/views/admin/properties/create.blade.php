@@ -30,11 +30,11 @@
                     <div class="row">
 
                         <div class="form-group col-sm-12 col-md-6">
-                            <label for="agency">Agency</label>
-                            @error('agency')
+                            <label for="agency_id">Agency</label>
+                            @error('agency_id')
                             <span class="text-danger mx-5">{{ $message }}</span>
                             @enderror
-                            <select name="agency" class="form-control">
+                            <select name="agency_id" class="form-control">
                                 <option value="">All Agencies</option>
                                 @foreach ($agencies as $agency)
                                     <option value="{{ $agency -> id }}">{{ $agency -> name }}</option>
@@ -64,6 +64,16 @@
                                 <textarea class="form-control input-thick ckeditor" type="text" name="{{ $locale }}[description]"
                                           value="{{ old($locale.'.name') }}"></textarea>
                             </div>
+
+                            <div class="form-group">
+                                <label for="{{ $locale }}[address]">Address in @lang('site.' . $locale . '.name')</label>
+                                @error($locale . '.address')
+                                <span class="text-danger mx-5">{{ $message }}</span>
+                                @enderror
+                                <textarea class="form-control input-thick" type="text" name="{{ $locale }}[address]"
+                                          value="{{ old($locale.'.address') }}"></textarea>
+                            </div>
+
                         </div>
                         @endforeach
                     </div> {{-- end of translatable data --}}
@@ -97,12 +107,12 @@
                                         </td>
                                         <td>
                                             <label for="rent_sale">
-                                                <input class="" type="radio" name="rent_sale" value="">
+                                                <input class="" type="radio" name="rent_sale" value="sale">
                                             </label>
                                         </td>
                                         <td>
                                             <label for="rent_sale">
-                                                <input class="" type="radio" name="rent_sale" value="">
+                                                <input class="" type="radio" name="rent_sale" value="rent">
                                             </label>
                                         </td>
                                         <td>
@@ -251,14 +261,6 @@
                                 <div class="text-center col-sm-12 col-md-6 border-right">
                                     <h3 class="m-3">Address Information</h3>
                                     <hr>
-
-                                    <div class="form-group">
-                                        <label for="address">Address</label>
-                                        @error('address')
-                                        <span class="text-danger mx-1">{{ $message }}</span>
-                                        @enderror
-                                        <textarea type="text" name="address" class="form-control form-control-sm input-sm"></textarea>
-                                    </div>
 
                                     <div class="form-group col-sm-12 col-md-6">
                                         <label for="country">Country</label>
