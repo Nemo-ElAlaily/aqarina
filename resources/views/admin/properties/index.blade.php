@@ -1,10 +1,10 @@
 @extends('layouts.admin.app')
 
-@section('title', 'cities')
+@section('title', 'properties')
 
 @section('content-header')
     <div class="col-sm-6">
-        <h1>cities <span class="small text-muted">{{--{{ $cities->total() }}--}}</span></h1>
+        <h1>properties <span class="small text-muted">{{ $properties->total() }}</span></h1>
     </div>
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
@@ -19,7 +19,7 @@
 
         <div class="box-header with-border">
 
-            <form action="{{ route('admin.cities.index') }}" method="get">
+            <form action="{{ route('admin.properties.index') }}" method="get">
 
                 <div class="row">
 
@@ -29,10 +29,10 @@
 
                     <div class="col-md-4 p-0">
                         <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Search</button>
-                        @if (auth()->user()->hasPermission('create_cities'))
-                            <a href="{{ route('admin.cities.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Add city</a>
+                        @if (auth()->user()->hasPermission('create_properties'))
+                            <a href="{{ route('admin.properties.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Add property</a>
                              @else
-                                <a href="#" class="btn btn-p`rimary disabled"><i class="fa fa-plus"></i> Add city</a>
+                                <a href="#" class="btn btn-p`rimary disabled"><i class="fa fa-plus"></i> Add property</a>
                         @endif
                     </div>
 
@@ -46,32 +46,33 @@
         <div class="box-body bg-white mx-5 mt-3">
 
             <table class="text-center pt-2 card-body table table-hover table-bordered">
-                @if ($cities->count() > 0)
+                @if ($properties->count() > 0)
                 <thead>
                 <tr>
                     <th>#</th>
                     <th>Name</th>
-                    <th>counrty</th>
-                    @if (auth()->user()->hasPermission('update_cities','delete_cities'))
+                    <th>Logo</th>
+                    <th>E-Mail</th>
+                    @if (auth()->user()->hasPermission('update_properties','delete_properties'))
                         <th>Action</th>
                     @endif
                 </tr>
                 </thead>
 
                 <tbody>
-                @foreach ($cities as $index=>$city)
+                @foreach ($properties as $index=>$property)
                     <tr>
                         <td>{{ $index + 1 }}</td>
-                        <td>{{ $city -> name }}</td>
-                        <td>{{ $city -> country -> name }}</td>
+                        <td>{{ $property -> name }}</td>
+                        <td><img src="{{ $property -> image_path }}" alt="{{ $property -> name }}" width="100"/></td>
                         <td>
-                            @if (auth()->user()->hasPermission('update_cities'))
-                                <a href="{{ route('admin.cities.edit', $city->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> Edit</a>
+                            @if (auth()->user()->hasPermission('update_properties'))
+                                <a href="{{ route('admin.properties.edit', $property->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> Edit</a>
                                 {{-- @else
                                     <a href="#" class="btn btn-info btn-sm disabled"><i class="fa fa-edit"></i> @lang('site.edit')</a> --}}
                             @endif
-                            @if (auth()->user()->hasPermission('delete_cities'))
-                                <form action="{{ route('admin.cities.destroy', $city->id) }}" method="post" style="display: inline-block">
+                            @if (auth()->user()->hasPermission('delete_properties'))
+                                <form action="{{ route('admin.properties.destroy', $property->id) }}" method="post" style="display: inline-block">
                                     {{ csrf_field() }}
                                     {{ method_field('delete') }}
                                     <button type="button" class="btn btn-danger show_confirm btn-sm"><i class="fa fa-trash"></i> Delete</button>
@@ -91,13 +92,22 @@
 
             </table><!-- end of table -->
 
-            {{ $cities->appends(request()->query())->links() }}
+            {{ $properties->appends(request()->query())->links() }}
 
         </div><!-- end of box body -->
 
 
     </div><!-- end of box -->
 
-    <div id="dialog-confirm"></div>
+@endsection
 
+@section('script')
+
+    <script type="text/javascript">
+        $('.show_confirm').click(function(e) {
+            if(!confirm('Are you sure you want to delete this?')) {
+                e.preventDefault();
+            }
+        });
+    </script>
 @endsection

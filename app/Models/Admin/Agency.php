@@ -29,4 +29,11 @@ class Agency extends Model implements TranslatableContract
         return asset('public/uploads/agencies/' . $this->image);
     } // end of image path
 
-}
+    public function properties()
+    {
+        return $this->hasMany(Property::class);
+
+    } // end of properties
+
+
+} // end of model

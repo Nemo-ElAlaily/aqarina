@@ -89,7 +89,7 @@
                                     $models = ['users'];
                                     $permissions = ['create','read','update','delete'];
                                 @endphp
-                                <table class="table table-striped table-bordered m-l-lg text-center">
+                                <table class="table table-striped table-bordered text-center">
                                     <thead>
                                     <tr style="text-transform: capitalize">
                                         <th class="text-center"></th>

@@ -21,5 +21,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ 'lo
         Route::resource('/countries', 'CountryController')->except('show');
         /* cities routes */
         Route::resource('/cities', 'CityController')->except('show');
+        /* properties routes */
+        Route::resource('/properties', 'PropertyController')->except('show');
     });
 });

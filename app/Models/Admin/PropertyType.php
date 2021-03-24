@@ -14,4 +14,10 @@ class PropertyType extends Model implements TranslatableContract
 
     public $translatedAttributes = ['name'];
     protected $guarded = [];
+
+    public function properties()
+    {
+        return $this->hasMany(Property::class);
+
+    } // end of properties
 }

@@ -85,7 +85,7 @@
                 @if (auth()->user()->hasPermission('read_property_statuses'))
                     <li class="nav-item">
                         <a href="{{ route('admin.property_statuses.index') }}" class="nav-link">
-                            <i class="nav-icon fa fa-adjust"></i>
+                            <i class="nav-icon fa fa-info-circle"></i>
                             <p>Property Statuses</p>
                         </a>
                     </li><!-- /user-sidebar -->
@@ -105,6 +105,15 @@
                         <a href="{{ route('admin.agencies.index') }}" class="nav-link">
                             <i class="nav-icon fa fa-building"></i>
                             <p>Agencies</p>
+                        </a>
+                    </li><!-- /user-sidebar -->
+                @endif
+
+                @if (auth()->user()->hasPermission('read_properties'))
+                    <li class="nav-item">
+                        <a href="{{ route('admin.properties.index') }}" class="nav-link">
+                            <i class="nav-icon fa fa-bullseye"></i>
+                            <p>Properties</p>
                         </a>
                     </li><!-- /user-sidebar -->
                 @endif

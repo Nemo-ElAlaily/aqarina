@@ -18,7 +18,7 @@
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini layout-fixed">
 <!-- Site wrapper -->
 <div class="wrapper">
 
@@ -77,6 +77,20 @@
 
                 reader.onload = function (e) {
                     $('.image-preview').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(this.files[0]); // convert to base64 string
+            }
+        }); // end of image preview
+
+        // Floor plan preview
+        $(".floor_plan").change(function () {
+
+            if (this.files && this.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('.floor_plan_preview').attr('src', e.target.result);
                 }
 
                 reader.readAsDataURL(this.files[0]); // convert to base64 string
