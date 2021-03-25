@@ -42,7 +42,7 @@ class UserController extends Controller
             'first_name' => 'required',
             'last_name' => 'required',
             'email' => 'required|unique:users',
-            'image' => 'image',
+            'image' => 'mimes:jpg,jpeg,png,svg',
             'password' => 'required|confirmed',
             'permissions' => 'required|min:1',
         ]);

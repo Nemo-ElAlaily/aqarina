@@ -59,7 +59,7 @@ class AgencyController extends Controller
         $request_data = $request -> all();
 
         if ($request -> image) {
-            Image::make($request->image)->resize(500, null, function ($constraint) {
+            Image::make($request->image)->resize(300, null, function ($constraint) {
                 $constraint->aspectRatio();
             })->save(public_path('/uploads/agencies/'. $request ->image->hashName()));
 

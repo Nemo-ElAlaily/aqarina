@@ -52,6 +52,10 @@
                     <th>#</th>
                     <th>Name</th>
                     <th>Agency</th>
+                    <th>Status</th>
+                    <th>Is Featured</th>
+                    <th>Type of Ad</th>
+                    <th>Homepage</th>
                     @if (auth()->user()->hasPermission('update_properties','delete_properties'))
                         <th>Action</th>
                     @endif
@@ -64,9 +68,13 @@
                         <td>{{ $index + 1 }}</td>
                         <td>{{ $property -> name }}</td>
                         <td>{{ $property -> agency -> name }}</td>
+                        <td>{{ $property -> getActive() }}</td>
+                        <td>{{ $property -> getFeatured() }}</td>
+                        <td>{{ $property -> getRentSale() }}</td>
+                        <td>{{ $property -> getAddToHome() }}</td>
                         <td>
                             @if (auth()->user()->hasPermission('update_properties'))
-                                <a href="{{ route('admin.properties.edit', $property->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> Edit</a>
+                                <a href="{{ route('admin.properties.edit', $property->id) }}" class="text-white btn btn-info btn-sm"><i class="fa fa-edit"></i> Edit</a>
                                 {{-- @else
                                     <a href="#" class="btn btn-info btn-sm disabled"><i class="fa fa-edit"></i> @lang('site.edit')</a> --}}
                             @endif

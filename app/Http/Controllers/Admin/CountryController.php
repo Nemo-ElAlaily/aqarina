@@ -38,7 +38,7 @@ class CountryController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'image' => 'required|image',
+            'image' => 'required|mimes:jpg,jpeg,png,svg',
         ] ;
 
         foreach (config('translatable.locales') as $locale) {
@@ -78,7 +78,7 @@ class CountryController extends Controller
     public function update(Request $request, Country $country)
     {
         $rules = [
-            'image' => 'image',
+            'image' => 'mimes:jpg,jpeg,png,svg',
         ];
 
         foreach (config('translatable.locales') as $locale) {

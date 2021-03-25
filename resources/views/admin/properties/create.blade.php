@@ -21,21 +21,21 @@
         <div class="card-body">
             <div class="row">
 
-{{--                        @include('partials._errors')--}}
                 <form class="col-12" action="{{ route('admin.properties.store') }}" method="post" enctype="multipart/form-data">
 
-                            {{ csrf_field() }}
-                            {{ method_field('post') }}
+                    {{ csrf_field() }}
+                    {{ method_field('post') }}
 
                     <div class="row">
 
                         <div class="form-group col-sm-12 col-md-6">
                             <label for="agency_id">Agency</label>
                             @error('agency_id')
+                            <br />
                             <span class="text-danger mx-5">{{ $message }}</span>
                             @enderror
                             <select name="agency_id" class="form-control">
-                                <option value="">All Agencies</option>
+                                <option value="all">All Agencies</option>
                                 @foreach ($agencies as $agency)
                                     <option value="{{ $agency -> id }}">{{ $agency -> name }}</option>
                                 @endforeach
@@ -50,6 +50,7 @@
                             <div class="form-group">
                                 <label for="{{ $locale }}[name]">property Name in @lang('site.' . $locale . '.name')</label>
                                 @error($locale . '.name')
+                                <br />
                                 <span class="text-danger mx-5">{{ $message }}</span>
                                 @enderror
                                 <input class="form-control input-thick" type="text" name="{{ $locale }}[name]"
@@ -59,19 +60,23 @@
                             <div class="form-group">
                                 <label for="{{ $locale }}[description]">property Description in @lang('site.' . $locale . '.name')</label>
                                 @error($locale . '.description')
+                                <br />
                                 <span class="text-danger mx-5">{{ $message }}</span>
                                 @enderror
-                                <textarea class="form-control input-thick ckeditor" type="text" name="{{ $locale }}[description]"
-                                          value="{{ old($locale.'.name') }}"></textarea>
+                                <textarea class="form-control input-thick ckeditor" type="text" name="{{ $locale }}[description]">
+                                    {{ old($locale.'.description') }}
+                                </textarea>
                             </div>
 
                             <div class="form-group">
                                 <label for="{{ $locale }}[address]">Address in @lang('site.' . $locale . '.name')</label>
                                 @error($locale . '.address')
+                                <br />
                                 <span class="text-danger mx-5">{{ $message }}</span>
                                 @enderror
-                                <textarea class="form-control input-thick" type="text" name="{{ $locale }}[address]"
-                                          value="{{ old($locale.'.address') }}"></textarea>
+                                <textarea class="form-control input-thick" type="text" name="{{ $locale }}[address]">
+                                    {{ old($locale.'.address') }}
+                                </textarea>
                             </div>
 
                         </div>
@@ -102,7 +107,7 @@
                                     <tr style="text-transform: capitalize">
                                         <td>
                                             <label for="is_active">
-                                                <input class="" type="checkbox" name="is_active" value="">
+                                                <input class="" type="checkbox" name="is_active" value="1">
                                             </label>
                                         </td>
                                         <td>
@@ -117,7 +122,7 @@
                                         </td>
                                         <td>
                                             <label for="is_featured">
-                                                <input class="" type="checkbox" name="is_featured" value="">
+                                                <input class="" type="checkbox" name="is_featured" value="1">
                                             </label>
                                         </td>
                                         <td>
@@ -141,6 +146,7 @@
                                 <div class="form-group col-sm-12 col-lg-3">
                                     <label for="rooms">Rooms</label>
                                     @error('rooms')
+                                    <br />
                                     <span class="text-danger mx-1">{{ $message }}</span>
                                     @enderror
                                     <input type="number" name="rooms" class="form-control" value="{{ old('rooms') }}">
@@ -149,6 +155,7 @@
                                 <div class="form-group col-sm-12 col-lg-3">
                                     <label for="bedrooms">Bedrooms</label>
                                     @error('bedrooms')
+                                    <br />
                                     <span class="text-danger mx-1">{{ $message }}</span>
                                     @enderror
                                     <input type="number" name="bedrooms" class="form-control" value="{{ old('bedrooms') }}">
@@ -165,6 +172,7 @@
                                 <div class="form-group col-sm-12 col-lg-3">
                                     <label for="garages">Garages</label>
                                     @error('garages')
+                                    <br />
                                     <span class="text-danger mx-1">{{ $message }}</span>
                                     @enderror
                                     <input type="number" name="garages" class="form-control" value="{{ old('garages') }}">
@@ -182,6 +190,7 @@
                                 <div class="form-group col-sm-12 col-lg-3">
                                     <label for="plot_area">Plot Area</label>
                                     @error('plot_area')
+                                    <br />
                                     <span class="text-danger mx-1">{{ $message }}</span>
                                     @enderror
                                     <input type="number" name="plot_area" class="form-control" value="{{ old('plot_area') }}">
@@ -190,6 +199,7 @@
                                 <div class="form-group col-sm-12 col-lg-3">
                                     <label for="construction_area">Construction Area</label>
                                     @error('construction_area')
+                                    <br />
                                     <span class="text-danger mx-1">{{ $message }}</span>
                                     @enderror
                                     <input type="number" name="construction_area" class="form-control" value="{{ old('construction_area') }}">
@@ -198,6 +208,7 @@
                                 <div class="form-group col-sm-12 col-md-3">
                                     <label for="property_type_id">Property Type</label>
                                     @error('property_type_id')
+                                    <br />
                                     <span class="text-danger mx-5">{{ $message }}</span>
                                     @enderror
                                     <select name="property_type_id" class="form-control">
@@ -211,6 +222,7 @@
                                 <div class="form-group col-sm-12 col-md-3">
                                     <label for="property_status_id">Property Status</label>
                                     @error('property_status_id')
+                                    <br />
                                     <span class="text-danger mx-5">{{ $message }}</span>
                                     @enderror
                                     <select name="property_status_id" class="form-control">
@@ -233,6 +245,7 @@
                                 <div class="form-group col-sm-12 col-md-6">
                                     <label for="price">Price</label>
                                     @error('price')
+                                    <br />
                                     <span class="text-danger mx-1">{{ $message }}</span>
                                     @enderror
                                     <input type="number" name="price" class="form-control" value="{{ old('price') }}">
@@ -242,6 +255,7 @@
                                 <div class="form-group col-sm-12 col-md-6">
                                     <label for="currency_id">Currency</label>
                                     @error('currency_id')
+                                    <br />
                                     <span class="text-danger mx-5">{{ $message }}</span>
                                     @enderror
                                     <select name="currency_id" class="form-control">
@@ -262,9 +276,10 @@
                                     <h3 class="m-3">Address Information</h3>
                                     <hr>
 
-                                    <div class="form-group col-sm-12 col-md-6">
+                                    <div class="form-group col-sm-12 col-md-12">
                                         <label for="country">Country</label>
                                         @error('country')
+                                        <br />
                                         <span class="text-danger mx-5">{{ $message }}</span>
                                         @enderror
                                         <select name="country_id" class="form-control">
@@ -275,9 +290,10 @@
                                         </select>
                                     </div>
 
-                                    <div class="form-group col-sm-12 col-md-6">
+                                    <div class="form-group col-sm-12 col-md-12">
                                         <label for="city">City</label>
                                         @error('city')
+                                        <br />
                                         <span class="text-danger mx-5">{{ $message }}</span>
                                         @enderror
                                         <select name="city_id" class="form-control">
@@ -296,6 +312,7 @@
                                     <div class="form-group">
                                         <label for="latitude">Latitude</label>
                                         @error('latitude')
+                                        <br />
                                         <span class="text-danger mx-1">{{ $message }}</span>
                                         @enderror
                                         <input type="text" name="latitude" class="form-control">
@@ -303,6 +320,7 @@
                                     <div class="form-group">
                                         <label for="longitude">Longitude</label>
                                         @error('longitude')
+                                        <br />
                                         <span class="text-danger mx-1">{{ $message }}</span>
                                         @enderror
                                         <input type="text" name="longitude" class="form-control">
@@ -324,15 +342,16 @@
                                     <hr>
 
                                     <div class="form-group col-sm-12 col-lg-12">
-                                            <label>Image</label>
-                                            @error('image')
-                                            <span class="text-danger mx-1">{{ $message }}</span>
-                                            @enderror
-                                            <input type="file" name="image" class="form-control input-sm image">
+                                        <label>Image</label>
+                                        @error('image')
+                                        <span class="text-danger mx-1">{{ $message }}</span>
+                                        @enderror
+                                        <input type="file" name="image" class="form-control input-sm image">
 
-                                            <img src="{{ asset('public/uploads/properties/default.png') }}" width="100px"
-                                                 class="img-thumbnail image-preview mt-1" alt="">
+                                        <img src="{{ asset('public/uploads/properties/default.png') }}" width="100px"
+                                             class="img-thumbnail image-preview mt-1" alt="">
                                     </div> {{-- end of form group image --}}
+
                                 </div>
 
                                 <div class="text-center col-sm-12 col-md-4 border-right">
@@ -342,6 +361,7 @@
                                     <div class="form-group col-sm-12 col-lg-12">
                                         <label for="video">Video</label>
                                         @error('video')
+                                        <br />
                                         <span class="text-danger mx-1">{{ $message }}</span>
                                         @enderror
                                         <input type="file" name="video" class="form-control input-sm">
@@ -356,9 +376,10 @@
                                     <div class="form-group col-sm-12 col-lg-12">
                                         <label for="floor_plan">Floor Plan</label>
                                         @error('floor_plan')
+                                        <br />
                                         <span class="text-danger mx-1">{{ $message }}</span>
                                         @enderror
-                                        <input type="file" name="image" class="form-control input-sm floor_plan">
+                                        <input type="file" name="floor_plan" class="form-control input-sm floor_plan">
 
                                         <img src="{{ asset('public/uploads/properties/default.png') }}" width="100px"
                                              class="img-thumbnail floor_plan_preview mt-1" alt="">

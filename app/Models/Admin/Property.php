@@ -15,6 +15,25 @@ class Property extends Model implements TranslatableContract
     public $translatedAttributes = ['name', 'description', 'address'];
     protected $guarded = [];
 
+    protected $appends = [
+        'image_path', 'floor_plan_path'
+    ];
+
+    public function getImagePathAttribute()
+    {
+        return asset('public/uploads/properties/' . $this -> image);
+    } // end of image path
+
+    public function getFloorPlanPathAttribute()
+    {
+        return asset('public/uploads/properties/' . $this -> floor_plan);
+    } // end of image path
+
+    public function getNameAttribute($value)
+    {
+        return ucfirst($value);
+    } // end of get name attribute
+
     public function scopeActive($query)
     {
         return $query -> where('active' , 1);
@@ -24,6 +43,22 @@ class Property extends Model implements TranslatableContract
     {
         return $this -> active == 1 ? 'Active' : 'Not Active';
     } // end fo get Active
+
+    public function getFeatured()
+    {
+        return $this -> is_featured == 0 ? 'Featured' : 'Not Featured';
+    } // end fo get Featured
+
+
+    public function getAddToHome()
+    {
+        return $this -> add_to_home == 1 ? 'Added to Homepage' : '';
+    } // end fo get Add to home
+
+    public function getRentSale()
+    {
+        return $this -> rent_sale == 0 ? 'For Sale' : 'For Rent';
+    } // end fo get Rent Sale
 
     public function agency()
     {
