@@ -35,4 +35,10 @@ class Country extends Model implements TranslatableContract
 
     } // end of cities
 
+    public function properties()
+    {
+        return $this->hasMany(Property::class);
+
+    } // end of properties
+
 } // end of model

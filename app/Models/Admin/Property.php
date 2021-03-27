@@ -4,6 +4,7 @@ namespace App\Models\Admin;
 
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -41,12 +42,12 @@ class Property extends Model implements TranslatableContract
 
     public function getActive()
     {
-        return $this -> active == 1 ? 'Active' : 'Not Active';
+        return $this -> is_active == 1 ? 'Active' : 'Not Active';
     } // end fo get Active
 
     public function getFeatured()
     {
-        return $this -> is_featured == 0 ? 'Featured' : 'Not Featured';
+        return $this -> is_featured == 1 ? 'Featured' : 'Not Featured';
     } // end fo get Featured
 
 
@@ -83,5 +84,23 @@ class Property extends Model implements TranslatableContract
         return $this -> belongsTo(Currency::class);
 
     } // end of propertyType
+
+    public function city()
+    {
+        return $this -> belongsTo(City::class);
+
+    } // end of propertyType
+
+    public function country()
+    {
+        return $this -> belongsTo(Country::class);
+
+    } // end of propertyType
+
+    public function postedAt()
+    {
+        $now = Carbon::now();
+        return $now->diffInDays($this -> created_at);
+    } // end of get first name attribute
 
 } // end of model

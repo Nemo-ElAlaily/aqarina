@@ -2,15 +2,14 @@
 
 @section('style')
     <!-- ARCHIVES CSS -->
-    <link rel="stylesheet" href="{{ asset('public/front') }}/css/timedropper.css">
-    <link rel="stylesheet" href="{{ asset('public/front') }}/css/datedropper.css">
-    <link rel="stylesheet" href="{{ asset('public/front') }}/css/animate.css">
-    <link rel="stylesheet" href="{{ asset('public/front') }}/css/lightcase.css">
-    <link rel="stylesheet" href="{{ asset('public/front') }}/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="{{ asset('public/front') }}/css/bootstrap.css">
-    <link rel="stylesheet" href="{{ asset('public/front') }}/css/menu.css">
-    <link rel="stylesheet" href="{{ asset('public/front') }}/css/slick.css">
-    <link rel="stylesheet" href="{{ asset('public/front') }}/css/styles.css">
+    <link rel="stylesheet" href={{ asset('public/admin') }}/css/animate.css">
+    <link rel="stylesheet" href={{ asset('public/admin') }}/css/magnific-popup.css">
+    <link rel="stylesheet" href={{ asset('public/admin') }}/css/lightcase.css">
+    <link rel="stylesheet" href={{ asset('public/admin') }}/css/owl.carousel.min.css">
+    <link rel="stylesheet" href={{ asset('public/admin') }}/css/bootstrap.css">
+    <link rel="stylesheet" href={{ asset('public/admin') }}/css/menu.css">
+    <link rel="stylesheet" href={{ asset('public/admin') }}/css/styles.css">
+    <link rel="stylesheet" id="color" href={{ asset('public/admin') }}/css/default.css">
 @stop
 
 @section('content')
@@ -37,7 +36,7 @@
                             <div class="news-item news-item-sm">
                                 <a href="#" class="news-img-link">
                                     <div class="news-item-img homes">
-                                        <div class="homes-tag button alt featured">{{ $agency -> properties -> count() }} Listings</div>
+                                        <div class="homes-tag button alt featured">4 Listings</div>
                                         <img class="resp-img" src="{{ $agency -> image_path }}" alt="{{ $agency -> name }}">
                                     </div>
                                 </a>
@@ -53,6 +52,10 @@
                                     </div>
                                     <div class="news-item-bottom">
                                         <a href="#" class="news-link">View My Listings</a>
+                                        <div class="admin">
+                                            <p>Arling Tracy</p>
+                                            <img src="{{ asset('public/front') }}/images/testimonials/ts-1.jpg" alt="">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -68,160 +71,288 @@
                             <div class="container-px-0">
                                 <h5>Listing</h5>
                                 <div class="row">
-                                    @foreach($agency -> properties as $property)
-                                        <div class="item col-lg-6 col-md-6 col-xs-12 landscapes sale">
-                                            <div class="project-single">
-                                                <div class="project-inner project-head">
-                                                    <div class="homes">
-                                                        <!-- homes img -->
-                                                        <a href="#" class="homes-img">
-                                                            @if( $property -> is_featured == 1 )
-                                                                <div class="homes-tag button alt featured">Featured</div>
-                                                            @endif
-                                                            @if( $property -> rent_sale == 0 )
-                                                                <div class="homes-tag button sale">For Sale</div>
-                                                            @else
-                                                                <div class="homes-tag button sale rent">For Rent</div>
-                                                            @endif
-                                                            <img src="{{ $property -> image_path }}" alt="{{ $property -> name }}" class="img-responsive">
-                                                        </a>
+                                    <div class="item col-lg-6 col-md-6 col-xs-12 landscapes sale">
+                                        <div class="project-single">
+                                            <div class="project-inner project-head">
+                                                <div class="homes">
+                                                    <!-- homes img -->
+                                                    <a href="single-property.html" class="homes-img">
+                                                        <div class="homes-tag button alt featured">Featured</div>
+                                                        <div class="homes-tag button alt sale">For Sale</div>
+                                                        <div class="homes-price">$9,000/mo</div>
+                                                        <img src="{{ asset('public/front') }}/images/blog/b-11.jpg" alt="home-1" class="img-responsive">
+                                                    </a>
 
-                                                    </div>
-                                                    <div class="button-effect">
-                                                        <a href="single-property.html" class="btn"><i class="fa fa-link"></i></a>
-                                                        <a href="https://www.youtube.com/watch?v=14semTlwyUY" class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
-                                                        <a href="single-property-2.html" class="img-poppu btn"><i class="fa fa-photo"></i></a>
-                                                    </div>
                                                 </div>
-                                                <!-- homes content -->
-                                                <div class="homes-content">
-                                                    <!-- homes address -->
-                                                    <h3><a href="#">{{ $property -> name }}</a></h3>
-                                                    <p class="homes-address mb-3">
-                                                        <a href="#">
-                                                            <i class="fa fa-map-marker"></i><span>{{ $property -> address }} - {{ $property -> city -> name}}, {{ $property -> country -> name}}</span>
-                                                        </a>
-                                                    </p>
-                                                    <!-- homes List -->
-                                                    <ul class="homes-list clearfix">
-                                                        <li>
-                                                            <span>{{ $property -> bedrooms }} Bedrooms</span>
-                                                        </li>
-                                                        <li>
-                                                            <span>{{ $property -> bathrooms }} Bathrooms</span>
-                                                        </li>
-                                                        <li>
-                                                            <span>{{ $property -> plot_area }} sq ft</span>
-                                                        </li>
-                                                        <li>
-                                                            <span>{{ $property -> garages }} Garages</span>
-                                                        </li>
-                                                    </ul>
+                                                <div class="button-effect">
+                                                    <a href="single-property.html" class="btn"><i class="fa fa-link"></i></a>
+                                                    <a href="https://www.youtube.com/watch?v=14semTlwyUY" class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
+                                                    <a href="single-property-2.html" class="img-poppu btn"><i class="fa fa-photo"></i></a>
                                                 </div>
                                             </div>
+                                            <!-- homes content -->
+                                            <div class="homes-content">
+                                                <!-- homes address -->
+                                                <h3><a href="single-property.html">Real House Luxury Villa</a></h3>
+                                                <p class="homes-address mb-3">
+                                                    <a href="single-property.html">
+                                                        <i class="fa fa-map-marker"></i><span>Est St, 77 - Central Park South, NYC</span>
+                                                    </a>
+                                                </p>
+                                                <!-- homes List -->
+                                                <ul class="homes-list clearfix">
+                                                    <li>
+                                                        <span>6 Bedrooms</span>
+                                                    </li>
+                                                    <li>
+                                                        <span>3 Bathrooms</span>
+                                                    </li>
+                                                    <li>
+                                                        <span>720 sq ft</span>
+                                                    </li>
+                                                    <li>
+                                                        <span>2 Garages</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
-                                    @endforeach
-                               </div>
+                                    </div>
+                                    <div class="item col-lg-6 col-md-6 col-xs-12 people rent">
+                                        <div class="project-single">
+                                            <div class="project-inner project-head">
+                                                <div class="homes">
+                                                    <!-- homes img -->
+                                                    <a href="single-property.html" class="homes-img">
+                                                        <div class="homes-tag button sale rent">For Rent</div>
+                                                        <div class="homes-price">$3,000/mo</div>
+                                                        <img src="{{ asset('public/front') }}/images/blog/b-12.jpg" alt="home-1" class="img-responsive">
+                                                    </a>
+                                                </div>
+                                                <div class="button-effect">
+                                                    <a href="single-property.html" class="btn"><i class="fa fa-link"></i></a>
+                                                    <a href="https://www.youtube.com/watch?v=14semTlwyUY" class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
+                                                    <a href="single-property-2.html" class="img-poppu btn"><i class="fa fa-photo"></i></a>
+                                                </div>
+                                            </div>
+                                            <!-- homes content -->
+                                            <div class="homes-content">
+                                                <!-- homes address -->
+                                                <h3><a href="single-property.html">Real House Luxury Villa</a></h3>
+                                                <p class="homes-address mb-3">
+                                                    <a href="single-property.html">
+                                                        <i class="fa fa-map-marker"></i><span>Est St, 77 - Central Park South, NYC</span>
+                                                    </a>
+                                                </p>
+                                                <!-- homes List -->
+                                                <ul class="homes-list clearfix">
+                                                    <li>
+                                                        <span>6 Bedrooms</span>
+                                                    </li>
+                                                    <li>
+                                                        <span>3 Bathrooms</span>
+                                                    </li>
+                                                    <li>
+                                                        <span>720 sq ft</span>
+                                                    </li>
+                                                    <li>
+                                                        <span>2 Garages</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="item col-lg-6 col-md-6 col-xs-12 people sale no-pb">
+                                        <div class="project-single no-mb">
+                                            <div class="project-inner project-head">
+                                                <div class="homes">
+                                                    <!-- homes img -->
+                                                    <a href="single-property.html" class="homes-img">
+                                                        <div class="homes-tag button alt sale">For Sale</div>
+                                                        <div class="homes-price">$9,000/mo</div>
+                                                        <img src="{{ asset('public/front') }}/images/feature-properties/fp-11.jpg" alt="home-1" class="img-responsive">
+                                                    </a>
+                                                </div>
+                                                <div class="button-effect">
+                                                    <a href="single-property.html" class="btn"><i class="fa fa-link"></i></a>
+                                                    <a href="https://www.youtube.com/watch?v=14semTlwyUY" class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
+                                                    <a href="single-property-2.html" class="img-poppu btn"><i class="fa fa-photo"></i></a>
+                                                </div>
+                                            </div>
+                                            <!-- homes content -->
+                                            <div class="homes-content">
+                                                <!-- homes address -->
+                                                <h3><a href="single-property.html">Real House Luxury Villa</a></h3>
+                                                <p class="homes-address mb-3">
+                                                    <a href="single-property.html">
+                                                        <i class="fa fa-map-marker"></i><span>Est St, 77 - Central Park South, NYC</span>
+                                                    </a>
+                                                </p>
+                                                <!-- homes List -->
+                                                <ul class="homes-list clearfix">
+                                                    <li>
+                                                        <span>6 Bedrooms</span>
+                                                    </li>
+                                                    <li>
+                                                        <span>3 Bathrooms</span>
+                                                    </li>
+                                                    <li>
+                                                        <span>720 sq ft</span>
+                                                    </li>
+                                                    <li>
+                                                        <span>2 Garages</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item col-lg-6 col-md-6 it2 col-xs-12 web rent no-pb x2">
+                                        <div class="project-single no-mb last">
+                                            <div class="project-inner project-head">
+                                                <div class="homes">
+                                                    <!-- homes img -->
+                                                    <a href="single-property.html" class="homes-img">
+                                                        <div class="homes-tag button alt featured">Featured</div>
+                                                        <div class="homes-tag button sale rent">For Rent</div>
+                                                        <div class="homes-price">$3,000/mo</div>
+                                                        <img src="{{ asset('public/front') }}/images/feature-properties/fp-12.jpg" alt="home-1" class="img-responsive">
+                                                    </a>
+                                                </div>
+                                                <div class="button-effect">
+                                                    <a href="single-property.html" class="btn"><i class="fa fa-link"></i></a>
+                                                    <a href="https://www.youtube.com/watch?v=14semTlwyUY" class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
+                                                    <a href="single-property-2.html" class="img-poppu btn"><i class="fa fa-photo"></i></a>
+                                                </div>
+                                            </div>
+                                            <!-- homes content -->
+                                            <div class="homes-content">
+                                                <!-- homes address -->
+                                                <h3><a href="single-property.html">Real House Luxury Villa</a></h3>
+                                                <p class="homes-address mb-3">
+                                                    <a href="single-property.html">
+                                                        <i class="fa fa-map-marker"></i><span>Est St, 77 - Central Park South, NYC</span>
+                                                    </a>
+                                                </p>
+                                                <!-- homes List -->
+                                                <ul class="homes-list clearfix">
+                                                    <li>
+                                                        <span>6 Bedrooms</span>
+                                                    </li>
+                                                    <li>
+                                                        <span>3 Bathrooms</span>
+                                                    </li>
+                                                    <li>
+                                                        <span>720 sq ft</span>
+                                                    </li>
+                                                    <li>
+                                                        <span>2 Garages</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </section>
                         <!-- END LISTING PROPERTIES -->
-{{--                        <!-- START SECTION AGENTS -->--}}
-{{--                        <section class="blog blog-section portfolio py-0 age bg-white">--}}
-{{--                            <div class="container">--}}
-{{--                                <h5>Agents</h5>--}}
-{{--                                <div class="row">--}}
-{{--                                    <div class="col-lg-12 col-md-12 col-xs-12">--}}
-{{--                                        <div class="row">--}}
-{{--                                            <div class="col-md-12 col-xs-12">--}}
-{{--                                                <div class="news-item news-item-sm">--}}
-{{--                                                    <a href="agent-details.html" class="news-img-link">--}}
-{{--                                                        <div class="news-item-img homes">--}}
-{{--                                                            <div class="homes-tag button alt featured">3 Listings</div>--}}
-{{--                                                            <img class="resp-img" src="{{ asset('public/front') }}/images/team/a-1.png" alt="blog image">--}}
-{{--                                                        </div>--}}
-{{--                                                    </a>--}}
-{{--                                                    <div class="news-item-text">--}}
-{{--                                                        <a href="agent-details.html"><h3>Carls Jhons</h3></a>--}}
-{{--                                                        <div class="the-agents">--}}
-{{--                                                            <ul class="the-agents-details">--}}
-{{--                                                                <li><a href="#">Office: (234) 0200 17813</a></li>--}}
-{{--                                                                <li><a href="#">Mobile: (657) 9854 12095</a></li>--}}
-{{--                                                                <li><a href="#">Fax: 809 123 0951</a></li>--}}
-{{--                                                                <li><a href="#">Email: info@agent.com</a></li>--}}
-{{--                                                            </ul>--}}
-{{--                                                        </div>--}}
-{{--                                                        <div class="news-item-bottom">--}}
-{{--                                                            <a href="properties-full-grid-2.html" class="news-link">View My Listings</a>--}}
-{{--                                                            <div class="admin">--}}
-{{--                                                                <p>Company Name</p>--}}
-{{--                                                                <img src="{{ asset('public/front') }}/images/partners/1.png" alt="">--}}
-{{--                                                            </div>--}}
-{{--                                                        </div>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                            <div class="col-md-12 col-xs-12 space">--}}
-{{--                                                <div class="news-item news-item-sm">--}}
-{{--                                                    <a href="agent-details.html" class="news-img-link">--}}
-{{--                                                        <div class="news-item-img homes">--}}
-{{--                                                            <div class="homes-tag button alt featured">3 Listings</div>--}}
-{{--                                                            <img class="resp-img" src="{{ asset('public/front') }}/images/team/a-2.png" alt="blog image">--}}
-{{--                                                        </div>--}}
-{{--                                                    </a>--}}
-{{--                                                    <div class="news-item-text">--}}
-{{--                                                        <a href="agent-details.html"><h3>Arling Tracy</h3></a>--}}
-{{--                                                        <div class="the-agents">--}}
-{{--                                                            <ul class="the-agents-details">--}}
-{{--                                                                <li><a href="#">Office: (234) 0200 17813</a></li>--}}
-{{--                                                                <li><a href="#">Mobile: (657) 9854 12095</a></li>--}}
-{{--                                                                <li><a href="#">Fax: 809 123 0951</a></li>--}}
-{{--                                                                <li><a href="#">Email: info@agent.com</a></li>--}}
-{{--                                                            </ul>--}}
-{{--                                                        </div>--}}
-{{--                                                        <div class="news-item-bottom">--}}
-{{--                                                            <a href="properties-full-grid-2.html" class="news-link">View My Listings</a>--}}
-{{--                                                            <div class="admin">--}}
-{{--                                                                <p>Company Name</p>--}}
-{{--                                                                <img src="{{ asset('public/front') }}/images/partners/2.png" alt="">--}}
-{{--                                                            </div>--}}
-{{--                                                        </div>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                            <div class="col-md-12 col-xs-12">--}}
-{{--                                                <div class="news-item news-item-sm">--}}
-{{--                                                    <a href="agent-details.html" class="news-img-link">--}}
-{{--                                                        <div class="news-item-img homes">--}}
-{{--                                                            <div class="homes-tag button alt featured">3 Listings</div>--}}
-{{--                                                            <img class="resp-img" src="{{ asset('public/front') }}/images/team/a-3.png" alt="blog image">--}}
-{{--                                                        </div>--}}
-{{--                                                    </a>--}}
-{{--                                                    <div class="news-item-text">--}}
-{{--                                                        <a href="agent-details.html"><h3>Mark Web</h3></a>--}}
-{{--                                                        <div class="the-agents">--}}
-{{--                                                            <ul class="the-agents-details">--}}
-{{--                                                                <li><a href="#">Office: (234) 0200 17813</a></li>--}}
-{{--                                                                <li><a href="#">Mobile: (657) 9854 12095</a></li>--}}
-{{--                                                                <li><a href="#">Fax: 809 123 0951</a></li>--}}
-{{--                                                                <li><a href="#">Email: info@agent.com</a></li>--}}
-{{--                                                            </ul>--}}
-{{--                                                        </div>--}}
-{{--                                                        <div class="news-item-bottom">--}}
-{{--                                                            <a href="properties-full-grid-2.html" class="news-link">View My Listings</a>--}}
-{{--                                                            <div class="admin">--}}
-{{--                                                                <p>Company Name</p>--}}
-{{--                                                                <img src="{{ asset('public/front') }}/images/partners/3.png" alt="">--}}
-{{--                                                            </div>--}}
-{{--                                                        </div>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </section>--}}
-{{--                        <!-- END SECTION AGENTS -->--}}
+                        <!-- START SECTION AGENTS -->
+                        <section class="blog blog-section portfolio py-0 age bg-white">
+                            <div class="container">
+                                <h5>Agents</h5>
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-xs-12">
+                                        <div class="row">
+                                            <div class="col-md-12 col-xs-12">
+                                                <div class="news-item news-item-sm">
+                                                    <a href="agent-details.html" class="news-img-link">
+                                                        <div class="news-item-img homes">
+                                                            <div class="homes-tag button alt featured">3 Listings</div>
+                                                            <img class="resp-img" src="{{ asset('public/front') }}/images/team/a-1.png" alt="blog image">
+                                                        </div>
+                                                    </a>
+                                                    <div class="news-item-text">
+                                                        <a href="agent-details.html"><h3>Carls Jhons</h3></a>
+                                                        <div class="the-agents">
+                                                            <ul class="the-agents-details">
+                                                                <li><a href="#">Office: (234) 0200 17813</a></li>
+                                                                <li><a href="#">Mobile: (657) 9854 12095</a></li>
+                                                                <li><a href="#">Fax: 809 123 0951</a></li>
+                                                                <li><a href="#">Email: info@agent.com</a></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="news-item-bottom">
+                                                            <a href="properties-full-grid-2.html" class="news-link">View My Listings</a>
+                                                            <div class="admin">
+                                                                <p>Company Name</p>
+                                                                <img src="{{ asset('public/front') }}/images/partners/1.png" alt="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 col-xs-12 space">
+                                                <div class="news-item news-item-sm">
+                                                    <a href="agent-details.html" class="news-img-link">
+                                                        <div class="news-item-img homes">
+                                                            <div class="homes-tag button alt featured">3 Listings</div>
+                                                            <img class="resp-img" src="{{ asset('public/front') }}/images/team/a-2.png" alt="blog image">
+                                                        </div>
+                                                    </a>
+                                                    <div class="news-item-text">
+                                                        <a href="agent-details.html"><h3>Arling Tracy</h3></a>
+                                                        <div class="the-agents">
+                                                            <ul class="the-agents-details">
+                                                                <li><a href="#">Office: (234) 0200 17813</a></li>
+                                                                <li><a href="#">Mobile: (657) 9854 12095</a></li>
+                                                                <li><a href="#">Fax: 809 123 0951</a></li>
+                                                                <li><a href="#">Email: info@agent.com</a></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="news-item-bottom">
+                                                            <a href="properties-full-grid-2.html" class="news-link">View My Listings</a>
+                                                            <div class="admin">
+                                                                <p>Company Name</p>
+                                                                <img src="{{ asset('public/front') }}/images/partners/2.png" alt="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 col-xs-12">
+                                                <div class="news-item news-item-sm">
+                                                    <a href="agent-details.html" class="news-img-link">
+                                                        <div class="news-item-img homes">
+                                                            <div class="homes-tag button alt featured">3 Listings</div>
+                                                            <img class="resp-img" src="{{ asset('public/front') }}/images/team/a-3.png" alt="blog image">
+                                                        </div>
+                                                    </a>
+                                                    <div class="news-item-text">
+                                                        <a href="agent-details.html"><h3>Mark Web</h3></a>
+                                                        <div class="the-agents">
+                                                            <ul class="the-agents-details">
+                                                                <li><a href="#">Office: (234) 0200 17813</a></li>
+                                                                <li><a href="#">Mobile: (657) 9854 12095</a></li>
+                                                                <li><a href="#">Fax: 809 123 0951</a></li>
+                                                                <li><a href="#">Email: info@agent.com</a></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="news-item-bottom">
+                                                            <a href="properties-full-grid-2.html" class="news-link">View My Listings</a>
+                                                            <div class="admin">
+                                                                <p>Company Name</p>
+                                                                <img src="{{ asset('public/front') }}/images/partners/3.png" alt="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- END SECTION AGENTS -->
                         <!-- Star Reviews -->
                         <section class="reviews comments">
                             <h3 class="mb-5">3 Reviews</h3>

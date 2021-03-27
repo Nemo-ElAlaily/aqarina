@@ -1,15 +1,15 @@
 @extends('layouts.admin.app')
 
-@section('title', 'Edit property')
+@section('title', 'Edit Property')
 
 @section('content-header')
     <div class="col-sm-6">
-        <h1>Edit property</h1>
+        <h1>Edit Property</h1>
     </div>
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Home</a></li>
-            <li class="breadcrumb-item active"><a href="{{ route('admin.properties.index') }}">properties</a></li>
+            <li class="breadcrumb-item active"><a href="{{ route('admin.properties.index') }}">Properties</a></li>
         </ol>
     </div>
 @stop
@@ -107,27 +107,27 @@
                                 <tr style="text-transform: capitalize">
                                     <td>
                                         <label for="is_active">
-                                            <input class="" type="checkbox" name="is_active" {{ $property -> is_active = 1 ? 'checked' : '' }}>
+                                            <input class="" type="checkbox" name="is_active" {{ $property -> is_active == 1 ? 'checked' : '' }}>
                                         </label>
                                     </td>
                                     <td>
                                         <label for="rent_sale">
-                                            <input class="" type="radio" name="rent_sale" {{ $property -> rent_sale = 0 ? 'checked' : '' }} value="sale">
+                                            <input class="" type="radio" name="rent_sale" {{ $property -> rent_sale == 0 ? 'checked' : '' }} value="sale">
                                         </label>
                                     </td>
                                     <td>
                                         <label for="rent_sale">
-                                            <input class="" type="radio" name="rent_sale" {{ $property -> rent_sale = 1 ? 'checked' : '' }} value="rent">
+                                            <input class="" type="radio" name="rent_sale" {{ $property -> rent_sale == 1 ? 'checked' : '' }} value="rent">
                                         </label>
                                     </td>
                                     <td>
                                         <label for="is_featured">
-                                            <input class="" type="checkbox" name="is_featured" {{ $property -> is_featured = 1 ? 'checked' : '' }}>
+                                            <input class="" type="checkbox" name="is_featured" {{ $property -> is_featured == 1 ? 'checked' : '' }}>
                                         </label>
                                     </td>
                                     <td>
                                         <label for="add_to_home">
-                                            <input type="checkbox" name="add_to_home" {{ $property -> add_to_home = 1 ? 'checked' : '' }}>
+                                            <input type="checkbox" name="add_to_home" {{ $property -> add_to_home == 1 ? 'checked' : '' }}>
                                         </label>
                                     </td>
                                 </tr>
@@ -389,7 +389,7 @@
 
                         <div class="form-group col-12">
                             <button type="submit" class="btn btn-primary w-100"><i class="fa fa-plus"></i>
-                                Add property</button>
+                                Edit Property</button>
                         </div>
 
                     </div> {{-- end of  general data --}}

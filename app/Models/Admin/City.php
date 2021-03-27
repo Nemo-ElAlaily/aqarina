@@ -26,4 +26,10 @@ class City extends Model implements TranslatableContract
         return $this -> belongsTo(Country::class);
     } // end of country
 
+    public function properties()
+    {
+        return $this->hasMany(Property::class);
+
+    } // end of properties
+
 } // end of model

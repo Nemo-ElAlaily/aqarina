@@ -21,6 +21,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ 'lo
     Route::get('/agencies', 'Front\AgencyController@index')->name('front.agencies.index');
     Route::get('/agency/{id}', 'Front\AgencyController@show')->name('front.agencies.show');
 
+    Route::get('/properties', 'Front\PropertyController@index')->name('front.properties.index');
+    Route::get('/property/{id}', 'Front\PropertyController@show')->name('front.properties.show');
+
 });
 
 Auth::routes(['register' => false]);

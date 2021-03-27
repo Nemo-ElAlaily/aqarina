@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{{ asset('public/front') }}/css/menu.css">
     <link rel="stylesheet" href="{{ asset('public/front') }}/css/slick.css">
     <link rel="stylesheet" href="{{ asset('public/front') }}/css/styles.css">
+
 @stop
 
 @section('content')
@@ -55,7 +56,7 @@
                                 <div class="news-item news-item-sm">
                                     <a href="#" class="news-img-link">
                                         <div class="news-item-img homes">
-                                            <div class="homes-tag button alt featured">3 Listings</div>
+                                            <div class="homes-tag button alt featured">{{ $agency -> properties -> count() }} Listings</div>
                                             <img class="resp-img" src="{{ $agency -> image_path }}" alt="blog image">
                                         </div>
                                     </a>
@@ -70,11 +71,7 @@
                                             </ul>
                                         </div>
                                         <div class="news-item-bottom">
-                                            <a href="properties-full-grid-2.html" class="news-link">View My Listings</a>
-                                            <div class="admin">
-                                                <p>Arling Tracy</p>
-                                                <img src="{{ asset('front/') }}/images/testimonials/ts-1.jpg" alt="">
-                                            </div>
+                                            <a href="#" class="news-link">View My Listings</a>
                                         </div>
                                     </div>
                                 </div>

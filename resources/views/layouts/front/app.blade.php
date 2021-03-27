@@ -11,6 +11,8 @@
 
     <!-- FAVICON -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('public/front/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ asset('public/front') }}/css/jquery-ui.css">
+
     <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i%7CMontserrat:600,800" rel="stylesheet">
     <!-- FONT AWESOME -->
@@ -21,7 +23,7 @@
 
 </head>
 
-<body class="{{ Route::is('front.agencies.*') ? 'inner-pages agents homepage-4 det ag-de' : '' }}">
+<body class="inner-pages  {{ Route::is('front.agencies.*') ? 'agents homepage-4 det ag-de' : '' }}">
 
 <div id="wrapper">
 
