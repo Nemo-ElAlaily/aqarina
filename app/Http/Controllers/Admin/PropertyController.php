@@ -74,7 +74,15 @@ class PropertyController extends Controller
             $request_data['image'] = $request->image->hashName();
         }
 
-        Property::create($request_data);
+        $gallery_arr = [];
+        if($request -> gallery){
+            foreach ( $request -> gallery as $index => $item){
+                $gallery_arr += [$index => $item->hashName(),];
+            }
+            $request_data['gallery'] = $gallery_arr;
+        }
+
+        Property::create($request_data)->except($gallery_arr);
 
         session()->flash('success', 'Property Added Successfully');
         return redirect()->route('admin.properties.index');

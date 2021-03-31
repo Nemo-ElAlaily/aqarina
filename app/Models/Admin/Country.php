@@ -41,4 +41,11 @@ class Country extends Model implements TranslatableContract
 
     } // end of properties
 
+
+    public function agencies()
+    {
+        return $this->hasMany(Agency::class);
+
+    } // end of agencies
+
 } // end of model

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Agency;
+use App\Models\Admin\City;
+use App\Models\Admin\Country;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
@@ -31,7 +33,9 @@ class AgencyController extends Controller
 
     public function create()
     {
-        return view('admin.agencies.create');
+        $countries = Country::all();
+        $cities = City::all();
+        return view('admin.agencies.create', compact('countries', 'cities'));
 
     }// end of create
 
@@ -75,7 +79,9 @@ class AgencyController extends Controller
 
     public function edit(Agency $agency)
     {
-        return view('admin.agencies.edit', compact('agency'));
+        $countries = Country::all();
+        $cities = City::all();
+        return view('admin.agencies.edit', compact('agency', 'countries', 'cities'));
 
     } // end of edit
 

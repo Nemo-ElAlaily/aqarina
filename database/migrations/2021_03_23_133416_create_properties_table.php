@@ -21,8 +21,8 @@ class CreatePropertiesTable extends Migration
             $table->tinyInteger('is_featured')->default(1)->comment('0 => false , 1 => true'); // edit in mysql to be 1 and enum
             $table->tinyInteger('add_to_home')->default(1)->comment('0 => false , 1 => true'); // edit in mysql to be 1 and enum
             // address
-            $table->decimal('latitude')->nullable();
-            $table->decimal('longitude')->nullable();
+            $table->decimal('latitude', 17 , 15)->nullable();
+            $table->decimal('longitude', 17 , 15)->nullable();
             $table->integer('city_id')->unsigned();
             $table->integer('country_id')->unsigned();
             // features
@@ -41,7 +41,7 @@ class CreatePropertiesTable extends Migration
             //file
             $table->string('image')->default('default.png');
             $table->string('floor_plan')->default('default.png');
-            $table->string('video')->default('default.png');
+            $table->string('video')->nullable();
             //timestamps
             $table->softDeletes();
             $table->timestamps();

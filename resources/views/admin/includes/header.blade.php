@@ -43,9 +43,24 @@
                     <div class="dropdown-divider"></div>
 
                 @endforeach
+
             </div>
 
         </li>
+
+        <!-- Authentication Links -->
+        <li class="nav-item dropdown">
+            <a class="nav-link" data-toggle="dropdown" href="{{ route('logout') }}"
+               onclick="event.preventDefault();
+                             document.getElementById('logout-form').submit();">
+                <i class="fa fa-sign-out-alt fa-lg"></i>
+                {{ __('Logout') }}
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">--}}
+                   @csrf
+                </form>
+            </a>
+        </li>
+
     </ul>
 </nav>
 <!-- /.navbar -->

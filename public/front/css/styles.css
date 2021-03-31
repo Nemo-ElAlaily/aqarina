@@ -11417,7 +11417,15 @@ section.headings-2 {
 }
 
 .single.detail-wrapper {
-  margin-left: 15rem;
+  margin-left: 3rem;
+}
+
+.inner-pages .headings-2 .listing-title-bar h1 {
+    font-size: 28px;
+    line-height: 34px;
+    font-weight: 600;
+    color: #222;
+    text-transform: capitalize !important;
 }
 
 .inner-pages .headings-2 .listing-title-bar h3 {
@@ -12290,7 +12298,7 @@ div.datedropper.my-style.picker-lkd .pick-submit {
   line-height: 70px;
   position: absolute;
   text-align: center;
-  top: 58%;
+  top: 73%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   width: 70px;
@@ -12306,7 +12314,7 @@ div.datedropper.my-style.picker-lkd .pick-submit {
   height: 22rem;
   left: 50%;
   position: absolute;
-  top: 58%;
+  top: 73%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   width: 352px;
@@ -20110,5 +20118,3 @@ section.ui-element {
     font-size: 26px;
   }
 }
-
-/*# sourceMappingURL=styles.css.map */

@@ -29,7 +29,7 @@
 
                     <div class="row">
                         @foreach (config('translatable.locales') as $locale)
-                            <div class="col-sm-12 col-lg-12">
+                            <div class="col-sm-12 col-lg-6">
                                 <div class="form-group">
                                     <label for="{{ $locale }}[name]">Agency Name in @lang('site.' . $locale . '.name')</label>
                                     @error($locale . '.name')
@@ -48,12 +48,88 @@
                                         {{ $agency->translate($locale)-> description }}
                                     </textarea>
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="{{ $locale }}[address]">Address in @lang('site.' . $locale . '.name')</label>
+                                    @error($locale . '.address')
+                                    <br />
+                                    <span class="text-danger mx-5">{{ $message }}</span>
+                                    @enderror
+                                    <textarea class="form-control input-thick" type="text" name="{{ $locale }}[address]">
+                                        {{ $agency -> translate($locale)-> address }}
+                                    </textarea>
+                                </div>
                             </div>
                         @endforeach
                     </div>
 
+                    <div class="form-group col-sm-12 card card-info card-outline">
+                        <div class="row col-sm-12">
+                            <div class="text-center col-sm-12 col-md-12">
+                                <h3 class="m-3">Address Information</h3>
+                                <hr>
+                            </div>
+                            <div class="text-center col-sm-12 col-md-6 border-right">
+                                <h3 class="m-3">Location</h3>
+                                <hr>
+
+                                <div class="form-group col-sm-12 col-md-12">
+                                    <label for="country">Country</label>
+                                    @error('country')
+                                    <br />
+                                    <span class="text-danger mx-5">{{ $message }}</span>
+                                    @enderror
+                                    <select name="country_id" class="form-control">
+                                        <option value="">All Countries</option>
+                                        @foreach ($countries as $country)
+                                            <option value="{{ $country -> id }}" {{ $agency -> country_id == $country -> id ? 'selected' : '' }}>{{ $country -> name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-sm-12 col-md-12">
+                                    <label for="city">City</label>
+                                    @error('city')
+                                    <br />
+                                    <span class="text-danger mx-5">{{ $message }}</span>
+                                    @enderror
+                                    <select name="city_id" class="form-control">
+                                        <option value="">All Cities</option>
+                                        @foreach ($cities as $city)
+                                            <option value="{{ $city -> id }}" {{ $agency -> city_id   == $city -> id ? 'selected' : '' }}>{{ $city -> name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                            </div>
+
+                            <div class="text-center col-sm-12 col-md-6">
+                                <h3 class="m-3">Google Maps</h3>
+                                <hr>
+                                <div class="form-group">
+                                    <label for="latitude">Latitude</label>
+                                    @error('latitude')
+                                    <br />
+                                    <span class="text-danger mx-1">{{ $message }}</span>
+                                    @enderror
+                                    <input type="text" name="latitude" class="form-control" value="{{ $agency -> latitude }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="longitude">Longitude</label>
+                                    @error('longitude')
+                                    <br />
+                                    <span class="text-danger mx-1">{{ $message }}</span>
+                                    @enderror
+                                    <input type="text" name="longitude" class="form-control" value="{{ $agency -> longitude }}">
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div> {{-- end of form group for Address Information --}}
+
                     <div class="row">
-                        <div class="form-group col-sm-12 col-lg-12">
+                        <div class="form-group col-sm-12 col-lg-6">
                             <label>E-Mail</label>
                             @error('email')
                             <span class="text-danger mx-1">{{ $message }}</span>
@@ -61,7 +137,7 @@
                             <input type="text" name="email" class="form-control form-control-sm input-sm" value="{{ $agency -> email }}">
                         </div>
 
-                        <div class="form-group col-sm-12 col-lg-12">
+                        <div class="form-group col-sm-12 col-lg-6">
                             <label for="office_number">Office Number</label>
                             @error('office_number')
                             <span class="text-danger mx-1">{{ $message }}</span>
@@ -69,7 +145,7 @@
                             <input type="text" name="office_number" class="form-control form-control-sm input-sm" value="{{ $agency -> office_number }}">
                         </div>
 
-                        <div class="form-group col-sm-12 col-lg-12">
+                        <div class="form-group col-sm-12 col-lg-6">
                             <label for="mobile">Mobile</label>
                             @error('mobile')
                             <span class="text-danger mx-1">{{ $message }}</span>
@@ -77,7 +153,7 @@
                             <input type="text" name="mobile" class="form-control form-control-sm input-sm" value="{{ $agency -> mobile }}">
                         </div>
 
-                        <div class="form-group col-sm-12 col-lg-12">
+                        <div class="form-group col-sm-12 col-lg-6">
                             <label for="fax">Fax</label>
                             @error('fax')
                             <span class="text-danger mx-1">{{ $message }}</span>

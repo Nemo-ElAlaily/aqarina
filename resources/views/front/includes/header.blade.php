@@ -18,15 +18,14 @@
             <div class="top-social hidden-sm-down">
                 <div class="login-wrap">
                     <ul class="d-flex">
-                        <li><a href="login.html"><i class="fa fa-user"></i> Login</a></li>
-                        <li><a href="register.html"><i class="fa fa-sign-in"></i> Register</a></li>
+                        <li><a href="#"><i class="fa fa-user"></i> Login</a></li>
+                        <li><a href="#"><i class="fa fa-sign-in"></i> Register</a></li>
                     </ul>
                 </div>
                 <div class="social-icons-header">
                     <div class="social-icons">
                         <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                         <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
                     </div>
                 </div>
                 <div class="dropdown">

@@ -49,7 +49,7 @@
                                         <option>Sells: Low to high</option>
                                     </select>
                                     <a href="#" class="change-view-btn active-view-btn"><i class="fa fa-th-list"></i></a>
-                                    <a href="properties-grid.html" class="change-view-btn lde"><i class="fa fa-th-large"></i></a>
+                                    <a href="#" class="change-view-btn lde"><i class="fa fa-th-large"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -62,7 +62,7 @@
                                     <div class="project-single mb-0 bb-0">
                                         <div class="project-inner project-head">
                                             <div class="project-bottom">
-                                                <h4><a href="#">View Property</a><span class="category">{{ $property -> name }}</span></h4>
+                                                <h4><a href="{{ route('front.properties.show' , $property -> id) }}">View Property</a><span class="category">{{ $property -> name }}</span></h4>
                                             </div>
                                             <div class="homes">
                                                 <!-- homes img -->
@@ -79,7 +79,7 @@
                                                 </a>
                                             </div>
                                             <div class="button-effect">
-                                                <a href="#" class="btn"><i class="fa fa-link"></i></a>
+                                                <a href="{{ route('front.properties.show' , $property -> id) }}" class="btn"><i class="fa fa-link"></i></a>
                                                 <a href="https://www.youtube.com/watch?v=2xHQqYRcrx4" target="_blank" class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
                                                 <a href="#" class="img-poppu btn"><i class="fa fa-photo"></i></a>
                                             </div>
@@ -89,9 +89,9 @@
                                 <!-- homes content -->
                                 <div class="col-lg-7 col-md-12 homes-content pb-0 mb-44">
                                     <!-- homes address -->
-                                    <h3><a href="single-property.html">{{ $property -> name }}</a></h3>
+                                    <h3><a href="{{ route('front.properties.show' , $property -> id) }}">{{ $property -> name }}</a></h3>
                                     <p class="homes-address mb-3">
-                                        <a href="single-property.html">
+                                        <a href="{{ route('front.properties.show' , $property -> id) }}">
                                             <i class="fa fa-map-marker"></i><span>{{ $property -> address }} - {{ $property -> city -> name}}, {{ $property -> country -> name}}</span>
                                         </a>
                                     </p>
@@ -117,7 +117,7 @@
                                     <!-- Price -->
                                     <div class="price-properties">
                                         <h3 class="title mt-3">
-                                            <a href="#">$ {{ $property -> price }}</a>
+                                            <a href="{{ route('front.properties.show' , $property -> id) }}">$ {{ $property -> price }}</a>
                                         </h3>
                                         <div class="compare">
                                             <a href="#" title="Compare">
@@ -132,12 +132,12 @@
                                         </div>
                                     </div>
                                     <div class="footer">
-                                        <a href="#">
+                                        <a href="{{ route('front.agencies.show' , $property -> agency -> id) }}">
                                             <i class="fa fa-building"></i> {{ $property -> agency -> name }}
                                         </a>
                                         <span>
-                            <i class="fa fa-calendar"></i> {{ $property -> postedAt() }} Days ago
-                        </span>
+                                            <i class="fa fa-calendar"></i> {{ $property -> postedAt() }} Days ago
+                                        </span>
                                     </div>
                                 </div>
                             @endif

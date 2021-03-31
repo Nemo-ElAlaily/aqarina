@@ -18,6 +18,7 @@ class CreateAgencyTranslationsTable extends Migration
             $table->integer('agency_id')->unsigned();
             $table->string('locale')->index();
             $table->string('name');
+            $table->string('address');
             $table->longText('description')->nullable();
             $table->softDeletes();
             $table->timestamps();

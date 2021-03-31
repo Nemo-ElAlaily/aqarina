@@ -388,12 +388,27 @@
                             </div>
                         </div> {{-- end of property Media --}}
 
+                        <div class="form-group col-sm-12 card card-primary card-outline">
+                            <div class="text-center col-sm-12">
+                                <h3 class="m-3">Gallery</h3>
+                                <hr>
+                            </div>
+
+                            <div class="input-field">
+                                <div class="gallery p-2">
+                                    @error('gallery')
+                                    <br />
+                                    <span class="text-danger mx-1">{{ $message }}</span>
+                                    @enderror
+
+                                </div>
+                            </div>
+                        </div> {{-- end of property Media --}}
+
                         <div class="form-group col-12">
                             <button type="submit" class="btn btn-primary w-100"><i class="fa fa-plus"></i>
                                 Add property</button>
-                        </div>
-
-                    </div> {{-- end of  general data --}}
+                        </div> {{-- end of  general data --}}
 
                 </form><!-- end of form -->
 
@@ -403,6 +418,14 @@
     </div>
     <!-- /.card -->
 
-
-
 @endsection
+
+@section('script')
+    <!-- ARCHIVES JS -->
+    <script src="{{ asset('public/admin/js/image-uploader.min.js') }}"></script>
+
+    <script>
+        $('.gallery').imageUploader();
+    </script>
+@stop
+

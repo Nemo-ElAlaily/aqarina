@@ -89,13 +89,13 @@ class Property extends Model implements TranslatableContract
     {
         return $this -> belongsTo(City::class);
 
-    } // end of propertyType
+    } // end of city
 
     public function country()
     {
         return $this -> belongsTo(Country::class);
 
-    } // end of propertyType
+    } // end of country
 
     public function postedAt()
     {

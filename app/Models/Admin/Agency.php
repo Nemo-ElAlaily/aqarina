@@ -12,7 +12,7 @@ class Agency extends Model implements TranslatableContract
     use Translatable;
     use SoftDeletes;
 
-    public $translatedAttributes = ['name', 'description'];
+    public $translatedAttributes = ['name', 'description', 'address'];
     protected $guarded = [];
 
     protected $appends = [
@@ -29,11 +29,24 @@ class Agency extends Model implements TranslatableContract
         return asset('public/uploads/agencies/' . $this->image);
     } // end of image path
 
+    public function city()
+    {
+        return $this -> belongsTo(City::class);
+
+    } // end of city
+
+    public function country()
+    {
+        return $this -> belongsTo(Country::class);
+
+    } // end of country
+
     public function properties()
     {
         return $this->hasMany(Property::class);
 
     } // end of properties
+
 
 
 } // end of model
