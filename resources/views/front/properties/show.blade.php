@@ -48,7 +48,7 @@
                                             <div class="listing-title-bar">
                                                 <h4>&{{ $property -> currency -> symbol }} {{ $property -> price }}</h4>
                                                 <div class="mt-0">
-                                                    <a href="#listing-location" class="listing-address">
+                                                    <a href="#" class="listing-address">
                                                         <p>{{ $property -> plot_area }} m / sq</p>
                                                     </a>
                                                 </div>
@@ -62,21 +62,12 @@
                                 <div id="listingDetailsSlider" class="carousel listing-details-sliders slide mb-30">
                                     <h5 class="mb-4">Gallery</h5>
                                     <div class="carousel-inner">
-                                        <div class="active item carousel-item" data-slide-number="0">
-                                            <img src="{{ asset('public/front') }}/images/single-property/s-1.jpg" class="img-fluid" alt="slider-listing">
-                                        </div>
-                                        <div class="item carousel-item" data-slide-number="1">
-                                            <img src="{{ asset('public/front') }}/images/single-property/s-2.jpg" class="img-fluid" alt="slider-listing">
-                                        </div>
-                                        <div class="item carousel-item" data-slide-number="2">
-                                            <img src="{{ asset('public/front') }}/images/single-property/s-3.jpg" class="img-fluid" alt="slider-listing">
-                                        </div>
-                                        <div class="item carousel-item" data-slide-number="4">
-                                            <img src="{{ asset('public/front') }}/images/single-property/s-4.jpg" class="img-fluid" alt="slider-listing">
-                                        </div>
-                                        <div class="item carousel-item" data-slide-number="5">
-                                            <img src="{{ asset('public/front') }}/images/single-property/s-5.jpg" class="img-fluid" alt="slider-listing">
-                                        </div>
+
+                                        @foreach (json_decode( $property -> gallery, true) as $index => $item)
+                                            <div class="{{ $index == 0 ? 'active' : '' }} item carousel-item" data-slide-number="{{ $index }}">
+                                                <img src="{{ asset('public/uploads/properties/gallery/' . $item ) }}" class="img-fluid m-auto" alt="{{ $property -> name . $item }}">
+                                            </div>
+                                        @endforeach
 
                                         <a class="carousel-control left" href="#listingDetailsSlider" data-slide="prev"><i class="fa fa-angle-left"></i></a>
                                         <a class="carousel-control right" href="#listingDetailsSlider" data-slide="next"><i class="fa fa-angle-right"></i></a>
@@ -84,31 +75,13 @@
                                     </div>
                                     <!-- main slider carousel nav controls -->
                                     <ul class="carousel-indicators smail-listing list-inline nav nav-justified">
-                                        <li class="list-inline-item active">
-                                            <a id="carousel-selector-0" class="selected" data-slide-to="0" data-target="#listingDetailsSlider">
-                                                <img src="{{ asset('public/front') }}/images/single-property/s-1.jpg" class="img-fluid" alt="listing-small">
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a id="carousel-selector-1" data-slide-to="1" data-target="#listingDetailsSlider">
-                                                <img src="{{ asset('public/front') }}/images/single-property/s-2.jpg" class="img-fluid" alt="listing-small">
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a id="carousel-selector-2" data-slide-to="2" data-target="#listingDetailsSlider">
-                                                <img src="{{ asset('public/front') }}/images/single-property/s-3.jpg" class="img-fluid" alt="listing-small">
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a id="carousel-selector-3" data-slide-to="3" data-target="#listingDetailsSlider">
-                                                <img src="{{ asset('public/front') }}/images/single-property/s-4.jpg" class="img-fluid" alt="listing-small">
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a id="carousel-selector-4" data-slide-to="4" data-target="#listingDetailsSlider">
-                                                <img src="{{ asset('public/front') }}/images/single-property/s-5.jpg" class="img-fluid" alt="listing-small">
-                                            </a>
-                                        </li>
+                                        @foreach (json_decode( $property -> gallery, true) as $index => $item)
+                                            <li class="list-inline-item {{ $index == 0 ? 'active' : '' }}">
+                                                <a id="carousel-selector-{{ $index }}" class="selected" data-slide-to="{{ $index }}" data-target="#listingDetailsSlider">
+                                                    <img src="{{ asset('public/uploads/properties/gallery/' . $item ) }}" class="img-fluid" alt="{{ $property -> name . $item }}">
+                                                </a>
+                                            </li>
+                                        @endforeach
                                     </ul>
                                     <!-- main slider carousel items -->
                                 </div>
