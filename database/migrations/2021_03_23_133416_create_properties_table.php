@@ -42,6 +42,7 @@ class CreatePropertiesTable extends Migration
             $table->string('image')->default('default.png');
             $table->string('floor_plan')->default('default.png');
             $table->string('video')->nullable();
+            $table->string('gallery')->nullable();
             //timestamps
             $table->softDeletes();
             $table->timestamps();

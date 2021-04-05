@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use Intervention\Image\Facades\Image as Image;
+use Ramsey\Uuid\Exception\UnableToBuildUuidException;
 
 class PropertyController extends Controller
 {
@@ -74,15 +75,18 @@ class PropertyController extends Controller
             $request_data['image'] = $request->image->hashName();
         }
 
-        $gallery_arr = [];
         if($request -> gallery){
+            $gallery_arr = [];
             foreach ( $request -> gallery as $index => $item){
-                $gallery_arr += [$index => $item->hashName(),];
+                $gallery_arr += [$index => $item ->hashName(),];
+                Image::make($item)->resize(500, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->save(public_path('/uploads/properties/gallery/'. $item -> hashName()));
             }
-            $request_data['gallery'] = $gallery_arr;
+            $request_data['gallery'] = json_encode($gallery_arr);
         }
 
-        Property::create($request_data)->except($gallery_arr);
+        Property::create($request_data);
 
         session()->flash('success', 'Property Added Successfully');
         return redirect()->route('admin.properties.index');
@@ -104,7 +108,7 @@ class PropertyController extends Controller
 
     } // end of edit
 
-    public function update( PropertyUpdateRequest $request, Property $property)
+    public function update( Request $request, Property $property)
     {
         $rules = [];
 
@@ -128,21 +132,51 @@ class PropertyController extends Controller
             $request -> request -> add(['rent_sale' => 1]);
         }
 
-        $request_data = $request -> all();
+        $request_data = $request -> except(['gallery']);
 
         if($request->image){
             if ($property->image != 'default.png') {
 
                 Storage::disk('public_uploads')->delete('/properties/' . $property ->image);
 
-            } // end of inner if
+            } // end of image inner if
 
             Image::make($request->image)->resize(100, null, function ($constraint) {
                 $constraint->aspectRatio();
             })->save(public_path('uploads/properties/'. $request ->image->hashName()));
 
             $request_data['image'] = $request->image->hashName();
-        } // end of outer if
+        } // end of image outer if.
+
+//        return gettype(json_decode( $property -> gallery, true));
+
+        if($request -> gallery){
+
+            if ($property -> gallery != null) {
+                foreach (json_decode($property->gallery, true) as $index => $item) {
+                    Storage::disk('public_uploads')->delete('/properties/gallery/' . $item);
+                }
+                $property->update(['gallery' => null]);
+            } // end of inner if
+
+            $gallery_arr = [];
+            foreach ( $request -> gallery as $index => $item){
+                $gallery_arr += [ $index => $item ->hashName(),];
+                Image::make($item)->resize(500, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->save(public_path('/uploads/properties/gallery/'. $item -> hashName()));
+            }
+//          $request_data['gallery'] = json_encode($gallery_arr);
+            $property->update(['gallery' => json_encode($gallery_arr) ]);
+
+        } else {
+            if ($property -> gallery != null) {
+                foreach (json_decode($property->gallery, true) as $index => $item) {
+                    Storage::disk('public_uploads')->delete('/properties/gallery/' . $item);
+                }
+                $property->update(['gallery' => null]);
+            } // end of inner if
+        } // end of gallery  outer if
 
         $property->update($request_data);
 
@@ -155,6 +189,13 @@ class PropertyController extends Controller
         if($property -> image != 'default.png'){
             Storage::disk('public_uploads')->delete('/properties/' . $property ->image);
         }
+
+        if ($property -> gallery != null) {
+            foreach (json_decode($property->gallery, true) as $index => $item) {
+                Storage::disk('public_uploads')->delete('/properties/gallery/' . $item);
+            }
+            $property->update(['gallery' => null]);
+        } // end of inner if
 
         $property -> delete();
 

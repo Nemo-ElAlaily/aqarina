@@ -17,7 +17,7 @@ class Property extends Model implements TranslatableContract
     protected $guarded = [];
 
     protected $appends = [
-        'image_path', 'floor_plan_path'
+        'image_path', 'floor_plan_path' , 'gallery'
     ];
 
     public function getImagePathAttribute()
@@ -28,6 +28,15 @@ class Property extends Model implements TranslatableContract
     public function getFloorPlanPathAttribute()
     {
         return asset('public/uploads/properties/' . $this -> floor_plan);
+    } // end of image path
+
+    public function getGalleryItemsAttribute()
+    {
+        if($this -> gallery != null){
+            foreach (json_decode( $this -> gallery, true) as $index => $item){
+                echo '{id: ' . $index . ' , src: "' . asset('public/uploads/properties/gallery/') . '/'. $item . '"},';
+            }
+        }
     } // end of image path
 
     public function getNameAttribute($value)

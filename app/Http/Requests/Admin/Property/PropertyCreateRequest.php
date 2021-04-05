@@ -34,7 +34,6 @@ class PropertyCreateRequest extends FormRequest
             'construction_area'     => 'required|numeric',
             'price'                 => 'required|numeric',
             'image'                 => 'required|image|mimes:jpg,jpeg,png,svg',
-            'gallery'               => 'image|mimes:jpg,jpeg,png,svg',
         ];
 
         foreach (config('translatable.locales') as $locale) {

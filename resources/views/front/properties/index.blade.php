@@ -55,8 +55,8 @@
                         </div>
                     </div>
                     <!-- Block heading end -->
-                    <div class="row featured portfolio-items">
                         @foreach($properties as $property)
+                            <div class="row featured portfolio-items py-3">
                             @if($property -> is_active == 1)
                                 <div class="item col-lg-5 col-md-12 col-xs-12 landscapes sale pr-0 pb-0">
                                     <div class="project-single mb-0 bb-0">
@@ -141,8 +141,8 @@
                                     </div>
                                 </div>
                             @endif
+                            </div>
                         @endforeach
-                    </div>
                 </div>
                 <aside class="col-lg-3 col-md-12 car">
                     <div class="widget">

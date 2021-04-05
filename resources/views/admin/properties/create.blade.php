@@ -74,9 +74,7 @@
                                 <br />
                                 <span class="text-danger mx-5">{{ $message }}</span>
                                 @enderror
-                                <textarea class="form-control input-thick" type="text" name="{{ $locale }}[address]">
-                                    {{ old($locale.'.address') }}
-                                </textarea>
+                                <textarea class="form-control input-thick" type="text" name="{{ $locale }}[address]">{{ old('address') }}</textarea>
                             </div>
 
                         </div>
@@ -409,6 +407,7 @@
                             <button type="submit" class="btn btn-primary w-100"><i class="fa fa-plus"></i>
                                 Add property</button>
                         </div> {{-- end of  general data --}}
+                    </div>
 
                 </form><!-- end of form -->
 
@@ -418,7 +417,7 @@
     </div>
     <!-- /.card -->
 
-@endsection
+@stop
 
 @section('script')
     <!-- ARCHIVES JS -->
