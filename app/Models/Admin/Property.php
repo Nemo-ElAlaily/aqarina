@@ -16,8 +16,11 @@ class Property extends Model implements TranslatableContract
     public $translatedAttributes = ['name', 'description', 'address'];
     protected $guarded = [];
 
+    /******************************************
+    /* media Attributes
+     ******************************************/
     protected $appends = [
-        'image_path', 'floor_plan_path' , 'gallery'
+        'image_path', 'floor_plan_path' ,
     ];
 
     public function getImagePathAttribute()
@@ -37,12 +40,24 @@ class Property extends Model implements TranslatableContract
                 echo '{id: ' . $index . ' , src: "' . asset('public/uploads/properties/gallery/') . '/'. $item . '"},';
             }
         }
-    } // end of image path
+    } // end of getGalleryItemsAttribute path
 
+    /******************************************
+    /* views Attributes
+     ******************************************/
     public function getNameAttribute($value)
     {
         return ucfirst($value);
     } // end of get name attribute
+
+    public function postedAt()
+    {
+        return Carbon::now()->diffForHumans($this-> created_at);
+    } // end of get postedAt
+
+    /******************************************
+    /* Boolean Attributes
+     ******************************************/
 
     public function scopeActive($query)
     {
@@ -51,12 +66,12 @@ class Property extends Model implements TranslatableContract
 
     public function getActive()
     {
-        return $this -> is_active == 1 ? 'Active' : 'Not Active';
+        return $this -> is_active == 1 ? 'Active' : '';
     } // end fo get Active
 
     public function getFeatured()
     {
-        return $this -> is_featured == 1 ? 'Featured' : 'Not Featured';
+        return $this -> is_featured == 1 ? 'Featured' : '';
     } // end fo get Featured
 
 
@@ -69,6 +84,10 @@ class Property extends Model implements TranslatableContract
     {
         return $this -> rent_sale == 0 ? 'For Sale' : 'For Rent';
     } // end fo get Rent Sale
+
+    /******************************************
+    /* Relations
+    ******************************************/
 
     public function agency()
     {
@@ -106,10 +125,14 @@ class Property extends Model implements TranslatableContract
 
     } // end of country
 
-    public function postedAt()
+    public function features()
     {
-        $now = Carbon::now();
-        return $now->diffInDays($this -> created_at);
-    } // end of get first name attribute
+        return $this -> belongsToMany(
+            Feature::class ,
+            'feature_property',
+            'property_id',
+            'feature_id'
+        );
+    } // end of properties
 
 } // end of model

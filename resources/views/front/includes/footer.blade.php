@@ -6,10 +6,9 @@
                 <div class="col-lg-3 col-md-6">
                     <div class="netabout">
                         <a href="index.html" class="logo">
-                            <img src="{{ asset('public/front/') }}/images/logo-footer.svg" alt="netcom">
+                            <img src="{{ asset('public/front/images/logo-footer.svg') }}" alt="footer Logo">
                         </a>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum incidunt architecto
-                            soluta laboriosam, perspiciatis, aspernatur officiis esse.</p>
+                        <p>@lang('front.footer_paragraph')</p>
                     </div>
                     <div class="contactus">
                         <ul>
@@ -38,19 +37,19 @@
                     <div class="navigation">
                         <h3>Navigation</h3>
                         <div class="nav-footer">
-                            <ul>
-                                <li><a href="index.html">Home One</a></li>
-                                <li><a href="properties-right-sidebar.html">Properties Right</a></li>
-                                <li><a href="properties-full-list.html">Properties List</a></li>
-                                <li><a href="#">Property Details</a></li>
-                                <li class="no-mgb"><a href="agents-listing-grid.html">Agents Listing</a></li>
+                            <ul class="mx-5">
+                                <li><a href="{{ route('front.index') }}">@lang('front.home')</a></li>
+                                <li><a href="">@lang('front.properties')</a></li>
+                                <li><a href="">@lang('front.properties')</a></li>
+                                <li><a href="#">@lang('front.agencies')</a></li>
+                                <li class="no-mgb"><a href="#">@lang('front.agencies')</a></li>
                             </ul>
                             <ul class="nav-right">
-                                <li><a href="#">Agents Details</a></li>
-                                <li><a href="about.html">About Us</a></li>
-                                <li><a href="blog.html">Blog Default</a></li>
-                                <li><a href="blog-details.html">Blog Details</a></li>
-                                <li class="no-mgb"><a href="contact-us.html">Contact Us</a></li>
+                                <li><a href="#">@lang('front.agencies')</a></li>
+                                <li><a href="#">@lang('front.about_us')</a></li>
+                                <li><a href="#">@lang('front.blog')</a></li>
+                                <li><a href="#">@lang('front.blog')</a></li>
+                                <li class="no-mgb"><a href="#">@lang('front.contact')</a></li>
                             </ul>
                         </div>
                     </div>

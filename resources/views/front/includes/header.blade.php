@@ -18,8 +18,8 @@
             <div class="top-social hidden-sm-down">
                 <div class="login-wrap">
                     <ul class="d-flex">
-                        <li><a href="#"><i class="fa fa-user"></i> Login</a></li>
-                        <li><a href="#"><i class="fa fa-sign-in"></i> Register</a></li>
+                        <li><a href="#"><i class="fa fa-user"></i> @lang('front.login')</a></li>
+                        <li><a href="#"><i class="fa fa-sign-in"></i> @lang('front.register')</a></li>
                     </ul>
                 </div>
                 <div class="social-icons-header">
@@ -57,7 +57,7 @@
             <div class="left-side">
                 <!-- Logo -->
                 <div id="logo">
-                    <a href="index.html"><img src="{{ asset('public/front') }}/images/logo.svg" alt=""></a>
+                    <a href="{{ route('front.index') }}"><img src="{{ asset('public/front/images/logo.svg') }}" alt="Real Estate Logo"></a>
                 </div>
                 <!-- Mobile Navigation -->
                 <div class="mmenu-trigger">
@@ -70,11 +70,11 @@
                 <!-- Main Navigation -->
                 <nav id="navigation" class="style-1">
                     <ul id="responsive">
-                        <li><a class="current" href="{{ route('front.index') }}">Home</a></li>
-                        <li><a href="{{ route('front.properties.index') }}">Properties</a></li>
-                        <li><a href="{{ route('front.agencies.index') }}">Agencies</a></li>
-                        <li><a href="blogs.html">Blog</a></li>
-                        <li><a href="contact-us.html">Contact</a>
+                        <li><a class="current" href="{{ route('front.index') }}">@lang('front.home')</a></li>
+                        <li><a href="{{ route('front.properties.index') }}">@lang('front.properties')</a></li>
+                        <li><a href="{{ route('front.agencies.index') }}">@lang('front.agencies')</a></li>
+                        <li><a href="blogs.html">@lang('front.blog')</a></li>
+                        <li><a href="contact-us.html">@lang('front.contact')</a>
                         </li>
                     </ul>
                 </nav>
@@ -87,7 +87,7 @@
             <div class="right-side hidden-lg-down">
                 <!-- Header Widget -->
                 <div class="header-widget">
-                    <a href="submit-property.html" class="button border">Submit Property</a>
+                    <a href="submit-property.html" class="button border">@lang('front.submit_property')</a>
                 </div>
                 <!-- Header Widget / End -->
             </div>

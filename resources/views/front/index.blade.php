@@ -32,18 +32,18 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="banner-inner">
-                                <h1 class="title text-center">Find Your Dream Home</h1>
-                                <h5 class="sub-title text-center">We Have Over Million Properties For You</h5>
+                                <h1 class="title text-center">@lang('front.index.Find Your Dream Home')</h1>
+                                <h5 class="sub-title text-center">@lang('front.index.We Have Over Million Properties For You')</h5>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="banner-search-wrap">
                                 <ul class="nav nav-tabs rld-banner-tab">
                                     <li class="nav-item">
-                                        <a class="nav-link active" data-toggle="tab" href="#tabs_1">For Buy</a>
+                                        <a class="nav-link active" data-toggle="tab" href="#tabs_1">@lang('front.For Sale')</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" href="#tabs_2">For Rent</a>
+                                        <a class="nav-link" data-toggle="tab" href="#tabs_2">@lang('front.For Rent')</a>
                                     </li>
                                 </ul>
                                 <div class="tab-content">
@@ -52,13 +52,13 @@
                                             <div class="row">
                                                 <div class="col-xl-4 col-lg-6 col-md-6">
                                                     <div class="rld-single-input left-icon">
-                                                        <input type="text" placeholder="Entry Landmark Location">
+                                                        <input type="text" placeholder="@lang('front.index.Entry Landmark Location')">
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-2 col-lg-6 col-md-6">
                                                     <div class="rld-single-select">
                                                         <select class="select single-select">
-                                                            <option value="1">Property Type</option>
+                                                            <option value="1">@lang('front.property_type')</option>
                                                             <option value="2">Family House</option>
                                                             <option value="3">Apartment</option>
                                                             <option value="3">Condo</option>
@@ -68,7 +68,7 @@
                                                 <div class="col-xl-2 col-lg-4 col-md-4">
                                                     <div class="rld-single-select">
                                                         <select class="select single-select">
-                                                            <option value="1">Any Bedrooms</option>
+                                                            <option value="1">@lang('front.bedrooms')</option>
                                                             <option value="2">Room 1</option>
                                                             <option value="3">Room 2</option>
                                                             <option value="3">Room 3</option>
@@ -78,7 +78,7 @@
                                                 <div class="col-xl-2 col-lg-4 col-md-4">
                                                     <div class="rld-single-select">
                                                         <select class="select single-select">
-                                                            <option value="1">Any Price</option>
+                                                            <option value="1">@lang('front.price')</option>
                                                             <option value="2">Price 1</option>
                                                             <option value="3">Price 2</option>
                                                             <option value="3">Price 3</option>
@@ -86,7 +86,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-2 col-lg-4 col-md-4">
-                                                    <a class="btn btn-yellow" href="#">SEARCH NOW</a>
+                                                    <a class="btn btn-yellow" href="#">@lang('front.search')</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -102,7 +102,7 @@
                                                 <div class="col-xl-2 col-lg-6 col-md-6">
                                                     <div class="rld-single-select">
                                                         <select class="select single-select">
-                                                            <option value="1">All Properties</option>
+                                                            <option value="1">@lang('front.all') @lang('front.properties_')</option>
                                                             <option value="2">Properties 1</option>
                                                             <option value="3">Properties 2</option>
                                                             <option value="3">Properties 3</option>
@@ -112,7 +112,7 @@
                                                 <div class="col-xl-2 col-lg-4 col-md-4">
                                                     <div class="rld-single-select">
                                                         <select class="select single-select">
-                                                            <option value="1">Room</option>
+                                                            <option value="1">@lang('front.room')</option>
                                                             <option value="2">Room 1</option>
                                                             <option value="3">Room 2</option>
                                                             <option value="3">Room 3</option>
@@ -122,7 +122,7 @@
                                                 <div class="col-xl-2 col-lg-4 col-md-4">
                                                     <div class="rld-single-select">
                                                         <select class="select single-select">
-                                                            <option value="1">Any Price</option>
+                                                            <option value="1">@lang('front.any_price')</option>
                                                             <option value="2">Price 1</option>
                                                             <option value="3">Price 2</option>
                                                             <option value="3">Price 3</option>
@@ -130,7 +130,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-2 col-lg-4 col-md-4">
-                                                    <a class="btn btn-yellow" href="#">SEARCH NOW</a>
+                                                    <a class="btn btn-yellow" href="#">@lang('front.search')</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -149,7 +149,7 @@
     <section class="recently portfolio bg-white-1 home18">
         <div class="container">
             <div class="sec-title">
-                <h2><span>Properties </span>For Sale</h2>
+                <h2><span>@lang('front.properties') </span>@lang('front.For Sale')</h2>
                 <p>Find your dream home from our Sale added properties.</p>
             </div>
             <div class="portfolio col-xl-12">

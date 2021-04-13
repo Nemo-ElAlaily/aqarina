@@ -9,6 +9,7 @@ use App\Models\Admin\Agency;
 use App\Models\Admin\City;
 use App\Models\Admin\Country;
 use App\Models\Admin\Currency;
+use App\Models\Admin\Feature;
 use App\Models\Admin\Property;
 use App\Models\Admin\PropertyStatus;
 use App\Models\Admin\PropertyType;
@@ -30,11 +31,15 @@ class PropertyController extends Controller
 
     public function index(Request $request)
     {
+        $agencies = Agency::all();
+
         $properties = Property::when($request -> search , function ($query) use ($request) {
-            return $query -> where('name', 'like', '%' . $request -> search . '%');
+            return $query -> whereTranslationLike('name',    '%' . $request -> search . '%');
+        })->when($request -> agency_id , function($query) use ($request) {
+            return $query -> where('agency_id', $request -> agency_id);
         })->latest()->paginate(PAGINATION_COUNT);
 
-        return view('admin.properties.index', compact('properties'));
+        return view('admin.properties.index', compact('properties', 'agencies'));
 
     } // end of index
 
@@ -51,7 +56,7 @@ class PropertyController extends Controller
 
     } // end of create
 
-    public function store(PropertyCreateRequest $request)
+    public function store(Request $request)
     {
         // set active
         $request -> has('is_active') ? $request -> request -> add(['is_active' => 1]) : $request -> request -> add(['is_active' => 0]);
@@ -203,5 +208,28 @@ class PropertyController extends Controller
         return redirect()->route('admin.properties.index');
 
     } // end of destroy
+
+    public function getFeatures(Property $property)
+    {
+        $all_features = Feature::all();
+        $property = $property -> with('features');
+        $property_features = $property -> features -> first();
+
+        return $property_features;
+
+        return view('admin.properties.features.index',compact('property' , 'all_features' , 'property_features'));
+    }
+
+    public function postFeatures(Request $request)
+    {
+        return $request -> all();
+
+        $property = Property::find($request -> property_id);
+
+        $property -> features() -> syncWithoutDetaching( $request -> featureIds);
+
+        session()->flash('success', 'Features Added Successfully');
+        return redirect()->route('admin.properties.index');
+    }
 
 } // end of controller

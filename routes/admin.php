@@ -16,12 +16,14 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ 'lo
         /* currencies routes */
         Route::resource('/currencies', 'CurrencyController')->except('show');
         /* agencies routes */
-        Route::resource('/agencies', 'AgencyController')->except('show');
+        Route::resource('/agencies', 'AgencyController');
         /* countries routes */
         Route::resource('/countries', 'CountryController')->except('show');
         /* cities routes */
         Route::resource('/cities', 'CityController')->except('show');
         /* properties routes */
         Route::resource('/properties', 'PropertyController')->except('show');
+        Route::get('/property/{id}/features', 'PropertyController@getFeatures')->name('property.feature');
+        Route::post('/property/{id}/features/store', 'PropertyController@postFeatures')->name('property.feature.store');
     });
 });

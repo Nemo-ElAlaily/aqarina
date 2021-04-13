@@ -27,12 +27,23 @@
                         <input type="text" name="search" class="form-control" placeholder="Search Here..." value="{{ request()->search }}">
                     </div>
 
+                    <div class="col-md-4">
+                        <label>
+                            <select name="agency_id" class="form-control">
+                                <option value="">All Agencies</option>
+                                @foreach($agencies as $agency)
+                                    <option value="{{ $agency -> id }}" {{ request()->agency_id == $agency-> id ? 'selected' : '' }}>{{ $agency -> name }}</option>
+                                @endforeach
+                            </select>
+                        </label>
+                    </div>
+
                     <div class="col-md-4 p-0">
                         <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Search</button>
                         @if (auth()->user()->hasPermission('create_properties'))
                             <a href="{{ route('admin.properties.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Add property</a>
                              @else
-                                <a href="#" class="btn btn-p`rimary disabled"><i class="fa fa-plus"></i> Add property</a>
+                            <a href="#" class="btn btn-p`rimary disabled"><i class="fa fa-plus"></i> Add property</a>
                         @endif
                     </div>
 
@@ -50,12 +61,9 @@
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Name</th>
-                    <th>Agency</th>
-                    <th>Status</th>
-                    <th>Is Featured</th>
-                    <th>Type of Ad</th>
-                    <th>Homepage</th>
+                    <th>Property Title</th>
+                    <th>Agency Name</th>
+                    <th>Property Info</th>
                     @if (auth()->user()->hasPermission('update_properties','delete_properties'))
                         <th>Action</th>
                     @endif
@@ -67,12 +75,28 @@
                     <tr>
                         <td>{{ $index + 1 }}</td>
                         <td>{{ $property -> name }}</td>
-                        <td>{{ $property -> agency -> name }}</td>
-                        <td>{{ $property -> getActive() }}</td>
-                        <td>{{ $property -> getFeatured() }}</td>
-                        <td>{{ $property -> getRentSale() }}</td>
-                        <td>{{ $property -> getAddToHome() }}</td>
+                        <td><a href="{{ route('admin.agencies.show', $property -> agency -> id ) }}">{{ $property -> agency -> name }}</a></td>
                         <td>
+                            @if($property -> is_active == 1)
+                                <span class="badge badge-pill badge-primary p-2">{{ $property -> getActive() }}</span>
+                           @endif
+                            @if($property -> is_featured == 1)
+                                <span class="badge badge-pill bg-teal p-2">{{ $property -> getFeatured() }}</span>
+                            @endif
+                            @if($property -> rent_sale == 0)
+                                <span class="badge badge-pill bg-green p-2 text-white">{{ $property -> getRentSale() }}</span>
+                            @endif
+                            @if($property -> add_to_home == 1)
+                                <span class="badge badge-pill bg-indigo p-2 text-white">{{ $property -> getAddToHome() }}</span>
+                           @endif
+                        </td>
+                        <td>
+                            @if (auth()->user()->hasPermission('update_properties'))
+                                <a href="#" class="text-white btn bg-cyan btn-sm"><i class="fa fa-eye"></i> Features</a>
+                                {{-- @else
+                                    <a href="#" class="btn btn-info btn-sm disabled"><i class="fa fa-edit"></i> @lang('site.edit')</a> --}}
+                            @endif
+
                             @if (auth()->user()->hasPermission('update_properties'))
                                 <a href="{{ route('admin.properties.edit', $property->id) }}" class="text-white btn btn-info btn-sm"><i class="fa fa-edit"></i> Edit</a>
                                 {{-- @else

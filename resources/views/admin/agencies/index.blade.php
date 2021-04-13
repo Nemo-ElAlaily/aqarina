@@ -53,6 +53,7 @@
                     <th>Name</th>
                     <th>Logo</th>
                     <th>E-Mail</th>
+                    <th>Listing</th>
                     @if (auth()->user()->hasPermission('update_agencies','delete_agencies'))
                         <th>Action</th>
                     @endif
@@ -66,6 +67,9 @@
                         <td>{{ $agency -> name }}</td>
                         <td><img src="{{ $agency -> image_path }}" alt="{{ $agency -> name }}" width="50"/></td>
                         <td>{{ $agency -> email }}</td>
+                        <td>
+                            <a href="{{ route('admin.properties.index', ['agency_id' => $agency->id ]) }}" class="btn btn-primary btn-sm text-white"><i class="fa fa-eye"></i> View Listings</a>
+                        </td>
                         <td>
                             @if (auth()->user()->hasPermission('update_agencies'))
                                 <a href="{{ route('admin.agencies.edit', $agency->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> Edit</a>

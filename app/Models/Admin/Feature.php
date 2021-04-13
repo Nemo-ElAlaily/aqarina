@@ -15,4 +15,16 @@ class Feature extends Model implements TranslatableContract
 
     public $translatedAttributes = ['name'];
     protected $guarded = [];
+
+    public $timestamps = true;
+
+    public function properties()
+    {
+        return $this -> belongsToMany(
+                    Property::class ,
+                    'feature_property',
+            'feature_id',
+            'property_id'
+        );
+    } // end of properties
 }

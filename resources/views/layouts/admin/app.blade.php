@@ -15,6 +15,8 @@
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ asset('public/admin/css/app_' .LaravelLocalization::getCurrentLocaleDirection(). '.css')}}">
+    <link rel="stylesheet" href="{{ asset('public/admin/css/icheck-bootstrap.css') }}">
+
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     @yield('style')

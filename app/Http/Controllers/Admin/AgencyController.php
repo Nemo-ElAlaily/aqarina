@@ -85,6 +85,14 @@ class AgencyController extends Controller
 
     } // end of edit
 
+    public function show(Agency $agency)
+    {
+        $countries = Country::all();
+        $cities = City::all();
+        return view('admin.agencies.show', compact('agency', 'countries', 'cities'));
+
+    } // end of edit
+
     public function update(Request $request, Agency $agency)
     {
         $rules = [

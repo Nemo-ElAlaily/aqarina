@@ -163,86 +163,48 @@
                             <h5 class="title">Filter</h5>
                             <form method="GET">
                                 <div class="at-col-default-mar mb-3">
-                                    <select>
-                                        <option value="0" selected>Location</option>
-                                        <option value="1">New York</option>
-                                        <option value="2">Los Angeles</option>
-                                        <option value="3">Chicago</option>
-                                        <option value="4">Philadelphia</option>
-                                        <option value="5">San Francisco</option>
+                                    <select name="city_id">
+                                        <option value="" selected>City</option>
+                                        @foreach($cities as $city)
+                                            <option value="{{ $city -> id }}" {{ request()->city_id == $city-> id ? 'selected' : '' }}>{{ $city -> name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="at-col-default-mar mb-3">
-                                    <select class="div-toggle" data-target=".my-info-1">
-                                        <option value="0" data-show=".acitveon" selected>Property Status</option>
-                                        <option value="1" data-show=".sale">For Sale</option>
-                                        <option value="2" data-show=".rent">For Rent</option>
-                                        <option value="3" data-show=".rent">Sold</option>
+                                    <select name="property_status">
+                                        <option value="" selected>Property Status</option>
+                                        @foreach($property_statuses as $property_status)
+                                            <option value="{{ $property_status -> id }}" {{ request()->property_status == $property_status-> id ? 'selected' : '' }}>{{ $property_status -> name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="at-col-default-mar mb-3">
                                     <div class="at-col-default-mar">
-                                        <select>
-                                            <option value="0" selected>Property Type</option>
-                                            <option value="1">Family House</option>
-                                            <option value="2">Apartment</option>
-                                            <option value="3">Condo</option>
+                                        <select name="property_type">
+                                            <option value="" data-show=".acitveon" selected>Property Type</option>
+                                            @foreach($property_types as $property_type)
+                                                <option value="{{ $property_type -> id }}" {{ request()->property_type == $property_type-> id ? 'selected' : '' }}>{{ $property_type -> name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
-                                <div class="at-col-default-mar mb-3">
-                                    <select>
-                                        <option value="0" selected>Beds</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                                    </select>
-                                </div>
-                                <div class="at-col-default-mar mb-3">
-                                    <select>
-                                        <option value="0" selected>Baths</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                                    </select>
-                                </div>
                                 <div class="col-lg-12 no-pds">
                                     <div class="at-col-default-mar">
-                                        <input class="at-input" type="text" name="min-area" placeholder="Squre Fit Min">
+                                        <input class="at-input" type="text" name="min-area" placeholder="Meter Fit Min">
                                     </div>
                                 </div>
                                 <div class="col-lg-12 no-pds my-4">
                                     <div class="at-col-default-mar">
-                                        <input class="at-input" type="text" name="max-area" placeholder="Squre Fit Max">
+                                        <input class="at-input" type="text" name="max-area" placeholder="Meter Fit Max">
                                     </div>
                                 </div>
-                            </form>
-                        </div>
-                        <!-- Price Fields -->
-                        <div class="main-search-field-2">
-                            <div class="range-slider">
-                                <input type="text" disabled class="slider_amount m-t-lg-30 m-t-xs-0 m-t-sm-10">
-                                <div class="slider-range"></div>
-                            </div>
-                        </div>
+
                         <div class="col-lg-12 no-pds">
                             <div class="at-col-default-mar">
                                 <button class="btn btn-default hvr-bounce-to-right" type="submit">Search</button>
                             </div>
+                        </div>
+                            </form>
                         </div>
                         <div class="recent-post py-5">
                             <h5 class="font-weight-bold mb-4">Recent Properties</h5>
