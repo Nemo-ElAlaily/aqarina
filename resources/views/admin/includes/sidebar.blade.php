@@ -61,14 +61,14 @@
                                 </a>
                             </li>
                         </ul>
-                    </li><!-- /user-sidebar -->
+                    </li><!-- /address-sidebar -->
                 @endif
 
                 @if (auth()->user()->hasPermission('read_features'))
                 <li class="nav-item">
                     <a href="{{ route('admin.features.index') }}" class="nav-link">
                         <i class="nav-icon fa fa-hashtag"></i>
-                        <p>Features</p>
+                        <p>Property Features</p>
                     </a>
                 </li><!-- /user-sidebar -->
                 @endif
@@ -115,7 +115,36 @@
                             <i class="nav-icon fa fa-bullseye"></i>
                             <p>Properties</p>
                         </a>
-                    </li><!-- /user-sidebar -->
+                    </li><!-- /properties-sidebar -->
+                @endif
+
+                @if (auth()->user()->hasPermission('read_blogs'))
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fa fa-book"></i>
+                        <p>Blogs</p>
+                    </a>
+                    <ul class="nav nav-treeview ml-3">
+                        <li class="nav-item ml-2">
+                            <a href="{{ route('admin.blogs.index') }}" class="nav-link">
+                                <i class="fa fa-eye nav-icon"></i>
+                                <p>All Blogs</p>
+                            </a>
+                        </li>
+                        <li class="nav-item ml-2">
+                            <a href="{{ route('admin.blogs.create') }}" class="nav-link">
+                                <i class="fa fa-plus nav-icon"></i>
+                                <p>Add Blog</p>
+                            </a>
+                        </li>
+                        <li class="nav-item ml-2">
+                            <a href="#" class="nav-link">
+                                <i class="fa fa-hashtag nav-icon"></i>
+                                <p>Blog tags</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li><!-- /blogs-sidebar -->
                 @endif
 
             </ul> <!-- /.nav-sidebar -->

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\PropertyStatus\PropertyStatusCreateRequest;
+use App\Http\Requests\Admin\PropertyStatus\PropertyStatusUpdateRequest;
 use App\Models\Admin\PropertyStatus;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -32,58 +34,87 @@ class PropertyStatusController extends Controller
 
     } // end of create
 
-    public function store(Request $request)
+    public function store(PropertyStatusCreateRequest $request)
     {
-        // validation
-        $rules = [];
-        foreach (config('translatable.locales') as $locale) {
-            $rules += [$locale . '.name' => ['required', Rule::unique('property_status_translations', 'name')]];
-        } // end of for each
+        try {
+            PropertyStatus::create($request->all());
+            session()->flash('success', 'Property Status Added Successfully');
+            return redirect()->route('admin.property_statuses.index');
 
-        // custom validation message
-        $request->validate($rules,
-            [
-                'required' => 'This Field is Required',
-            ]);// end of validation
+        } catch (\Exception $exception) {
 
-        // create Feature in the database
-        PropertyStatus::create($request->all());
-        // return to index with success message
-        session()->flash('success', 'Property Status Added Successfully');
-        return redirect()->route('admin.property_statuses.index');
+            session()->flash('error', 'Something Went Wrong, Please Contact Administrator');
+            return redirect()->route('admin.property_statuses.index');
 
-    } //
+        } // end of try -> catch
 
-    public function edit(PropertyStatus $propertyStatus)
+    } // end of store
+
+    public function edit($id)
     {
-        return view('admin.property_statuses.edit', compact('propertyStatus'));
+        try {
+            $propertyStatus = PropertyStatus::find($id);
+            if(!$propertyStatus) {
+                session()->flash('error', "Status Doesn't Exist or has been deleted");
+                return redirect()->route('admin.property_statuses.index');
+            }
+
+            return view('admin.property_statuses.edit', compact('propertyStatus'));
+
+        } catch(\Exception $exception) {
+
+            session()->flash('error', 'Something Went Wrong, Please Contact Administrator');
+            return redirect()->route('admin.property_statuses.index');
+
+        } // end of try -> catch
 
     } // end of edit
 
-    public function update(Request $request, PropertyStatus $propertyStatus)
+    public function update(PropertyStatusUpdateRequest $request, $id)
     {
-        // validation
-        $rules = [];
-        foreach (config('translatable.locales') as $locale) {
-            $rules += [$locale . '.name' => ['required', Rule::unique('property_status_translations', 'name')->ignore($propertyStatus->id, 'property_status_id')]];
-        }//end of for each
-        $request->validate($rules, [
-            'required' => 'This Field is Required',
-        ]); // end of validation
+        try {
+            $propertyStatus = PropertyStatus::find($id);
+            if(!$propertyStatus) {
+                session()->flash('error', "Status Doesn't Exist or has been deleted");
+                return redirect()->route('admin.property_statuses.index');
+            }
 
-        // update feature in database
-        $propertyStatus -> update($request -> all());
-        session()->flash('success', 'Property Status Updated Successfully');
-        return redirect()->route('admin.property_statuses.index');
+            $propertyStatus -> update($request -> all());
+
+            session()->flash('success', 'Property Status Updated Successfully');
+            return redirect()->route('admin.property_statuses.index');
+
+        } catch(\Exception $exception) {
+
+            session()->flash('error', 'Something Went Wrong, Please Contact Administrator');
+            return redirect()->route('admin.property_statuses.index');
+
+        } // end of try -> catch
 
     } // end of update
 
-    public function destroy(PropertyStatus $propertyStatus)
+    public function destroy($id)
     {
-        $propertyStatus -> deleteTranslations();
-        $propertyStatus -> delete();
-        session()->flash('success', 'Property Status Deleted Successfully');
-        return redirect()->route('admin.property_statuses.index');
+        try {
+            $propertyStatus = PropertyStatus::find($id);
+            if(!$propertyStatus) {
+                session()->flash('error', "Status Doesn't Exist or has been deleted");
+                return redirect()->route('admin.property_statuses.index');
+            }
+
+            $propertyStatus -> deleteTranslations();
+            $propertyStatus -> delete();
+
+            session()->flash('success', 'Property Status Deleted Successfully');
+            return redirect()->route('admin.property_statuses.index');
+
+        } catch(\Exception $exception) {
+
+            session()->flash('error', 'Something Went Wrong, Please Contact Administrator');
+            return redirect()->route('admin.property_statuses.index');
+
+        } // end of try -> catch
 
     }// end of destroy
+
 } // end of controller

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Currency\CurrencyCreateRequest;
 use App\Models\Admin\Currency;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -33,68 +34,87 @@ class CurrencyController extends Controller
 
     } // end of create
 
-    public function store(Request $request)
+    public function store(CurrencyCreateRequest $request)
     {
-        // validation
-        $rules = [];
-        foreach (config('translatable.locales') as $locale) {
-            $rules += [$locale . '.name' => ['required', Rule::unique('currency_translations', 'name')]];
-        } // end of for each
+        try {
+            Currency::create($request->all());
 
-        $rules += ['symbol' => 'required|starts_with:#'];
+            session()->flash('success', 'Currency Added Successfully');
+            return redirect()->route('admin.currencies.index');
 
-        // custom validation message
-        $request->validate($rules,
-            [
-                'required' => 'This Field is Required',
-                'symbol.starts_with' => 'Must Start with #'
-            ]);// end of validation
+        } catch (\Exception $exception) {
 
-        // create Feature in the database
-        Currency::create($request->all());
-        // return to index with success message
-        session()->flash('success', 'Currency Added Successfully');
-        return redirect()->route('admin.currencies.index');
+            session()->flash('error', 'Something Went Wrong, Please Contact Administrator');
+            return redirect()->route('admin.currencies.index');
+
+        }
 
     } // end of store
 
-    public function edit(Currency $currency)
+    public function edit($id)
     {
-        return view('admin.currencies.edit', compact('currency'));
+        try {
+            $currency =Currency::find($id);
+            if(!$currency) {
+                session()->flash('error', "Currency Doesn't Exist or has been deleted");
+                return redirect()->route('admin.currencies.index');
+            }
+            return view('admin.currencies.edit', compact('currency'));
+
+        } catch (\Exception $exception) {
+
+            session()->flash('error', 'Something Went Wrong, Please Contact Administrator');
+            return redirect()->route('admin.currencies.index');
+
+
+        } // end of try -> catch
 
     }// end of edit
 
-    public function update(Request $request, Currency $currency)
+    public function update(Request $request, $id)
     {
-        // validation
-        $rules = [];
-        foreach (config('translatable.locales') as $locale) {
-            $rules += [$locale . '.name' => [
-                'required',
-                Rule::unique('currency_translations', 'name')->ignore($currency->id, 'currency_id'),
-                ]];
-        }//end of for each
+        try {
+            $currency = Currency::find($id);
+            if(!$currency) {
+                session()->flash('error', "Currency Doesn't Exist or has been deleted");
+                return redirect()->route('admin.currencies.index');
+            }
 
-        $rules += ['symbol' => 'required_without:id|starts_with:#'];
+            $currency -> update($request -> all());
 
-        $request->validate($rules, [
-            'required' => 'This Field is Required',
-        ]); // end of validation
+            session()->flash('success', 'Currency Updated Successfully');
+            return redirect()->route('admin.currencies.index');
 
-        // update feature in database
-        $currency -> update($request -> all());
-        session()->flash('success', 'Currency Updated Successfully');
-        return redirect()->route('admin.currencies.index');
+        } catch (\Exception $exception ) {
 
+            session()->flash('error', 'Something Went Wrong, Please Contact Administrator');
+            return redirect()->route('admin.currencies.index');
+
+        } // end of try -> catch
 
     }// end of update
 
-    public function destroy(Currency $currency)
+    public function destroy($id)
     {
-        $currency -> deleteTranslations();
-        $currency -> delete();
-        session()->flash('success', 'Currency Deleted Successfully');
-        return redirect()->route('admin.currencies.index');
+        try {
+            $currency = Currency::find($id);
+            if(!$currency) {
+                session()->flash('error', "Currency Doesn't Exist or has been deleted");
+                return redirect()->route('admin.currencies.index');
+            }
+
+            $currency -> deleteTranslations();
+            $currency -> delete();
+
+            session()->flash('success', 'Currency Deleted Successfully');
+            return redirect()->route('admin.currencies.index');
+
+        } catch (\Exception $exception) {
+
+            session()->flash('error', 'Something Went Wrong, Please Contact Administrator');
+            return redirect()->route('admin.currencies.index');
+
+        } // end of try -> catch
 
     } // end of destroy
 

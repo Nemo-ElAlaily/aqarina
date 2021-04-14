@@ -131,7 +131,7 @@
                             </li>
                         </ul>
                         <!-- title -->
-                        <h5 class="mt-5">Amenities</h5>
+                        <h5 class="mt-5">Amenities</h5><span class="text-sm text-muted">still not dynamic</span>
                         <!-- cars List -->
                         <ul class="homes-list clearfix">
                             <li>

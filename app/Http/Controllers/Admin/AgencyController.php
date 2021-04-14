@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Agency\AgencyCreateRequest;
+use App\Http\Requests\Admin\Agency\AgencyUpdateRequest;
 use App\Models\Admin\Agency;
 use App\Models\Admin\City;
 use App\Models\Admin\Country;
@@ -39,114 +41,141 @@ class AgencyController extends Controller
 
     }// end of create
 
-    public function store(Request $request)
+    public function store(AgencyCreateRequest $request)
     {
-        $rules = [
-            'email' => 'required|unique:agencies',
-            'image' => 'required|image',
-            'office_number' => 'required|numeric',
-            'mobile' => 'required|numeric',
-        ] ;
+        try {
+            $request_data = $request -> all();
 
-        foreach (config('translatable.locales') as $locale) {
-            $rules += [
-                $locale . '.name' => ['required', Rule::unique('agency_translations', 'name')],
-                // $locale . '.description' => 'required',
-            ];
-        } // end of for each
+            if ($request -> image) {
+                Image::make($request->image)->resize(300, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->save(public_path('/uploads/agencies/'. $request ->image->hashName()));
 
-        $request -> validate($rules,
-            [
-                'required' => 'This Field is Required',
-            ]);// end of validation
+                $request_data['image'] = $request->image->hashName();
+            }
 
-        $request_data = $request -> all();
+            Agency::create($request_data);
 
-        if ($request -> image) {
-            Image::make($request->image)->resize(300, null, function ($constraint) {
-                $constraint->aspectRatio();
-            })->save(public_path('/uploads/agencies/'. $request ->image->hashName()));
+            session()->flash('success', 'Agency Added Successfully');
+            return redirect()->route('admin.agencies.index');
 
-            $request_data['image'] = $request->image->hashName();
-        }
+        } catch (\Exception $exception) {
 
-        Agency::create($request_data);
+            session()->flash('error', 'Something Went Wrong, Please Contact Administrator');
+            return redirect()->back();
 
-        session()->flash('success', 'Agency Added Successfully');
-        return redirect()->route('admin.agencies.index');
+        } // end of try -> catch
 
     } // end of store
 
-    public function edit(Agency $agency)
+    public function edit($id)
     {
-        $countries = Country::all();
-        $cities = City::all();
-        return view('admin.agencies.edit', compact('agency', 'countries', 'cities'));
+        try {
+            $agency = Agency::find($id);
+
+            if(!$agency){
+                session()->flash('error', "Agency Doesn't Exist or has been deleted");
+                return redirect()->route('admin.agencies.index');
+            }
+
+            $countries = Country::all();
+            $cities = City::all();
+
+            return view('admin.agencies.edit', compact('agency', 'countries', 'cities'));
+        } catch (\Exception $exception) {
+            session()->flash('error', 'Something Went Wrong, Please Contact Administrator');
+            return redirect()->route('admin.agencies.index');
+        }
 
     } // end of edit
 
-    public function show(Agency $agency)
+    public function show($id)
     {
-        $countries = Country::all();
-        $cities = City::all();
-        return view('admin.agencies.show', compact('agency', 'countries', 'cities'));
+        try {
+            $agency = Agency::find($id);
+
+            if(!$agency){
+                session()->flash('error', "Agency Doesn't Exist or has been deleted");
+                return redirect()->route('admin.agencies.index');
+            }
+
+            $countries = Country::all();
+            $cities = City::all();
+
+            return view('admin.agencies.edit', compact('agency', 'countries', 'cities'));
+        } catch (\Exception $exception) {
+            session()->flash('error', 'Something Went Wrong, Please Contact Administrator');
+            return redirect()->back();
+        } // end of try -> catch
 
     } // end of edit
 
-    public function update(Request $request, Agency $agency)
+    public function update(AgencyUpdateRequest $request, $id)
     {
-        $rules = [
-            'email' => ['required', Rule::unique('agencies', 'email') -> ignore($agency -> id),],
-            'image' => 'image',
-            'office_number' => 'required|numeric',
-            'mobile' => 'required|numeric',
-        ];
+        try {
+            $agency = Agency::find($id);
 
-        foreach (config('translatable.locales') as $locale) {
-            $rules += [
-                $locale . '.name' => ['required', Rule::unique('agency_translations', 'name')->ignore($agency->id, 'agency_id')],
-            ];
-        } // end of for each
+            if(!$agency){
+                session()->flash('error', "Agency Doesn't Exist or has been deleted");
+                return redirect()->route('admin.agencies.index');
+            }
 
-        $request -> validate($rules,
-            [
-                'required' => 'This Field is Required',
-            ]);// end of validation
+            $request_data = $request -> except([ 'image']);
 
-        $request_data = $request -> except([ 'image']);
+            if($request->image){
+                if ($agency->image != 'default.png') {
 
-        if($request->image){
-            if ($agency->image != 'default.png') {
+                    Storage::disk('public_uploads')->delete('/agencies/' . $agency ->image);
 
-                Storage::disk('public_uploads')->delete('/agencies/' . $agency ->image);
+                } // end of inner if
 
-            } // end of inner if
+                Image::make($request->image)->resize(100, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->save(public_path('public/uploads/agencies/'. $request ->image->hashName()));
 
-            Image::make($request->image)->resize(100, null, function ($constraint) {
-                $constraint->aspectRatio();
-            })->save(public_path('public/uploads/agencies/'. $request ->image->hashName()));
+                $request_data['image'] = $request->image->hashName();
+            } // end of outer if
 
-            $request_data['image'] = $request->image->hashName();
-        } // end of outer if
+            $request_data = $request -> all();
 
-        $request_data = $request -> all();
+            $agency->update($request_data);
 
-        $agency->update($request_data);
+            session()->flash('success', 'Agency Updated Successfully');
+            return redirect()->route('admin.agencies.index');
+        } catch (\Exception $exception) {
 
-        session()->flash('success', 'Agency Updated Successfully');
-        return redirect()->route('admin.agencies.index');
+            session()->flash('error', 'Something Went Wrong, Please Contact Administrator');
+            return redirect()->back();
+
+        } // end of try -> cache
 
     } // end of update
 
-    public function destroy(Agency $agency)
+    public function destroy($id)
     {
-        if($agency -> image != 'default.png'){
-            Storage::disk('public_uploads')->delete('/agencies/' . $agency ->image);
-        }
-        $agency -> delete();
+        try {
+            $agency = Agency::find($id);
+            if(!$agency){
+                session()->flash('error', "Agency Doesn't Exist or has been deleted");
+                return redirect()->route('admin.agencies.index');
+            }
 
-        session()->flash('success', 'Agency Deleted Successfully');
-        return redirect()->route('admin.agencies.index');
+            if($agency -> image != 'default.png'){
+                Storage::disk('public_uploads')->delete('/agencies/' . $agency ->image);
+            }
+
+            $agency -> deleteTranslations();
+            $agency -> delete();
+
+            session()->flash('success', 'Agency Deleted Successfully');
+            return redirect()->route('admin.agencies.index');
+        } catch (\Exception $exception){
+
+            session()->flash('error', 'Something Went Wrong, Please Contact Administrator');
+            return redirect()->back();
+
+        } // end of try -> catch
+
     } // end of destroy
 
 } // end of controller

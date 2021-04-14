@@ -8,6 +8,6 @@ return [
 
     'ar' => [
         'name' => 'Arabic',
-        'description' => 'description',
+        'description' => 'Description',
     ],
 ];

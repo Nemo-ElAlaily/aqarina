@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Country\CountryCreateRequest;
 use App\Models\Admin\Country;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -35,95 +36,119 @@ class CountryController extends Controller
 
     }// end of create
 
-    public function store(Request $request)
+    public function store(CountryCreateRequest $request)
     {
-        $rules = [
-            'image' => 'required|mimes:jpg,jpeg,png,svg',
-        ] ;
+        try {
+            $request_data = $request -> all();
 
-        foreach (config('translatable.locales') as $locale) {
-            $rules += [
-                $locale . '.name' => ['required', Rule::unique('country_translations', 'name')],
-            ];
-        } // end of for each
+            if ($request -> image) {
+                Image::make($request->image)->resize(100, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->save(public_path('/uploads/countries/'. $request ->image->hashName()));
 
-        $request -> validate($rules,
-            [
-                'required' => 'This Field is Required',
-            ]);// end of validation
+                $request_data['image'] = $request->image->hashName();
+            }
 
-        $request_data = $request -> all();
+            Country::create($request_data);
 
-        if ($request -> image) {
-            Image::make($request->image)->resize(100, null, function ($constraint) {
-                $constraint->aspectRatio();
-            })->save(public_path('/uploads/countries/'. $request ->image->hashName()));
+            session()->flash('success', 'Country Added Successfully');
+            return redirect()->route('admin.countries.index');
 
-            $request_data['image'] = $request->image->hashName();
-        }
+        } catch (\Exception $exception) {
 
-        Country::create($request_data);
+            session()->flash('error', 'Something Went Wrong, Please Contact Administrator');
+            return redirect()->route('admin.countries.index');
 
-        session()->flash('success', 'Country Added Successfully');
-        return redirect()->route('admin.countries.index');
+        } // end of try -> catch
 
     }// end of store
 
-    public function edit(Country $country)
+    public function edit($id)
     {
-        return view('admin.address.countries.edit', compact('country'));
+        try {
+            $country = Country::find($id);
+            if(!$country) {
+                session()->flash('error', "country Doesn't Exist or has been deleted");
+                return redirect()->route('admin.countries.index');
+            }
+
+            return view('admin.address.countries.edit', compact('country'));
+
+        } catch (\Exception $exception) {
+
+            session()->flash('error', 'Something Went Wrong, Please Contact Administrator');
+            return redirect()->route('admin.countries.index');
+
+        } // end of try -> catch
 
     } // end of edit
 
-    public function update(Request $request, Country $country)
+    public function update(Request $request, $id)
     {
-        $rules = [
-            'image' => 'mimes:jpg,jpeg,png,svg',
-        ];
+        try {
+            $country = Country::find($id);
+            if(!$country) {
+                session()->flash('error', "country Doesn't Exist or has been deleted");
+                return redirect()->route('admin.countries.index');
+            }
 
-        foreach (config('translatable.locales') as $locale) {
-            $rules += [
-                $locale . '.name' => ['required', Rule::unique('country_translations', 'name')->ignore($country->id, 'country_id')],
-            ];
-        } // end of for each
+            $request_data = $request -> all();
 
-        $request -> validate($rules,
-            [
-                'required' => 'This Field is Required',
-            ]);// end of validation
+            if($request->image){
 
-        $request_data = $request -> all();
+                if ($country -> image != 'default.png') {
 
-        if($request->image){
+                    Storage::disk('public_uploads')->delete('/countries/' . $country ->image);
 
-            if ($country -> image != 'default.png') {
+                } // end of inner if
 
-                Storage::disk('public_uploads')->delete('/countries/' . $country ->image);
+                Image::make($request->image)->resize(100, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->save(public_path('/uploads/countries/'. $request ->image->hashName()));
 
-            } // end of inner if
+                $request_data['image'] = $request->image->hashName();
+            } // end of outer if
 
-            Image::make($request->image)->resize(100, null, function ($constraint) {
-                $constraint->aspectRatio();
-            })->save(public_path('/uploads/countries/'. $request ->image->hashName()));
+            $country->update($request_data);
 
-            $request_data['image'] = $request->image->hashName();
-        } // end of outer if
+            session()->flash('success', 'Country Updated Successfully');
+            return redirect()->route('admin.countries.index');
 
-        $country->update($request_data);
+        } catch (\Exception $exception) {
 
-        session()->flash('success', 'Country Updated Successfully');
-        return redirect()->route('admin.countries.index');
+            session()->flash('error', 'Something Went Wrong, Please Contact Administrator');
+            return redirect()->route('admin.countries.index');
+
+        } // end of try -> catch
 
     } // end of update
 
-    public function destroy(Country $country)
+    public function destroy($id)
     {
-        if($country -> image != 'default.png'){
-            Storage::disk('public_uploads')->delete('/countries/' . $country ->image);
-        }
-        $country -> delete();
+        try {
+            $country = Country::find($id);
+            if(!$country) {
+                session()->flash('error', "country Doesn't Exist or has been deleted");
+                return redirect()->route('admin.countries.index');
+            }
 
-        session()->flash('success', 'Country Deleted Successfully');
-        return redirect()->route('admin.countries.index');
+            if($country -> image != 'default.png'){
+                Storage::disk('public_uploads')->delete('/countries/' . $country ->image);
+            }
+
+            $country -> deleteTranslations();
+            $country -> delete();
+
+            session()->flash('success', 'Country Deleted Successfully');
+            return redirect()->route('admin.countries.index');
+
+        } catch (\Exception $exception) {
+
+            session()->flash('error', 'Something Went Wrong, Please Contact Administrator');
+            return redirect()->route('admin.countries.index');
+
+        } // end of try -> catch
+
     } // end of destroy
+
 } // end of controller

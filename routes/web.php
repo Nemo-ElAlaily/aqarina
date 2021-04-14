@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]], function(){
 
-    Route::get('/', function () {
-        return view('front.index');
-    })->name('front.index'); // end of welcome
+    Route::get('/', 'Front\HomeController@index')->name('front.index'); // end of welcome
 
     Route::get('/agencies', 'Front\AgencyController@index')->name('front.agencies.index');
     Route::get('/agency/{id}', 'Front\AgencyController@show')->name('front.agencies.show');

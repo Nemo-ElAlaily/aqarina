@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Feature\FeatureCreateRequest;
+use App\Http\Requests\Admin\Feature\FeatureUpdateRequest;
 use App\Models\Admin\Feature;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -32,58 +34,86 @@ class FeatureController extends Controller
 
     }// end of create
 
-    public function store(Request $request)
+    public function store(FeatureCreateRequest $request)
     {
-        // validation
-        $rules = [];
-        foreach (config('translatable.locales') as $locale) {
-            $rules += [$locale . '.name' => ['required', Rule::unique('feature_translations', 'name')]];
-        } // end of for each
+        try {
+            Feature::create($request->all());
 
-        // custom validation message
-        $request->validate($rules,
-            [
-                'required' => 'This Field is Required',
-            ]);// end of validation
+            session()->flash('success', 'Feature Added Successfully');
+            return redirect()->route('admin.features.index');
 
-        // create Feature in the database
-        Feature::create($request->all());
-        // return to index with success message
-        session()->flash('success', 'Feature Added Successfully');
-        return redirect()->route('admin.features.index');
+        } catch (\Exception $exception) {
+
+            session()->flash('error', 'Something Went Wrong, Please Contact Administrator');
+            return redirect()->route('admin.features.index');
+
+        } // end of try -> catch
 
     } // end of store
 
-    public function edit(Feature $feature)
+    public function edit($id)
     {
-        return view('admin.features.edit', compact('feature'));
+        try {
+            $feature = Feature::find($id);
+            if(!$feature) {
+                session()->flash('error', "Feature Doesn't Exist or has been deleted");
+                return redirect()->route('admin.features.index');
+            }
+            return view('admin.features.edit', compact('feature'));
+
+        } catch (\Exception $exception) {
+
+            session()->flash('error', 'Something Went Wrong, Please Contact Administrator');
+            return redirect()->route('admin.features.index');
+
+        } // end of try -> catch
 
     } // end of edit
 
-    public function update(Request $request, Feature $feature)
+    public function update(FeatureUpdateRequest $request, $id)
     {
-        // validation
-        $rules = [];
-        foreach (config('translatable.locales') as $locale) {
-            $rules += [$locale . '.name' => ['required', Rule::unique('feature_translations', 'name')->ignore($feature->id, 'feature_id')]];
-        }//end of for each
-        $request->validate($rules, [
-            'required' => 'This Field is Required',
-        ]); // end of validation
+        try {
+            $feature = Feature::find($id);
+            if(!$feature) {
+                session()->flash('error', "Feature Doesn't Exist or has been deleted");
+                return redirect()->route('admin.features.index');
+            }
 
-        // update feature in database
-        $feature -> update($request -> all());
-        session()->flash('success', 'Feature Updated Successfully');
-        return redirect()->route('admin.features.index');
+            $feature -> update($request -> all());
+
+            session()->flash('success', 'Feature Updated Successfully');
+            return redirect()->route('admin.features.index');
+
+        } catch (\Exception $exception) {
+
+            session()->flash('error', 'Something Went Wrong, Please Contact Administrator');
+            return redirect()->route('admin.features.index');
+
+        } // end of try -> catch
 
     } // end of update
 
-    public function destroy(Feature $feature)
+    public function destroy($id)
     {
-        $feature -> deleteTranslations();
-        $feature -> delete();
-        session()->flash('success', 'Feature Deleted Successfully');
-        return redirect()->route('admin.features.index');
+        try {
+            $feature = Feature::find($id);
+            if(!$feature) {
+                session()->flash('error', "Feature Doesn't Exist or has been deleted");
+                return redirect()->route('admin.features.index');
+            }
+
+            $feature -> deleteTranslations();
+            $feature -> delete();
+
+            session()->flash('success', 'Feature Deleted Successfully');
+            return redirect()->route('admin.features.index');
+
+        } catch (\Exception $exception) {
+
+            session()->flash('error', 'Something Went Wrong, Please Contact Administrator');
+            return redirect()->route('admin.features.index');
+
+        }// end of try -> catch
 
     } // end of destroy
 

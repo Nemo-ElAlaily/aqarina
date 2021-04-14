@@ -40,18 +40,6 @@
                                     <span class="hidden-sm-down">Properties Listing</span>
                                 </h4>
                             </div>
-                            <div class="col-lg-6 col-md-7 col-10 cod-pad">
-                                <div class="sorting-options">
-                                    <select class="sorting">
-                                        <option>Price: High to low</option>
-                                        <option>Price: Low to high</option>
-                                        <option>Sells: High to low</option>
-                                        <option>Sells: Low to high</option>
-                                    </select>
-                                    <a href="#" class="change-view-btn active-view-btn"><i class="fa fa-th-list"></i></a>
-                                    <a href="#" class="change-view-btn lde"><i class="fa fa-th-large"></i></a>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <!-- Block heading end -->
@@ -210,7 +198,7 @@
                             <h5 class="font-weight-bold mb-4">Recent Properties</h5>
                             <div class="recent-main">
                                 <div class="recent-img">
-                                    <a href="blog-details.html"><img src="images/feature-properties/fp-1.jpg" alt=""></a>
+                                    <a href="blog-details.html"><img src="{{ asset('public/front/') }}/images/feature-properties/fp-1.jpg" alt=""></a>
                                 </div>
                                 <div class="info-img">
                                     <a href="blog-details.html"><h6>Family Home</h6></a>
@@ -219,7 +207,7 @@
                             </div>
                             <div class="recent-main my-4">
                                 <div class="recent-img">
-                                    <a href="blog-details.html"><img src="images/feature-properties/fp-2.jpg" alt=""></a>
+                                    <a href="blog-details.html"><img src="{{ asset('public/front/') }}/images/feature-properties/fp-2.jpg" alt=""></a>
                                 </div>
                                 <div class="info-img">
                                     <a href="blog-details.html"><h6>Family Home</h6></a>
@@ -228,7 +216,7 @@
                             </div>
                             <div class="recent-main">
                                 <div class="recent-img">
-                                    <a href="blog-details.html"><img src="images/feature-properties/fp-3.jpg" alt=""></a>
+                                    <a href="blog-details.html"><img src="{{ asset('public/front/') }}/images/feature-properties/fp-3.jpg" alt=""></a>
                                 </div>
                                 <div class="info-img">
                                     <a href="blog-details.html"><h6>Family Home</h6></a>
@@ -262,23 +250,9 @@
                     </div>
                 </aside>
             </div>
-            <nav aria-label="...">
-                <ul class="pagination">
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1">Previous</a>
-                    </li>
-                    <li class="page-item active">
-                        <a class="page-link" href="#">1 <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">5</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
-                    </li>
-                </ul>
-            </nav>
+
+            {{ $properties->appends(request()->query())->links() }}
+
         </div>
     </section>
     <!-- END SECTION PROPERTIES LISTING -->

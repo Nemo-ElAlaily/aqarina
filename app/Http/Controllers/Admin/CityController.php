@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\City\CityCreateRequest;
 use App\Models\Admin\City;
 use App\Models\Admin\Country;
 use Illuminate\Http\Request;
@@ -37,71 +38,93 @@ class CityController extends Controller
 
     }// end of create
 
-    public function store(Request $request)
+    public function store(CityCreateRequest $request)
     {
-        $rules = [
-            'country_id' => 'required'
-        ];
+        try {
+            $request_data = $request -> all();
 
-        foreach (config('translatable.locales') as $locale) {
-            $rules += [
-                $locale . '.name' => ['required', Rule::unique('city_translations', 'name')],
-            ];
-        } // end of for each
+            City::create($request_data);
 
-        $request -> validate($rules,
-            [
-                'required' => 'This Field is Required',
-            ]);// end of validation
+            session()->flash('success', 'City Added Successfully');
+            return redirect()->route('admin.cities.index');
 
-        $request_data = $request -> all();
+        } catch (\Exception $exception) {
 
-        City::create($request_data);
+            session()->flash('error', 'Something Went Wrong, Please Contact Administrator');
+            return redirect()->route('admin.cities.index');
 
-        session()->flash('success', 'City Added Successfully');
-        return redirect()->route('admin.cities.index');
+        } // end of try -> catch
 
     }// end of store
 
-    public function edit(City $city)
+    public function edit($id)
     {
-        $countries = Country::all();
-        return view('admin.address.cities.edit', compact( 'countries','city'));
+        try {
+            $city = City::find($id);
+            if(!$city) {
+                session()->flash('error', "City Doesn't Exist or has been deleted");
+                return redirect()->route('admin.cities.index');
+            }
+            $countries = Country::all();
+            return view('admin.address.cities.edit', compact( 'countries','city'));
+
+        } catch (\Exception $exception) {
+
+            session()->flash('error', 'Something Went Wrong, Please Contact Administrator');
+            return redirect()->route('admin.cities.index');
+
+        } // end of try -> catch
 
     } // end of edit
 
-    public function update(Request $request, City $city)
+    public function update(Request $request, $id)
     {
-        $rules = [
-            'country_id' => 'required'
-        ];
+        try {
+            $city = City::find($id);
 
-        foreach (config('translatable.locales') as $locale) {
-            $rules += [
-                $locale . '.name' => ['required', Rule::unique('city_translations', 'name')->ignore($city->id, 'city_id')],
-            ];
-        } // end of for each
+            if(!$city) {
+                session()->flash('error', "City Doesn't Exist or has been deleted");
+                return redirect()->route('admin.cities.index');
+            }
 
-        $request -> validate($rules,
-            [
-                'required' => 'This Field is Required',
-            ]);// end of validation
+            $request_data = $request -> all();
 
-        $request_data = $request -> all();
+            $city->update($request_data);
 
-        $city->update($request_data);
+            session()->flash('success', 'City Updated Successfully');
+            return redirect()->route('admin.cities.index');
 
-        session()->flash('success', 'City Updated Successfully');
-        return redirect()->route('admin.cities.index');
+        } catch (\Exception $exception) {
+
+            session()->flash('error', 'Something Went Wrong, Please Contact Administrator');
+            return redirect()->route('admin.cities.index');
+
+        } // end of try -> catch
 
     } // end of update
 
-    public function destroy(City $city)
+    public function destroy($id)
     {
-        $city -> delete();
+        try {
+            $city = City::find($id);
 
-        session()->flash('success', 'City Deleted Successfully');
-        return redirect()->route('admin.cities.index');
+            if(!$city) {
+                session()->flash('error', "City Doesn't Exist or has been deleted");
+                return redirect()->route('admin.cities.index');
+            }
+
+            $city -> deleteTranslations();
+            $city -> delete();
+
+            session()->flash('success', 'City Deleted Successfully');
+            return redirect()->route('admin.cities.index');
+
+        } catch (\Exception $exception) {
+
+            session()->flash('error', 'Something Went Wrong, Please Contact Administrator');
+            return redirect()->route('admin.cities.index');
+
+        } // end of try -> catch
 
     } // end of destroy
 

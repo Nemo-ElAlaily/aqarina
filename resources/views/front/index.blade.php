@@ -40,100 +40,95 @@
                             <div class="banner-search-wrap">
                                 <ul class="nav nav-tabs rld-banner-tab">
                                     <li class="nav-item">
-                                        <a class="nav-link active" data-toggle="tab" href="#tabs_1">@lang('front.For Sale')</a>
+                                        <a class="nav-link  active" data-toggle="tab" href="#for_sale">@lang('front.For Sale')</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" href="#tabs_2">@lang('front.For Rent')</a>
+                                        <a class="nav-link" data-toggle="tab" href="#for_rent">@lang('front.For Rent')</a>
                                     </li>
                                 </ul>
                                 <div class="tab-content">
-                                    <div class="tab-pane fade show active" id="tabs_1">
-                                        <div class="rld-main-search">
-                                            <div class="row">
-                                                <div class="col-xl-4 col-lg-6 col-md-6">
-                                                    <div class="rld-single-input left-icon">
-                                                        <input type="text" placeholder="@lang('front.index.Entry Landmark Location')">
+                                    <div class="tab-pane fade show active" id="for_sale">
+                                        <form action="{{ route('front.properties.index', ['rent_sale' => 0 ]) }}" method="GET">
+                                            <div class="rld-main-search">
+                                                <div class="row">
+                                                    <div class="col-xl-3 col-lg-6 col-md-6">
+                                                        <div class="rld-single-select left-icon">
+                                                            <select name="agency_id" class="select single-select">
+                                                                <option value="">@lang('front.index.Agency')</option>
+                                                                @foreach($agencies as $agency)
+                                                                    <option value="{{ $agency -> id }}" {{ request()->agency_id == $agency-> id ? 'selected' : '' }}>{{ $agency -> name }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-xl-2 col-lg-6 col-md-6">
-                                                    <div class="rld-single-select">
-                                                        <select class="select single-select">
-                                                            <option value="1">@lang('front.property_type')</option>
-                                                            <option value="2">Family House</option>
-                                                            <option value="3">Apartment</option>
-                                                            <option value="3">Condo</option>
-                                                        </select>
+                                                    <div class="col-xl-3 col-lg-6 col-md-6">
+                                                        <div class="rld-single-select">
+                                                            <select name="property_type" class="select single-select">
+                                                                <option value="">@lang('front.property_type')</option>
+                                                                @foreach($property_types as $property_type)
+                                                                    <option value="{{ $property_type -> id }}" {{ request()->property_type == $property_type-> id ? 'selected' : '' }}>{{ $property_type -> name }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-xl-2 col-lg-4 col-md-4">
-                                                    <div class="rld-single-select">
-                                                        <select class="select single-select">
-                                                            <option value="1">@lang('front.bedrooms')</option>
-                                                            <option value="2">Room 1</option>
-                                                            <option value="3">Room 2</option>
-                                                            <option value="3">Room 3</option>
-                                                        </select>
+                                                    <div class="col-xl-3 col-lg-4 col-md-4">
+                                                        <div class="rld-single-select">
+                                                            <select name="property_status" class="select single-select">
+                                                                <option value="">@lang('front.property_status')</option>
+                                                                @foreach($property_statuses as $property_status)
+                                                                    <option value="{{ $property_status -> id }}" {{ request()->property_status == $property_type-> id ? 'selected' : '' }}>{{ $property_status -> name }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-xl-2 col-lg-4 col-md-4">
-                                                    <div class="rld-single-select">
-                                                        <select class="select single-select">
-                                                            <option value="1">@lang('front.price')</option>
-                                                            <option value="2">Price 1</option>
-                                                            <option value="3">Price 2</option>
-                                                            <option value="3">Price 3</option>
-                                                        </select>
+                                                    <div class="col-xl-3 col-lg-4 col-md-4">
+                                                        <button type="submit" class="btn btn-yellow">@lang('front.search')</button>
                                                     </div>
-                                                </div>
-                                                <div class="col-xl-2 col-lg-4 col-md-4">
-                                                    <a class="btn btn-yellow" href="#">@lang('front.search')</a>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </form>
                                     </div>
-                                    <div class="tab-pane fade" id="tabs_2">
-                                        <div class="rld-main-search">
-                                            <div class="row">
-                                                <div class="col-xl-4 col-lg-6 col-md-6">
-                                                    <div class="rld-single-input left-icon">
-                                                        <input type="text" placeholder="Entry Landmark Location">
+
+                                    <div class="tab-pane fade" id="for_rent">
+                                        <form action="{{ route('front.properties.index', ['rent_sale' => 1 ]) }}" method="GET">
+                                            <div class="rld-main-search">
+                                                <div class="row">
+                                                    <div class="col-xl-3 col-lg-6 col-md-6">
+                                                        <div class="rld-single-select left-icon">
+                                                            <select name="agency_id" class="select single-select">
+                                                                <option value="">@lang('front.index.Agency')</option>
+                                                                @foreach($agencies as $agency)
+                                                                    <option value="{{ $agency -> id }}" {{ request()->agency_id == $agency-> id ? 'selected' : '' }}>{{ $agency -> name }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-xl-2 col-lg-6 col-md-6">
-                                                    <div class="rld-single-select">
-                                                        <select class="select single-select">
-                                                            <option value="1">@lang('front.all') @lang('front.properties_')</option>
-                                                            <option value="2">Properties 1</option>
-                                                            <option value="3">Properties 2</option>
-                                                            <option value="3">Properties 3</option>
-                                                        </select>
+                                                    <div class="col-xl-3 col-lg-6 col-md-6">
+                                                        <div class="rld-single-select">
+                                                            <select name="property_type" class="select single-select">
+                                                                <option value="">@lang('front.property_type')</option>
+                                                                @foreach($property_types as $property_type)
+                                                                    <option value="{{ $property_type -> id }}" {{ request()->property_type == $property_type-> id ? 'selected' : '' }}>{{ $property_type -> name }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-xl-2 col-lg-4 col-md-4">
-                                                    <div class="rld-single-select">
-                                                        <select class="select single-select">
-                                                            <option value="1">@lang('front.room')</option>
-                                                            <option value="2">Room 1</option>
-                                                            <option value="3">Room 2</option>
-                                                            <option value="3">Room 3</option>
-                                                        </select>
+                                                    <div class="col-xl-3 col-lg-4 col-md-4">
+                                                        <div class="rld-single-select">
+                                                            <select name="property_status" class="select single-select">
+                                                                <option value="">@lang('front.property_status')</option>
+                                                                @foreach($property_statuses as $property_status)
+                                                                    <option value="{{ $property_status -> id }}" {{ request()->property_status == $property_type-> id ? 'selected' : '' }}>{{ $property_status -> name }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-xl-2 col-lg-4 col-md-4">
-                                                    <div class="rld-single-select">
-                                                        <select class="select single-select">
-                                                            <option value="1">@lang('front.any_price')</option>
-                                                            <option value="2">Price 1</option>
-                                                            <option value="3">Price 2</option>
-                                                            <option value="3">Price 3</option>
-                                                        </select>
+                                                    <div class="col-xl-3 col-lg-4 col-md-4">
+                                                        <button type="submit" class="btn btn-yellow">@lang('front.search')</button>
                                                     </div>
-                                                </div>
-                                                <div class="col-xl-2 col-lg-4 col-md-4">
-                                                    <a class="btn btn-yellow" href="#">@lang('front.search')</a>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -147,1034 +142,213 @@
 
     <!-- START SECTION PROPERTIES FOR SALE -->
     <section class="recently portfolio bg-white-1 home18">
-        <div class="container">
-            <div class="sec-title">
-                <h2><span>@lang('front.properties') </span>@lang('front.For Sale')</h2>
-                <p>Find your dream home from our Sale added properties.</p>
-            </div>
-            <div class="portfolio col-xl-12">
-                <div class="slick-lancers">
-                    <div class="agents-grid">
-                        <div class="landscapes">
-                            <div class="project-single">
-                                <div class="project-inner project-head">
-                                    <div class="project-bottom">
-                                        <h4><a href="single-property.html">View Property</a><span class="category">Real Estate</span>
-                                        </h4>
-                                    </div>
-                                    <div class="homes">
-                                        <!-- homes img -->
-                                        <a href="#" class="homes-img">
-                                            <div class="homes-tag button alt featured">Featured</div>
-                                            <div class="homes-tag button alt sale">For Sale</div>
-                                            <div class="homes-price">Family Home</div>
-                                            <img src="{{ asset('public/front') }}/images/feature-properties/fp-1.jpg" alt="home-1"
-                                                 class="img-responsive">
-                                        </a>
-                                    </div>
-                                    <div class="button-effect">
-                                        <a href="#" class="btn"><i class="fa fa-link"></i></a>
-                                        <a href="https://www.youtube.com/watch?v=2xHQqYRcrx4"
-                                           class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
-                                        <a href="#" class="img-poppu btn"><i class="fa fa-photo"></i></a>
-                                    </div>
-                                </div>
-                                <!-- homes content -->
-                                <div class="homes-content">
-                                    <!-- homes address -->
-                                    <h3><a href="#">Real House Luxury Villa</a></h3>
-                                    <p class="homes-address mb-3">
-                                        <a href="#">
-                                            <i class="fa fa-map-marker"></i><span>Est St, 77 - Central Park South,
-                                                    NYC</span>
-                                        </a>
-                                    </p>
-                                    <!-- homes List -->
-                                    <ul class="homes-list clearfix">
-                                        <li>
-                                            <i class="fa fa-bed" aria-hidden="true"></i>
-                                            <span>6 Bedrooms</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-bath" aria-hidden="true"></i>
-                                            <span>3 Bathrooms</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-object-group" aria-hidden="true"></i>
-                                            <span>720 sq ft</span>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-warehouse" aria-hidden="true"></i>
-                                            <span>2 Garages</span>
-                                        </li>
-                                    </ul>
-                                    <!-- Price -->
-                                    <div class="price-properties">
-                                        <h3 class="title mt-3">
-                                            <a href="#">$ 230,000</a>
-                                        </h3>
-                                        <div class="compare">
-                                            <a href="#" title="Compare">
-                                                <i class="fas fa-exchange-alt"></i>
-                                            </a>
-                                            <a href="#" title="Share">
-                                                <i class="fas fa-share-alt"></i>
-                                            </a>
-                                            <a href="#" title="Favorites">
-                                                <i class="fa fa-heart-o"></i>
-                                            </a>
+        @foreach($properties as $property)
+            <div class="container">
+                <div class="sec-title">
+                    <h2><span>@lang('front.properties') </span>@lang('front.For Sale')</h2>
+                    <p>Find your dream home from our Sale added properties.</p>
+                </div>
+                <div class="portfolio col-xl-12">
+                    <div class="slick-lancers">
+                        @if($property -> add_to_home == 1 && $property ->  rent_sale == 0 )
+                            <div class="agents-grid">
+                                <div class="landscapes">
+                                    <div class="project-single">
+                                        <div class="project-inner project-head">
+                                            <div class="project-bottom">
+                                                <h4><a href="{{ route('front.properties.show', $property -> id) }}">View Property</a><span class="category">{{ $property -> name }}</span>
+                                                </h4>
+                                            </div>
+                                            <div class="homes">
+                                                <!-- homes img -->
+                                                <a href="#" class="homes-img">
+                                                    @if( $property -> is_featured == 1 )
+                                                        <div class="homes-tag button alt featured">Featured</div>
+                                                    @endif
+                                                    <div class="homes-tag button alt sale">For Sale</div>
+    {{--                                                    <div class="homes-price">Family Home</div>--}}
+                                                    <img src="{{ $property -> image_path }}" alt="{{ $property -> name }}" class="img-responsive">
+                                                </a>
+                                            </div>
+                                            <div class="button-effect">
+                                                <a href="{{ route('front.properties.show' , $property -> id) }}" class="btn"><i class="fa fa-link"></i></a>
+                                                <a href="https://www.youtube.com/watch?v=2xHQqYRcrx4"
+                                                   class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
+                                                <a href="{{ route('front.properties.show' , $property -> id) }}" class="img-poppu btn"><i class="fa fa-photo"></i></a>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="footer">
-                                        <a href="#">
-                                            <i class="fa fa-user"></i> Jhon Doe
-                                        </a>
-                                        <span>
-                                                <i class="fa fa-calendar"></i> 2 months ago
+                                        <!-- homes content -->
+                                        <div class="homes-content">
+                                            <!-- homes address -->
+                                            <h3><a href="{{ route('front.properties.show', $property -> id ) }}">{{ $property -> name }}</a></h3>
+                                            <p class="homes-address mb-3">
+                                                <a href="{{ route('front.properties.show' , $property -> id) }}">
+                                                    <i class="fa fa-map-marker"></i><span>{{ $property -> address }} - {{ $property -> city -> name}}, {{ $property -> country -> name}}</span>
+                                                </a>
+                                            </p>
+                                            <!-- homes List -->
+                                            <ul class="homes-list clearfix">
+                                                <li>
+                                                    <i class="fa fa-bed" aria-hidden="true"></i>
+                                                    <span>{{ $property -> bedrooms }} Bedrooms</span>
+                                                </li>
+                                                <li>
+                                                    <i class="fa fa-bath" aria-hidden="true"></i>
+                                                    <span>{{ $property -> bathrooms }} Bathrooms</span>
+                                                </li>
+                                                <li>
+                                                    <i class="fa fa-object-group" aria-hidden="true"></i>
+                                                    <span>{{ $property -> plot_area }} m sq</span>
+                                                </li>
+                                                <li>
+                                                    <i class="fas fa-warehouse" aria-hidden="true"></i>
+                                                    <span>{{ $property -> garages }} Garages</span>
+                                                </li>
+                                            </ul>
+                                            <!-- Price -->
+                                            <div class="price-properties">
+                                                <h3 class="title mt-3">
+                                                    <a href="{{ route('front.properties.show' , $property -> id) }}">$ {{ $property -> price }}</a>
+                                                </h3>
+                                                <div class="compare">
+                                                    <a href="#" title="Compare">
+                                                        <i class="fas fa-exchange-alt"></i>
+                                                    </a>
+                                                    <a href="#" title="Share">
+                                                        <i class="fas fa-share-alt"></i>
+                                                    </a>
+                                                    <a href="#" title="Favorites">
+                                                        <i class="fa fa-heart-o"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="footer">
+                                                <a href="{{ route('front.agencies.show' , $property -> agency -> id) }}">
+                                                    <i class="fa fa-user"></i> {{ $property -> agency -> name }}
+                                                </a>
+                                                <span>
+                                                <i class="fa fa-calendar"></i> {{ $property -> postedAt() }} Days ago
                                             </span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="agents-grid">
-                        <div class="people">
-                            <div class="project-single">
-                                <div class="project-inner project-head">
-                                    <div class="project-bottom">
-                                        <h4><a href="single-property.html">View Property</a><span class="category">Real Estate</span>
-                                        </h4>
-                                    </div>
-                                    <div class="homes">
-                                        <!-- homes img -->
-                                        <a href="#" class="homes-img">
-                                            <div class="homes-tag button alt featured">Featured</div>
-                                            <div class="homes-tag button alt sale">For Sale</div>
-                                            <div class="homes-price">Family Home</div>
-                                            <img src="{{ asset('public/front') }}/images/feature-properties/fp-2.jpg" alt="home-1"
-                                                 class="img-responsive">
-                                        </a>
-                                    </div>
-                                    <div class="button-effect">
-                                        <a href="#" class="btn"><i class="fa fa-link"></i></a>
-                                        <a href="https://www.youtube.com/watch?v=2xHQqYRcrx4"
-                                           class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
-                                        <a href="#" class="img-poppu btn"><i class="fa fa-photo"></i></a>
-                                    </div>
-                                </div>
-                                <!-- homes content -->
-                                <div class="homes-content">
-                                    <!-- homes address -->
-                                    <h3><a href="#">Real House Luxury Villa</a></h3>
-                                    <p class="homes-address mb-3">
-                                        <a href="#">
-                                            <i class="fa fa-map-marker"></i><span>Est St, 77 - Central Park South,
-                                                    NYC</span>
-                                        </a>
-                                    </p>
-                                    <!-- homes List -->
-                                    <ul class="homes-list clearfix">
-                                        <li>
-                                            <i class="fa fa-bed" aria-hidden="true"></i>
-                                            <span>6 Bedrooms</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-bath" aria-hidden="true"></i>
-                                            <span>3 Bathrooms</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-object-group" aria-hidden="true"></i>
-                                            <span>720 sq ft</span>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-warehouse" aria-hidden="true"></i>
-                                            <span>2 Garages</span>
-                                        </li>
-                                    </ul>
-                                    <!-- Price -->
-                                    <div class="price-properties">
-                                        <h3 class="title mt-3">
-                                            <a href="#">$ 230,000</a>
-                                        </h3>
-                                        <div class="compare">
-                                            <a href="#" title="Compare">
-                                                <i class="fas fa-exchange-alt"></i>
-                                            </a>
-                                            <a href="#" title="Share">
-                                                <i class="fas fa-share-alt"></i>
-                                            </a>
-                                            <a href="#" title="Favorites">
-                                                <i class="fa fa-heart-o"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="footer">
-                                        <a href="#">
-                                            <i class="fa fa-user"></i> Jhon Doe
-                                        </a>
-                                        <span>
-                                                <i class="fa fa-calendar"></i> 2 months ago
-                                            </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="agents-grid">
-                        <div class="people landscapes no-pb pbp-3">
-                            <div class="project-single no-mb mbp-3">
-                                <div class="project-inner project-head">
-                                    <div class="project-bottom">
-                                        <h4><a href="single-property.html">View Property</a><span class="category">Real Estate</span>
-                                        </h4>
-                                    </div>
-                                    <div class="homes">
-                                        <!-- homes img -->
-                                        <a href="#" class="homes-img">
-                                            <div class="homes-tag button alt featured">Featured</div>
-                                            <div class="homes-tag button alt sale">For Sale</div>
-                                            <div class="homes-price">Family Home</div>
-                                            <img src="{{ asset('public/front') }}/images/feature-properties/fp-3.jpg" alt="home-1"
-                                                 class="img-responsive">
-                                        </a>
-                                    </div>
-                                    <div class="button-effect">
-                                        <a href="#" class="btn"><i class="fa fa-link"></i></a>
-                                        <a href="https://www.youtube.com/watch?v=2xHQqYRcrx4"
-                                           class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
-                                        <a href="#" class="img-poppu btn"><i class="fa fa-photo"></i></a>
-                                    </div>
-                                </div>
-                                <!-- homes content -->
-                                <div class="homes-content">
-                                    <!-- homes address -->
-                                    <h3><a href="#">Real House Luxury Villa</a></h3>
-                                    <p class="homes-address mb-3">
-                                        <a href="#">
-                                            <i class="fa fa-map-marker"></i><span>Est St, 77 - Central Park South,
-                                                    NYC</span>
-                                        </a>
-                                    </p>
-                                    <!-- homes List -->
-                                    <ul class="homes-list clearfix">
-                                        <li>
-                                            <i class="fa fa-bed" aria-hidden="true"></i>
-                                            <span>6 Bedrooms</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-bath" aria-hidden="true"></i>
-                                            <span>3 Bathrooms</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-object-group" aria-hidden="true"></i>
-                                            <span>720 sq ft</span>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-warehouse" aria-hidden="true"></i>
-                                            <span>2 Garages</span>
-                                        </li>
-                                    </ul>
-                                    <!-- Price -->
-                                    <div class="price-properties">
-                                        <h3 class="title mt-3">
-                                            <a href="#">$ 230,000</a>
-                                        </h3>
-                                        <div class="compare">
-                                            <a href="#" title="Compare">
-                                                <i class="fas fa-exchange-alt"></i>
-                                            </a>
-                                            <a href="#" title="Share">
-                                                <i class="fas fa-share-alt"></i>
-                                            </a>
-                                            <a href="#" title="Favorites">
-                                                <i class="fa fa-heart-o"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="footer">
-                                        <a href="#">
-                                            <i class="fa fa-user"></i> Jhon Doe
-                                        </a>
-                                        <span>
-                                                <i class="fa fa-calendar"></i> 2 months ago
-                                            </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="agents-grid">
-                        <div class="landscapes">
-                            <div class="project-single no-mb">
-                                <div class="project-inner project-head">
-                                    <div class="project-bottom">
-                                        <h4><a href="single-property.html">View Property</a><span class="category">Real Estate</span>
-                                        </h4>
-                                    </div>
-                                    <div class="homes">
-                                        <!-- homes img -->
-                                        <a href="#" class="homes-img">
-                                            <div class="homes-tag button alt featured">Featured</div>
-                                            <div class="homes-tag button alt sale">For Sale</div>
-                                            <div class="homes-price">Family Home</div>
-                                            <img src="{{ asset('public/front') }}/images/feature-properties/fp-4.jpg" alt="home-1"
-                                                 class="img-responsive">
-                                        </a>
-                                    </div>
-                                    <div class="button-effect">
-                                        <a href="#" class="btn"><i class="fa fa-link"></i></a>
-                                        <a href="https://www.youtube.com/watch?v=2xHQqYRcrx4"
-                                           class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
-                                        <a href="#" class="img-poppu btn"><i class="fa fa-photo"></i></a>
-                                    </div>
-                                </div>
-                                <!-- homes content -->
-                                <div class="homes-content">
-                                    <!-- homes address -->
-                                    <h3><a href="#">Real House Luxury Villa</a></h3>
-                                    <p class="homes-address mb-3">
-                                        <a href="#">
-                                            <i class="fa fa-map-marker"></i><span>Est St, 77 - Central Park South,
-                                                    NYC</span>
-                                        </a>
-                                    </p>
-                                    <!-- homes List -->
-                                    <ul class="homes-list clearfix">
-                                        <li>
-                                            <i class="fa fa-bed" aria-hidden="true"></i>
-                                            <span>6 Bedrooms</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-bath" aria-hidden="true"></i>
-                                            <span>3 Bathrooms</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-object-group" aria-hidden="true"></i>
-                                            <span>720 sq ft</span>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-warehouse" aria-hidden="true"></i>
-                                            <span>2 Garages</span>
-                                        </li>
-                                    </ul>
-                                    <!-- Price -->
-                                    <div class="price-properties">
-                                        <h3 class="title mt-3">
-                                            <a href="#">$ 230,000</a>
-                                        </h3>
-                                        <div class="compare">
-                                            <a href="#" title="Compare">
-                                                <i class="fas fa-exchange-alt"></i>
-                                            </a>
-                                            <a href="#" title="Share">
-                                                <i class="fas fa-share-alt"></i>
-                                            </a>
-                                            <a href="#" title="Favorites">
-                                                <i class="fa fa-heart-o"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="footer">
-                                        <a href="#">
-                                            <i class="fa fa-user"></i> Jhon Doe
-                                        </a>
-                                        <span>
-                                                <i class="fa fa-calendar"></i> 2 months ago
-                                            </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="agents-grid">
-                        <div class="people">
-                            <div class="project-single no-mb">
-                                <div class="project-inner project-head">
-                                    <div class="project-bottom">
-                                        <h4><a href="single-property.html">View Property</a><span class="category">Real Estate</span>
-                                        </h4>
-                                    </div>
-                                    <div class="homes">
-                                        <!-- homes img -->
-                                        <a href="#" class="homes-img">
-                                            <div class="homes-tag button alt featured">Featured</div>
-                                            <div class="homes-tag button alt sale">For Sale</div>
-                                            <div class="homes-price">Family Home</div>
-                                            <img src="{{ asset('public/front') }}/images/feature-properties/fp-5.jpg" alt="home-1"
-                                                 class="img-responsive">
-                                        </a>
-                                    </div>
-                                    <div class="button-effect">
-                                        <a href="#" class="btn"><i class="fa fa-link"></i></a>
-                                        <a href="https://www.youtube.com/watch?v=2xHQqYRcrx4"
-                                           class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
-                                        <a href="#" class="img-poppu btn"><i class="fa fa-photo"></i></a>
-                                    </div>
-                                </div>
-                                <!-- homes content -->
-                                <div class="homes-content">
-                                    <!-- homes address -->
-                                    <h3><a href="#">Real House Luxury Villa</a></h3>
-                                    <p class="homes-address mb-3">
-                                        <a href="#">
-                                            <i class="fa fa-map-marker"></i><span>Est St, 77 - Central Park South,
-                                                    NYC</span>
-                                        </a>
-                                    </p>
-                                    <!-- homes List -->
-                                    <ul class="homes-list clearfix">
-                                        <li>
-                                            <i class="fa fa-bed" aria-hidden="true"></i>
-                                            <span>6 Bedrooms</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-bath" aria-hidden="true"></i>
-                                            <span>3 Bathrooms</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-object-group" aria-hidden="true"></i>
-                                            <span>720 sq ft</span>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-warehouse" aria-hidden="true"></i>
-                                            <span>2 Garages</span>
-                                        </li>
-                                    </ul>
-                                    <!-- Price -->
-                                    <div class="price-properties">
-                                        <h3 class="title mt-3">
-                                            <a href="#">$ 230,000</a>
-                                        </h3>
-                                        <div class="compare">
-                                            <a href="#" title="Compare">
-                                                <i class="fas fa-exchange-alt"></i>
-                                            </a>
-                                            <a href="#" title="Share">
-                                                <i class="fas fa-share-alt"></i>
-                                            </a>
-                                            <a href="#" title="Favorites">
-                                                <i class="fa fa-heart-o"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="footer">
-                                        <a href="#">
-                                            <i class="fa fa-user"></i> Jhon Doe
-                                        </a>
-                                        <span>
-                                                <i class="fa fa-calendar"></i> 2 months ago
-                                            </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="agents-grid">
-                        <div class="people landscapes no-pb pbp-3">
-                            <div class="project-single no-mb">
-                                <div class="project-inner project-head">
-                                    <div class="project-bottom">
-                                        <h4><a href="single-property.html">View Property</a><span class="category">Real Estate</span>
-                                        </h4>
-                                    </div>
-                                    <div class="homes">
-                                        <!-- homes img -->
-                                        <a href="#" class="homes-img">
-                                            <div class="homes-tag button alt featured">Featured</div>
-                                            <div class="homes-tag button alt sale">For Sale</div>
-                                            <div class="homes-price">Family Home</div>
-                                            <img src="{{ asset('public/front') }}/images/feature-properties/fp-6.jpg" alt="home-1"
-                                                 class="img-responsive">
-                                        </a>
-                                    </div>
-                                    <div class="button-effect">
-                                        <a href="#" class="btn"><i class="fa fa-link"></i></a>
-                                        <a href="https://www.youtube.com/watch?v=2xHQqYRcrx4"
-                                           class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
-                                        <a href="#" class="img-poppu btn"><i class="fa fa-photo"></i></a>
-                                    </div>
-                                </div>
-                                <!-- homes content -->
-                                <div class="homes-content">
-                                    <!-- homes address -->
-                                    <h3><a href="#">Real House Luxury Villa</a></h3>
-                                    <p class="homes-address mb-3">
-                                        <a href="#">
-                                            <i class="fa fa-map-marker"></i><span>Est St, 77 - Central Park South,
-                                                    NYC</span>
-                                        </a>
-                                    </p>
-                                    <!-- homes List -->
-                                    <ul class="homes-list clearfix">
-                                        <li>
-                                            <i class="fa fa-bed" aria-hidden="true"></i>
-                                            <span>6 Bedrooms</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-bath" aria-hidden="true"></i>
-                                            <span>3 Bathrooms</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-object-group" aria-hidden="true"></i>
-                                            <span>720 sq ft</span>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-warehouse" aria-hidden="true"></i>
-                                            <span>2 Garages</span>
-                                        </li>
-                                    </ul>
-                                    <!-- Price -->
-                                    <div class="price-properties">
-                                        <h3 class="title mt-3">
-                                            <a href="#">$ 230,000</a>
-                                        </h3>
-                                        <div class="compare">
-                                            <a href="#" title="Compare">
-                                                <i class="fas fa-exchange-alt"></i>
-                                            </a>
-                                            <a href="#" title="Share">
-                                                <i class="fas fa-share-alt"></i>
-                                            </a>
-                                            <a href="#" title="Favorites">
-                                                <i class="fa fa-heart-o"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="footer">
-                                        <a href="#">
-                                            <i class="fa fa-user"></i> Jhon Doe
-                                        </a>
-                                        <span>
-                                                <i class="fa fa-calendar"></i> 2 months ago
-                                            </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @endif
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="bg-all">
-            <a href="properties.html" class="btn btn-outline-light">View All</a>
-        </div>
+            <div class="bg-all">
+                <a href="{{ route('front.properties.index' , ['rent_sale' => 0]) }}" class="btn btn-outline-light">View All</a>
+            </div>
+        @endforeach
     </section>
     <!-- END SECTION PROPERTIES FOR SALE -->
 
     <!-- START SECTION PROPERTIES FOR RENT -->
     <section class="recently portfolio home18">
-        <div class="container">
-            <div class="sec-title">
-                <h2><span>Properties </span>For Rent</h2>
-                <p>Find your dream home from our Rent added properties.</p>
-            </div>
-            <div class="portfolio col-xl-12">
-                <div class="slick-lancers">
-                    <div class="agents-grid">
-                        <div class="landscapes">
-                            <div class="project-single">
-                                <div class="project-inner project-head">
-                                    <div class="project-bottom">
-                                        <h4><a href="single-property.html">View Property</a><span class="category">Real Estate</span>
-                                        </h4>
-                                    </div>
-                                    <div class="homes">
-                                        <!-- homes img -->
-                                        <a href="#" class="homes-img">
-                                            <div class="homes-tag button alt featured">Featured</div>
-                                            <div class="homes-tag button sale rent">For Rent</div>
-                                            <div class="homes-price">Family Home</div>
-                                            <img src="{{ asset('public/front') }}/images/feature-properties/fp-1.jpg" alt="home-1"
-                                                 class="img-responsive">
-                                        </a>
-                                    </div>
-                                    <div class="button-effect">
-                                        <a href="#" class="btn"><i class="fa fa-link"></i></a>
-                                        <a href="https://www.youtube.com/watch?v=2xHQqYRcrx4"
-                                           class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
-                                        <a href="#" class="img-poppu btn"><i class="fa fa-photo"></i></a>
-                                    </div>
-                                </div>
-                                <!-- homes content -->
-                                <div class="homes-content">
-                                    <!-- homes address -->
-                                    <h3><a href="#">Real House Luxury Villa</a></h3>
-                                    <p class="homes-address mb-3">
-                                        <a href="#">
-                                            <i class="fa fa-map-marker"></i><span>Est St, 77 - Central Park South,
-                                                    NYC</span>
-                                        </a>
-                                    </p>
-                                    <!-- homes List -->
-                                    <ul class="homes-list clearfix">
-                                        <li>
-                                            <i class="fa fa-bed" aria-hidden="true"></i>
-                                            <span>6 Bedrooms</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-bath" aria-hidden="true"></i>
-                                            <span>3 Bathrooms</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-object-group" aria-hidden="true"></i>
-                                            <span>720 sq ft</span>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-warehouse" aria-hidden="true"></i>
-                                            <span>2 Garages</span>
-                                        </li>
-                                    </ul>
-                                    <!-- Price -->
-                                    <div class="price-properties">
-                                        <h3 class="title mt-3">
-                                            <a href="#">$ 230,000</a>
-                                        </h3>
-                                        <div class="compare">
-                                            <a href="#" title="Compare">
-                                                <i class="fas fa-exchange-alt"></i>
-                                            </a>
-                                            <a href="#" title="Share">
-                                                <i class="fas fa-share-alt"></i>
-                                            </a>
-                                            <a href="#" title="Favorites">
-                                                <i class="fa fa-heart-o"></i>
-                                            </a>
+        @foreach($properties as $property)
+            <div class="container">
+                <div class="sec-title">
+                    <h2><span>Properties </span>For Rent</h2>
+                    <p>Find your dream home from our Rent added properties.</p>
+                </div>
+                <div class="portfolio col-xl-12">
+                    <div class="slick-lancers">
+                        @if($property -> add_to_home == 1 && $property ->  rent_sale == 1 )
+                            <div class="agents-grid">
+                                <div class="landscapes">
+                                    <div class="project-single">
+                                        <div class="project-inner project-head">
+                                            <div class="project-bottom">
+                                                <h4><a href="{{ route('front.properties.show', $property -> id) }}">View Property</a><span class="category">{{ $property -> name }}</span>
+                                                </h4>
+                                            </div>
+                                            <div class="homes">
+                                                <!-- homes img -->
+                                                <a href="#" class="homes-img">
+                                                    @if( $property -> is_featured == 1 )
+                                                        <div class="homes-tag button alt featured">Featured</div>
+                                                    @endif
+                                                        <div class="homes-tag button sale rent">For Rent</div>
+                                                    {{--                                                    <div class="homes-price">Family Home</div>--}}
+                                                    <img src="{{ $property -> image_path }}" alt="{{ $property -> name }}" class="img-responsive">
+                                                </a>
+                                            </div>
+                                            <div class="button-effect">
+                                                <a href="{{ route('front.properties.show' , $property -> id) }}" class="btn"><i class="fa fa-link"></i></a>
+                                                <a href="https://www.youtube.com/watch?v=2xHQqYRcrx4"
+                                                   class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
+                                                <a href="{{ route('front.properties.show' , $property -> id) }}" class="img-poppu btn"><i class="fa fa-photo"></i></a>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="footer">
-                                        <a href="#">
-                                            <i class="fa fa-user"></i> Jhon Doe
-                                        </a>
-                                        <span>
-                                                <i class="fa fa-calendar"></i> 2 months ago
+                                        <!-- homes content -->
+                                        <div class="homes-content">
+                                            <!-- homes address -->
+                                            <h3><a href="{{ route('front.properties.show', $property -> id ) }}">{{ $property -> name }}</a></h3>
+                                            <p class="homes-address mb-3">
+                                                <a href="{{ route('front.properties.show' , $property -> id) }}">
+                                                    <i class="fa fa-map-marker"></i><span>{{ $property -> address }} - {{ $property -> city -> name}}, {{ $property -> country -> name}}</span>
+                                                </a>
+                                            </p>
+                                            <!-- homes List -->
+                                            <ul class="homes-list clearfix">
+                                                <li>
+                                                    <i class="fa fa-bed" aria-hidden="true"></i>
+                                                    <span>{{ $property -> bedrooms }} Bedrooms</span>
+                                                </li>
+                                                <li>
+                                                    <i class="fa fa-bath" aria-hidden="true"></i>
+                                                    <span>{{ $property -> bathrooms }} Bathrooms</span>
+                                                </li>
+                                                <li>
+                                                    <i class="fa fa-object-group" aria-hidden="true"></i>
+                                                    <span>{{ $property -> plot_area }} m sq</span>
+                                                </li>
+                                                <li>
+                                                    <i class="fas fa-warehouse" aria-hidden="true"></i>
+                                                    <span>{{ $property -> garages }} Garages</span>
+                                                </li>
+                                            </ul>
+                                            <!-- Price -->
+                                            <div class="price-properties">
+                                                <h3 class="title mt-3">
+                                                    <a href="{{ route('front.properties.show' , $property -> id) }}">$ {{ $property -> price }}</a>
+                                                </h3>
+                                                <div class="compare">
+                                                    <a href="#" title="Compare">
+                                                        <i class="fas fa-exchange-alt"></i>
+                                                    </a>
+                                                    <a href="#" title="Share">
+                                                        <i class="fas fa-share-alt"></i>
+                                                    </a>
+                                                    <a href="#" title="Favorites">
+                                                        <i class="fa fa-heart-o"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="footer">
+                                                <a href="{{ route('front.agencies.show' , $property -> agency -> id) }}">
+                                                    <i class="fa fa-user"></i> {{ $property -> agency -> name }}
+                                                </a>
+                                                <span>
+                                                <i class="fa fa-calendar"></i> {{ $property -> postedAt() }} Days ago
                                             </span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="agents-grid">
-                        <div class="people">
-                            <div class="project-single">
-                                <div class="project-inner project-head">
-                                    <div class="project-bottom">
-                                        <h4><a href="single-property.html">View Property</a><span class="category">Real Estate</span>
-                                        </h4>
-                                    </div>
-                                    <div class="homes">
-                                        <!-- homes img -->
-                                        <a href="#" class="homes-img">
-                                            <div class="homes-tag button alt featured">Featured</div>
-                                            <div class="homes-tag button sale rent">For Rent</div>
-                                            <div class="homes-price">Family Home</div>
-                                            <img src="{{ asset('public/front') }}/images/feature-properties/fp-2.jpg" alt="home-1"
-                                                 class="img-responsive">
-                                        </a>
-                                    </div>
-                                    <div class="button-effect">
-                                        <a href="#" class="btn"><i class="fa fa-link"></i></a>
-                                        <a href="https://www.youtube.com/watch?v=2xHQqYRcrx4"
-                                           class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
-                                        <a href="#" class="img-poppu btn"><i class="fa fa-photo"></i></a>
-                                    </div>
-                                </div>
-                                <!-- homes content -->
-                                <div class="homes-content">
-                                    <!-- homes address -->
-                                    <h3><a href="#">Real House Luxury Villa</a></h3>
-                                    <p class="homes-address mb-3">
-                                        <a href="#">
-                                            <i class="fa fa-map-marker"></i><span>Est St, 77 - Central Park South,
-                                                    NYC</span>
-                                        </a>
-                                    </p>
-                                    <!-- homes List -->
-                                    <ul class="homes-list clearfix">
-                                        <li>
-                                            <i class="fa fa-bed" aria-hidden="true"></i>
-                                            <span>6 Bedrooms</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-bath" aria-hidden="true"></i>
-                                            <span>3 Bathrooms</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-object-group" aria-hidden="true"></i>
-                                            <span>720 sq ft</span>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-warehouse" aria-hidden="true"></i>
-                                            <span>2 Garages</span>
-                                        </li>
-                                    </ul>
-                                    <!-- Price -->
-                                    <div class="price-properties">
-                                        <h3 class="title mt-3">
-                                            <a href="#">$ 230,000</a>
-                                        </h3>
-                                        <div class="compare">
-                                            <a href="#" title="Compare">
-                                                <i class="fas fa-exchange-alt"></i>
-                                            </a>
-                                            <a href="#" title="Share">
-                                                <i class="fas fa-share-alt"></i>
-                                            </a>
-                                            <a href="#" title="Favorites">
-                                                <i class="fa fa-heart-o"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="footer">
-                                        <a href="#">
-                                            <i class="fa fa-user"></i> Jhon Doe
-                                        </a>
-                                        <span>
-                                                <i class="fa fa-calendar"></i> 2 months ago
-                                            </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="agents-grid">
-                        <div class="people landscapes no-pb pbp-3">
-                            <div class="project-single no-mb mbp-3">
-                                <div class="project-inner project-head">
-                                    <div class="project-bottom">
-                                        <h4><a href="single-property.html">View Property</a><span class="category">Real Estate</span>
-                                        </h4>
-                                    </div>
-                                    <div class="homes">
-                                        <!-- homes img -->
-                                        <a href="#" class="homes-img">
-                                            <div class="homes-tag button alt featured">Featured</div>
-                                            <div class="homes-tag button sale rent">For Rent</div>
-                                            <div class="homes-price">Family Home</div>
-                                            <img src="{{ asset('public/front') }}/images/feature-properties/fp-3.jpg" alt="home-1"
-                                                 class="img-responsive">
-                                        </a>
-                                    </div>
-                                    <div class="button-effect">
-                                        <a href="#" class="btn"><i class="fa fa-link"></i></a>
-                                        <a href="https://www.youtube.com/watch?v=2xHQqYRcrx4"
-                                           class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
-                                        <a href="#" class="img-poppu btn"><i class="fa fa-photo"></i></a>
-                                    </div>
-                                </div>
-                                <!-- homes content -->
-                                <div class="homes-content">
-                                    <!-- homes address -->
-                                    <h3><a href="#">Real House Luxury Villa</a></h3>
-                                    <p class="homes-address mb-3">
-                                        <a href="#">
-                                            <i class="fa fa-map-marker"></i><span>Est St, 77 - Central Park South,
-                                                    NYC</span>
-                                        </a>
-                                    </p>
-                                    <!-- homes List -->
-                                    <ul class="homes-list clearfix">
-                                        <li>
-                                            <i class="fa fa-bed" aria-hidden="true"></i>
-                                            <span>6 Bedrooms</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-bath" aria-hidden="true"></i>
-                                            <span>3 Bathrooms</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-object-group" aria-hidden="true"></i>
-                                            <span>720 sq ft</span>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-warehouse" aria-hidden="true"></i>
-                                            <span>2 Garages</span>
-                                        </li>
-                                    </ul>
-                                    <!-- Price -->
-                                    <div class="price-properties">
-                                        <h3 class="title mt-3">
-                                            <a href="#">$ 230,000</a>
-                                        </h3>
-                                        <div class="compare">
-                                            <a href="#" title="Compare">
-                                                <i class="fas fa-exchange-alt"></i>
-                                            </a>
-                                            <a href="#" title="Share">
-                                                <i class="fas fa-share-alt"></i>
-                                            </a>
-                                            <a href="#" title="Favorites">
-                                                <i class="fa fa-heart-o"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="footer">
-                                        <a href="#">
-                                            <i class="fa fa-user"></i> Jhon Doe
-                                        </a>
-                                        <span>
-                                                <i class="fa fa-calendar"></i> 2 months ago
-                                            </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="agents-grid">
-                        <div class="landscapes">
-                            <div class="project-single no-mb">
-                                <div class="project-inner project-head">
-                                    <div class="project-bottom">
-                                        <h4><a href="single-property.html">View Property</a><span class="category">Real Estate</span>
-                                        </h4>
-                                    </div>
-                                    <div class="homes">
-                                        <!-- homes img -->
-                                        <a href="#" class="homes-img">
-                                            <div class="homes-tag button alt featured">Featured</div>
-                                            <div class="homes-tag button sale rent">For Rent</div>
-                                            <div class="homes-price">Family Home</div>
-                                            <img src="{{ asset('public/front') }}/images/feature-properties/fp-4.jpg" alt="home-1"
-                                                 class="img-responsive">
-                                        </a>
-                                    </div>
-                                    <div class="button-effect">
-                                        <a href="#" class="btn"><i class="fa fa-link"></i></a>
-                                        <a href="https://www.youtube.com/watch?v=2xHQqYRcrx4"
-                                           class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
-                                        <a href="#" class="img-poppu btn"><i class="fa fa-photo"></i></a>
-                                    </div>
-                                </div>
-                                <!-- homes content -->
-                                <div class="homes-content">
-                                    <!-- homes address -->
-                                    <h3><a href="#">Real House Luxury Villa</a></h3>
-                                    <p class="homes-address mb-3">
-                                        <a href="#">
-                                            <i class="fa fa-map-marker"></i><span>Est St, 77 - Central Park South,
-                                                    NYC</span>
-                                        </a>
-                                    </p>
-                                    <!-- homes List -->
-                                    <ul class="homes-list clearfix">
-                                        <li>
-                                            <i class="fa fa-bed" aria-hidden="true"></i>
-                                            <span>6 Bedrooms</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-bath" aria-hidden="true"></i>
-                                            <span>3 Bathrooms</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-object-group" aria-hidden="true"></i>
-                                            <span>720 sq ft</span>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-warehouse" aria-hidden="true"></i>
-                                            <span>2 Garages</span>
-                                        </li>
-                                    </ul>
-                                    <!-- Price -->
-                                    <div class="price-properties">
-                                        <h3 class="title mt-3">
-                                            <a href="#">$ 230,000</a>
-                                        </h3>
-                                        <div class="compare">
-                                            <a href="#" title="Compare">
-                                                <i class="fas fa-exchange-alt"></i>
-                                            </a>
-                                            <a href="#" title="Share">
-                                                <i class="fas fa-share-alt"></i>
-                                            </a>
-                                            <a href="#" title="Favorites">
-                                                <i class="fa fa-heart-o"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="footer">
-                                        <a href="#">
-                                            <i class="fa fa-user"></i> Jhon Doe
-                                        </a>
-                                        <span>
-                                                <i class="fa fa-calendar"></i> 2 months ago
-                                            </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="agents-grid">
-                        <div class="people">
-                            <div class="project-single no-mb">
-                                <div class="project-inner project-head">
-                                    <div class="project-bottom">
-                                        <h4><a href="single-property.html">View Property</a><span class="category">Real Estate</span>
-                                        </h4>
-                                    </div>
-                                    <div class="homes">
-                                        <!-- homes img -->
-                                        <a href="#" class="homes-img">
-                                            <div class="homes-tag button alt featured">Featured</div>
-                                            <div class="homes-tag button sale rent">For Rent</div>
-                                            <div class="homes-price">Family Home</div>
-                                            <img src="{{ asset('public/front') }}/images/feature-properties/fp-5.jpg" alt="home-1"
-                                                 class="img-responsive">
-                                        </a>
-                                    </div>
-                                    <div class="button-effect">
-                                        <a href="#" class="btn"><i class="fa fa-link"></i></a>
-                                        <a href="https://www.youtube.com/watch?v=2xHQqYRcrx4"
-                                           class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
-                                        <a href="#" class="img-poppu btn"><i class="fa fa-photo"></i></a>
-                                    </div>
-                                </div>
-                                <!-- homes content -->
-                                <div class="homes-content">
-                                    <!-- homes address -->
-                                    <h3><a href="#">Real House Luxury Villa</a></h3>
-                                    <p class="homes-address mb-3">
-                                        <a href="#">
-                                            <i class="fa fa-map-marker"></i><span>Est St, 77 - Central Park South,
-                                                    NYC</span>
-                                        </a>
-                                    </p>
-                                    <!-- homes List -->
-                                    <ul class="homes-list clearfix">
-                                        <li>
-                                            <i class="fa fa-bed" aria-hidden="true"></i>
-                                            <span>6 Bedrooms</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-bath" aria-hidden="true"></i>
-                                            <span>3 Bathrooms</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-object-group" aria-hidden="true"></i>
-                                            <span>720 sq ft</span>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-warehouse" aria-hidden="true"></i>
-                                            <span>2 Garages</span>
-                                        </li>
-                                    </ul>
-                                    <!-- Price -->
-                                    <div class="price-properties">
-                                        <h3 class="title mt-3">
-                                            <a href="#">$ 230,000</a>
-                                        </h3>
-                                        <div class="compare">
-                                            <a href="#" title="Compare">
-                                                <i class="fas fa-exchange-alt"></i>
-                                            </a>
-                                            <a href="#" title="Share">
-                                                <i class="fas fa-share-alt"></i>
-                                            </a>
-                                            <a href="#" title="Favorites">
-                                                <i class="fa fa-heart-o"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="footer">
-                                        <a href="#">
-                                            <i class="fa fa-user"></i> Jhon Doe
-                                        </a>
-                                        <span>
-                                                <i class="fa fa-calendar"></i> 2 months ago
-                                            </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="agents-grid">
-                        <div class="people landscapes no-pb pbp-3">
-                            <div class="project-single no-mb">
-                                <div class="project-inner project-head">
-                                    <div class="project-bottom">
-                                        <h4><a href="single-property.html">View Property</a><span class="category">Real Estate</span>
-                                        </h4>
-                                    </div>
-                                    <div class="homes">
-                                        <!-- homes img -->
-                                        <a href="#" class="homes-img">
-                                            <div class="homes-tag button alt featured">Featured</div>
-                                            <div class="homes-tag button sale rent">For Rent</div>
-                                            <div class="homes-price">Family Home</div>
-                                            <img src="{{ asset('public/front') }}/images/feature-properties/fp-6.jpg" alt="home-1"
-                                                 class="img-responsive">
-                                        </a>
-                                    </div>
-                                    <div class="button-effect">
-                                        <a href="#" class="btn"><i class="fa fa-link"></i></a>
-                                        <a href="https://www.youtube.com/watch?v=2xHQqYRcrx4"
-                                           class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
-                                        <a href="#" class="img-poppu btn"><i class="fa fa-photo"></i></a>
-                                    </div>
-                                </div>
-                                <!-- homes content -->
-                                <div class="homes-content">
-                                    <!-- homes address -->
-                                    <h3><a href="#">Real House Luxury Villa</a></h3>
-                                    <p class="homes-address mb-3">
-                                        <a href="#">
-                                            <i class="fa fa-map-marker"></i><span>Est St, 77 - Central Park South,
-                                                    NYC</span>
-                                        </a>
-                                    </p>
-                                    <!-- homes List -->
-                                    <ul class="homes-list clearfix">
-                                        <li>
-                                            <i class="fa fa-bed" aria-hidden="true"></i>
-                                            <span>6 Bedrooms</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-bath" aria-hidden="true"></i>
-                                            <span>3 Bathrooms</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-object-group" aria-hidden="true"></i>
-                                            <span>720 sq ft</span>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-warehouse" aria-hidden="true"></i>
-                                            <span>2 Garages</span>
-                                        </li>
-                                    </ul>
-                                    <!-- Price -->
-                                    <div class="price-properties">
-                                        <h3 class="title mt-3">
-                                            <a href="#">$ 230,000</a>
-                                        </h3>
-                                        <div class="compare">
-                                            <a href="#" title="Compare">
-                                                <i class="fas fa-exchange-alt"></i>
-                                            </a>
-                                            <a href="#" title="Share">
-                                                <i class="fas fa-share-alt"></i>
-                                            </a>
-                                            <a href="#" title="Favorites">
-                                                <i class="fa fa-heart-o"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="footer">
-                                        <a href="#">
-                                            <i class="fa fa-user"></i> Jhon Doe
-                                        </a>
-                                        <span>
-                                                <i class="fa fa-calendar"></i> 2 months ago
-                                            </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @endif
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="bg-all">
-            <a href="properties.html" class="btn btn-outline-light">View All</a>
-        </div>
+            <div class="bg-all">
+                <a href="{{ route('front.properties.index' , ['rent_sale' => 1]) }}" class="btn btn-outline-light">View All</a>
+            </div>
+        @endforeach
     </section>
+
     <!-- END SECTION PROPERTIES FOR RENT -->
 
     <!-- START SECTION WHY CHOOSE US -->

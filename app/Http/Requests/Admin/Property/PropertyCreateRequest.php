@@ -38,9 +38,9 @@ class PropertyCreateRequest extends FormRequest
 
         foreach (config('translatable.locales') as $locale) {
             $rules += [
-                $locale . '.name' => ['required_without:id', Rule::unique('property_translations', 'name')->ignore($this->id, 'property_id')],
-                // $locale . '.description' => 'required',
+                $locale . '.name' => ['required', Rule::unique('feature_translations', 'name')],
             ];
+
         } // end of for each
 
         return $rules;

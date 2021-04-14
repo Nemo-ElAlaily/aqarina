@@ -44,7 +44,7 @@
                         <div class="col-sm-12 col-lg-12">
                             <div class="form-group">
                             <label for="country">Country</label>
-                            @error('country')
+                            @error('country_id')
                             <span class="text-danger mx-5">{{ $message }}</span>
                             @enderror
                             <select name="country_id" class="form-control">

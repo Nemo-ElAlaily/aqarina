@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\PropertyType\PropertyTypeCreateRequest;
+use App\Http\Requests\Admin\PropertyType\PropertyTypeUpdateRequest;
 use App\Models\Admin\PropertyType;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -32,57 +34,85 @@ class PropertyTypeController extends Controller
         return view('admin.property_types.create');
 
     } // end of create
-    public function store(Request $request)
+    public function store(PropertyTypeCreateRequest $request)
     {
-        // validation
-        $rules = [];
-        foreach (config('translatable.locales') as $locale) {
-            $rules += [$locale . '.name' => ['required', Rule::unique('property_type_translations', 'name')]];
-        } // end of for each
+        try {
+            PropertyType::create($request->all());
 
-        // custom validation message
-        $request->validate($rules,
-            [
-                'required' => 'This Field is Required',
-            ]);// end of validation
+            session()->flash('success', 'Property Type Added Successfully');
+            return redirect()->route('admin.property_types.index');
+        } catch(\Exception $exception) {
 
-        // create Feature in the database
-        PropertyType::create($request->all());
-        // return to index with success message
-        session()->flash('success', 'Property Type Added Successfully');
-        return redirect()->route('admin.property_types.index');
+            session()->flash('error', 'Something Went Wrong, Please Contact Administrator');
+            return redirect()->route('admin.property_types.index');
+
+        } // end of try -> catch
+
     } // end of store
 
-    public function edit(PropertyType $propertyType)
+    public function edit($id)
     {
-        return view('admin.property_types.edit', compact('propertyType'));
+        try {
+            $propertyType = PropertyType::find($id);
+            if(!$propertyType) {
+                session()->flash('error', "Type Doesn't Exist or has been deleted");
+                return redirect()->route('admin.property_types.index');
+            }
+            return view('admin.property_types.edit', compact('propertyType'));
+
+        } catch(\Exception $exception) {
+
+            session()->flash('error', 'Something Went Wrong, Please Contact Administrator');
+            return redirect()->route('admin.property_types.index');
+
+        } // end of try -> catch
 
     } // end of edit
 
-    public function update(Request $request, PropertyType $propertyType)
+    public function update(PropertyTypeUpdateRequest $request, $id)
     {
-        // validation
-        $rules = [];
-        foreach (config('translatable.locales') as $locale) {
-            $rules += [$locale . '.name' => ['required', Rule::unique('property_type_translations', 'name')->ignore($propertyType->id, 'property_type_id')]];
-        }//end of for each
-        $request->validate($rules, [
-            'required' => 'This Field is Required',
-        ]); // end of validation
+        try {
+            $propertyType = PropertyType::find($id);
+            if(!$propertyType) {
+                session()->flash('error', "Type Doesn't Exist or has been deleted");
+                return redirect()->route('admin.property_types.index');
+            }
 
-        // update feature in database
-        $propertyType -> update($request -> all());
-        session()->flash('success', 'Property Type Updated Successfully');
-        return redirect()->route('admin.property_types.index');
+            $propertyType -> update($request -> all());
+
+            session()->flash('success', 'Property Type Updated Successfully');
+            return redirect()->route('admin.property_types.index');
+
+        } catch(\Exception $exception) {
+
+            session()->flash('error', 'Something Went Wrong, Please Contact Administrator');
+            return redirect()->route('admin.property_types.index');
+
+        } // end of try -> catch
 
     } // end of update
 
-    public function destroy(PropertyType $propertyType)
+    public function destroy($id)
     {
-        $propertyType -> deleteTranslations();
-        $propertyType -> delete();
-        session()->flash('success', 'Property Type Deleted Successfully');
-        return redirect()->route('admin.property_types.index');
+        try {
+            $propertyType = PropertyType::find($id);
+            if(!$propertyType) {
+                session()->flash('error', "Type Doesn't Exist or has been deleted");
+                return redirect()->route('admin.property_types.index');
+            }
+
+            $propertyType -> deleteTranslations();
+            $propertyType -> delete();
+
+            session()->flash('success', 'Property Type Deleted Successfully');
+            return redirect()->route('admin.property_types.index');
+
+        } catch(\Exception $exception) {
+
+            session()->flash('error', 'Something Went Wrong, Please Contact Administrator');
+            return redirect()->route('admin.property_types.index');
+
+        } // end of try -> catch
 
     } // end of destroy
 

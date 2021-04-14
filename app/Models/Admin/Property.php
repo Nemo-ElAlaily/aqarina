@@ -52,7 +52,7 @@ class Property extends Model implements TranslatableContract
 
     public function postedAt()
     {
-        return Carbon::now()->diffForHumans($this-> created_at);
+        return Carbon::now()->diffInDays($this-> created_at);
     } // end of get postedAt
 
     /******************************************

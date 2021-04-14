@@ -3,14 +3,10 @@
 namespace App\Http\Requests\Admin\Property;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class PropertyUpdateRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
     public function authorize()
     {
         return true;
@@ -35,6 +31,14 @@ class PropertyUpdateRequest extends FormRequest
             'image'                 => 'image|mimes:jpg,jpeg,png,svg',
         ];
 
+        foreach (config('translatable.locales') as $locale) {
+            $rules += [
+                $locale . '.name' => ['required', Rule::unique('property_translations', 'name')->ignore($this->id, 'property_id')],
+            ];
+        } // end of for each
+
         return $rules;
-    }
+    } // end of rules
+
+
 }

@@ -42,6 +42,7 @@
         </div><!-- end of box header -->
 
         @include('admin.partials._session')
+        @include('admin.partials._errors')
 
         <div class="box-body bg-white mx-5 mt-3">
 
@@ -102,11 +103,4 @@
 
 @section('script')
 
-    <script type="text/javascript">
-        $('.show_confirm').click(function(e) {
-            if(!confirm('Are you sure you want to delete this?')) {
-                e.preventDefault();
-            }
-        });
-    </script>
 @endsection

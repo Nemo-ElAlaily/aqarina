@@ -12,6 +12,7 @@ return [
             'currencies' => 'c,r,u,d',
             'agencies' => 'c,r,u,d',
             'properties' => 'c,r,u,d',
+            'blogs' => 'c,r,u,d',
         ],
         'admin' => [
 

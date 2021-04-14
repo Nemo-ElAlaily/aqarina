@@ -25,5 +25,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ 'lo
         Route::resource('/properties', 'PropertyController')->except('show');
         Route::get('/property/{id}/features', 'PropertyController@getFeatures')->name('property.feature');
         Route::post('/property/{id}/features/store', 'PropertyController@postFeatures')->name('property.feature.store');
+
+        /* blogs routes */
+        Route::resource('/blogs', 'BlogController')->except('show');
     });
 });

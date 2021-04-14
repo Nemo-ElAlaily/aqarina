@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 
 class AgencyController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $agencies = Agency::all();
+        $agencies = Agency::paginate(PAGINATION_COUNT);
         return view('front.agencies.index' , compact('agencies'));
 
     } // end of index

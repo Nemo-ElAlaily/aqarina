@@ -18,6 +18,7 @@ class PropertyController extends Controller
         $property_statuses = PropertyStatus::all();
         $property_types = PropertyType::all();
 
+        // properties details with search inquiries
         $properties = Property::with('country','city')
             ->when($request -> city_id , function($query) use ($request) {
             return $query -> where('city_id', $request -> city_id);
@@ -25,6 +26,8 @@ class PropertyController extends Controller
             return $query -> where('property_status_id', $request -> property_status);
             })->when($request -> property_type , function($query) use ($request) {
             return $query -> where('property_type_id', $request -> property_type);
+            })->when($request -> rent_sale , function($query) use ($request) {
+                return $query -> where('rent_sale', $request -> rent_sale);
         })->latest()->paginate(PAGINATION_COUNT);
 
         return view('front.properties.index' , compact('cities', 'property_statuses', 'property_types' , 'properties'));
