@@ -105,7 +105,7 @@ class AgencyController extends Controller
             return view('admin.agencies.edit', compact('agency', 'countries', 'cities'));
         } catch (\Exception $exception) {
             session()->flash('error', 'Something Went Wrong, Please Contact Administrator');
-            return redirect()->back();
+            return redirect()->route('admin.agencies.index');
         } // end of try -> catch
 
     } // end of edit
@@ -136,8 +136,6 @@ class AgencyController extends Controller
                 $request_data['image'] = $request->image->hashName();
             } // end of outer if
 
-            $request_data = $request -> all();
-
             $agency->update($request_data);
 
             session()->flash('success', 'Agency Updated Successfully');
@@ -145,7 +143,7 @@ class AgencyController extends Controller
         } catch (\Exception $exception) {
 
             session()->flash('error', 'Something Went Wrong, Please Contact Administrator');
-            return redirect()->back();
+            return redirect()->route('admin.agencies.index');
 
         } // end of try -> cache
 
@@ -172,7 +170,7 @@ class AgencyController extends Controller
         } catch (\Exception $exception){
 
             session()->flash('error', 'Something Went Wrong, Please Contact Administrator');
-            return redirect()->back();
+            return redirect()->route('admin.agencies.index');
 
         } // end of try -> catch
 

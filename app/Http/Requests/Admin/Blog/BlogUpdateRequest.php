@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Admin\Currency;
+namespace App\Http\Requests\Admin\Blog;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class CurrencyCreateRequest extends FormRequest
+class BlogUpdateRequest extends FormRequest
 {
     public function authorize()
     {
@@ -16,13 +16,12 @@ class CurrencyCreateRequest extends FormRequest
     {
         $rules = [];
         foreach (config('translatable.locales') as $locale) {
-            $rules += [$locale . '.name' => [
-                'required',
-                Rule::unique('currency_translations', 'name'),
-            ]];
-        }//end of for each
-
-        $rules += ['symbol' => 'required_without:id|starts_with:#'];
+            $rules += [
+                $locale . '.title' => ['required', Rule::unique('blog_translations', 'title')->ignore($this->id, 'blog_id'),],
+                $locale . '.description' => 'required',
+                $locale . '.creator' => 'required',
+            ];
+        } // end of for each
 
         return $rules;
 
@@ -32,8 +31,7 @@ class CurrencyCreateRequest extends FormRequest
     {
         return [
             'required' => 'This Field is Required',
-            'symbol.starts_with' => 'Must Start with #'
         ];
     } // end of messages
 
-} // end of request
+} // end of Request

@@ -64,12 +64,10 @@
                     <tr>
                         <td>{{ $index + 1 }}</td>
                         <td>{{ $blog -> title }}</td>
-                        <td>{{ $blog -> creator }}</td>
                         <td><img src="{{ $blog -> image_path }}" alt="{{ $blog -> name }}" width="50"/></td>
-                        <td>
-                            <a href="{{ route('admin.properties.index', ['blog_id' => $blog->id ]) }}" class="btn btn-primary btn-sm text-white"><i class="fa fa-eye"></i> View Listings</a>
-                        </td>
-                        <td>
+                        <td>{{ $blog -> creator }}</td>
+
+                       <td>
                             @if (auth()->user()->hasPermission('update_blogs'))
                                 <a href="{{ route('admin.blogs.edit', $blog->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> Edit</a>
                                 {{-- @else
@@ -107,11 +105,4 @@
 
 @section('script')
 
-    <script type="text/javascript">
-        $('.show_confirm').click(function(e) {
-            if(!confirm('Are you sure you want to delete this?')) {
-                e.preventDefault();
-            }
-        });
-    </script>
 @endsection

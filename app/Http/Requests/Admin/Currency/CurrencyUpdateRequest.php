@@ -17,7 +17,7 @@ class CurrencyUpdateRequest extends FormRequest
         // validation
         $rules = [];
         foreach (config('translatable.locales') as $locale) {
-            $rules += [$locale . '.name' => ['required', Rule::unique('currency_translations', 'name')]];
+            $rules += [$locale . '.name' => ['required', Rule::unique('currency_translations', 'name')->ignore($this->id, 'currency_id'),]];
         } // end of for each
 
         $rules += ['symbol' => 'required|starts_with:#'];

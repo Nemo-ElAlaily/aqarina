@@ -30,12 +30,12 @@
                         @foreach (config('translatable.locales') as $locale)
                         <div class="col-sm-12 col-lg-6">
                                 <div class="form-group">
-                                    <label for="{{ $locale }}[name]">Blog Title in @lang('site.' . $locale . '.name')</label>
+                                    <label for="{{ $locale }}[title]">Blog Title in @lang('site.' . $locale . '.name')</label>
                                     @error($locale . '.title')
                                     <span class="text-danger mx-5">{{ $message }}</span>
                                     @enderror
                                     <input class="form-control input-thick" type="text" name="{{ $locale }}[title]"
-                                           value="{{ old($locale.'.name') }}">
+                                           value="{{ old($locale.'.title') }}">
                                 </div>
 
                             <div class="form-group">
